@@ -1,0 +1,981 @@
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	MX_GPIO_Init:
+  25              	.LFB130:
+  26              		.file 1 "Src/main.c"
+   1:Src/main.c    **** 
+   2:Src/main.c    **** /**
+   3:Src/main.c    ****   ******************************************************************************
+   4:Src/main.c    ****   * @file           : main.c
+   5:Src/main.c    ****   * @brief          : Main program body
+   6:Src/main.c    ****   ******************************************************************************
+   7:Src/main.c    ****   ** This notice applies to any and all portions of this file
+   8:Src/main.c    ****   * that are not between comment pairs USER CODE BEGIN and
+   9:Src/main.c    ****   * USER CODE END. Other portions of this file, whether 
+  10:Src/main.c    ****   * inserted by the user or by software development tools
+  11:Src/main.c    ****   * are owned by their respective copyright owners.
+  12:Src/main.c    ****   *
+  13:Src/main.c    ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  14:Src/main.c    ****   *
+  15:Src/main.c    ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:Src/main.c    ****   * are permitted provided that the following conditions are met:
+  17:Src/main.c    ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:Src/main.c    ****   *      this list of conditions and the following disclaimer.
+  19:Src/main.c    ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Src/main.c    ****   *      this list of conditions and the following disclaimer in the documentation
+  21:Src/main.c    ****   *      and/or other materials provided with the distribution.
+  22:Src/main.c    ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:Src/main.c    ****   *      may be used to endorse or promote products derived from this software
+  24:Src/main.c    ****   *      without specific prior written permission.
+  25:Src/main.c    ****   *
+  26:Src/main.c    ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Src/main.c    ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:Src/main.c    ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:Src/main.c    ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:Src/main.c    ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:Src/main.c    ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:Src/main.c    ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 2
+
+
+  33:Src/main.c    ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:Src/main.c    ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:Src/main.c    ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:Src/main.c    ****   *
+  37:Src/main.c    ****   ******************************************************************************
+  38:Src/main.c    ****   */
+  39:Src/main.c    **** /* Includes ------------------------------------------------------------------*/
+  40:Src/main.c    **** #include "main.h"
+  41:Src/main.c    **** 
+  42:Src/main.c    **** /* USER CODE BEGIN Includes */
+  43:Src/main.c    **** 
+  44:Src/main.c    **** /* USER CODE END Includes */
+  45:Src/main.c    **** 
+  46:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  47:Src/main.c    **** 
+  48:Src/main.c    **** ADC_HandleTypeDef hadc1;
+  49:Src/main.c    **** 
+  50:Src/main.c    **** I2C_HandleTypeDef hi2c1;
+  51:Src/main.c    **** 
+  52:Src/main.c    **** UART_HandleTypeDef huart1;
+  53:Src/main.c    **** 
+  54:Src/main.c    **** 
+  55:Src/main.c    **** /* USER CODE BEGIN PV */
+  56:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  57:Src/main.c    **** 
+  58:Src/main.c    **** /* USER CODE END PV */
+  59:Src/main.c    **** 
+  60:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  61:Src/main.c    **** void SystemClock_Config(void)
+  62:Src/main.c    **** {
+  63:Src/main.c    **** 
+  64:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+  65:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  66:Src/main.c    **** 
+  67:Src/main.c    ****     /**Configure the main internal regulator output voltage
+  68:Src/main.c    ****     */
+  69:Src/main.c    ****   __HAL_RCC_PWR_CLK_ENABLE();
+  70:Src/main.c    **** 
+  71:Src/main.c    ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+  72:Src/main.c    **** 
+  73:Src/main.c    ****     /**Initializes the CPU, AHB and APB busses clocks
+  74:Src/main.c    ****     */
+  75:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  76:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  77:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+  78:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  79:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  80:Src/main.c    ****   {
+  81:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+  82:Src/main.c    ****   }
+  83:Src/main.c    **** 
+  84:Src/main.c    ****     /**Initializes the CPU, AHB and APB busses clocks
+  85:Src/main.c    ****     */
+  86:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+  87:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  88:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  89:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 3
+
+
+  90:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  91:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  92:Src/main.c    **** 
+  93:Src/main.c    ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  94:Src/main.c    ****   {
+  95:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+  96:Src/main.c    ****   }
+  97:Src/main.c    **** 
+  98:Src/main.c    ****     /**Configure the Systick interrupt time
+  99:Src/main.c    ****     */
+ 100:Src/main.c    ****   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+ 101:Src/main.c    **** 
+ 102:Src/main.c    ****     /**Configure the Systick
+ 103:Src/main.c    ****     */
+ 104:Src/main.c    ****   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+ 105:Src/main.c    **** 
+ 106:Src/main.c    ****   /* SysTick_IRQn interrupt configuration */
+ 107:Src/main.c    ****   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+ 108:Src/main.c    **** }
+ 109:Src/main.c    **** 
+ 110:Src/main.c    **** /* ADC1 init function */
+ 111:Src/main.c    **** static void MX_ADC1_Init(void)
+ 112:Src/main.c    **** {
+ 113:Src/main.c    **** 
+ 114:Src/main.c    ****   ADC_ChannelConfTypeDef sConfig;
+ 115:Src/main.c    **** 
+ 116:Src/main.c    ****     /**Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of co
+ 117:Src/main.c    ****     */
+ 118:Src/main.c    ****   hadc1.Instance = ADC1;
+ 119:Src/main.c    ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
+ 120:Src/main.c    ****   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+ 121:Src/main.c    ****   hadc1.Init.ScanConvMode = DISABLE;
+ 122:Src/main.c    ****   hadc1.Init.ContinuousConvMode = DISABLE;
+ 123:Src/main.c    ****   hadc1.Init.DiscontinuousConvMode = DISABLE;
+ 124:Src/main.c    ****   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+ 125:Src/main.c    ****   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+ 126:Src/main.c    ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+ 127:Src/main.c    ****   hadc1.Init.NbrOfConversion = 1;
+ 128:Src/main.c    ****   hadc1.Init.DMAContinuousRequests = DISABLE;
+ 129:Src/main.c    ****   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+ 130:Src/main.c    ****   if (HAL_ADC_Init(&hadc1) != HAL_OK)
+ 131:Src/main.c    ****   {
+ 132:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+ 133:Src/main.c    ****   }
+ 134:Src/main.c    **** 
+ 135:Src/main.c    ****     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and i
+ 136:Src/main.c    ****     */
+ 137:Src/main.c    ****   sConfig.Channel = ADC_CHANNEL_0;
+ 138:Src/main.c    ****   sConfig.Rank = 1;
+ 139:Src/main.c    ****   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+ 140:Src/main.c    ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 141:Src/main.c    ****   {
+ 142:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+ 143:Src/main.c    ****   }
+ 144:Src/main.c    **** 
+ 145:Src/main.c    **** }
+ 146:Src/main.c    **** 
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 4
+
+
+ 147:Src/main.c    **** /* I2C1 init function */
+ 148:Src/main.c    **** static void MX_I2C1_Init(void)
+ 149:Src/main.c    **** {
+ 150:Src/main.c    **** 
+ 151:Src/main.c    ****   hi2c1.Instance = I2C1;
+ 152:Src/main.c    ****   hi2c1.Init.ClockSpeed = 100000;
+ 153:Src/main.c    ****   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+ 154:Src/main.c    ****   hi2c1.Init.OwnAddress1 = 0;
+ 155:Src/main.c    ****   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 156:Src/main.c    ****   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 157:Src/main.c    ****   hi2c1.Init.OwnAddress2 = 0;
+ 158:Src/main.c    ****   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 159:Src/main.c    ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 160:Src/main.c    ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+ 161:Src/main.c    ****   {
+ 162:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+ 163:Src/main.c    ****   }
+ 164:Src/main.c    **** 
+ 165:Src/main.c    **** }
+ 166:Src/main.c    **** 
+ 167:Src/main.c    **** /* USART1 init function */
+ 168:Src/main.c    **** static void MX_USART1_UART_Init(void)
+ 169:Src/main.c    **** {
+ 170:Src/main.c    **** 
+ 171:Src/main.c    ****   huart1.Instance = USART1;
+ 172:Src/main.c    ****   huart1.Init.BaudRate = 9600;
+ 173:Src/main.c    ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
+ 174:Src/main.c    ****   huart1.Init.StopBits = UART_STOPBITS_1;
+ 175:Src/main.c    ****   huart1.Init.Parity = UART_PARITY_NONE;
+ 176:Src/main.c    ****   huart1.Init.Mode = UART_MODE_TX_RX;
+ 177:Src/main.c    ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 178:Src/main.c    ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+ 179:Src/main.c    ****   if (HAL_UART_Init(&huart1) != HAL_OK)
+ 180:Src/main.c    ****   {
+ 181:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+ 182:Src/main.c    ****   }
+ 183:Src/main.c    **** 
+ 184:Src/main.c    **** }
+ 185:Src/main.c    **** 
+ 186:Src/main.c    **** 
+ 187:Src/main.c    **** 
+ 188:Src/main.c    **** /** Pinout Configuration
+ 189:Src/main.c    **** */
+ 190:Src/main.c    **** static void MX_GPIO_Init(void)
+ 191:Src/main.c    **** {
+  27              		.loc 1 191 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 82B0     		sub	sp, sp, #8
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              	.LBB2:
+ 192:Src/main.c    **** 
+ 193:Src/main.c    ****   /* GPIO Ports Clock Enable */
+ 194:Src/main.c    ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 5
+
+
+  36              		.loc 1 194 0
+  37 0002 0021     		movs	r1, #0
+  38 0004 0091     		str	r1, [sp]
+  39 0006 0B4B     		ldr	r3, .L3
+  40 0008 1A6B     		ldr	r2, [r3, #48]
+  41 000a 42F00102 		orr	r2, r2, #1
+  42 000e 1A63     		str	r2, [r3, #48]
+  43 0010 1A6B     		ldr	r2, [r3, #48]
+  44 0012 02F00102 		and	r2, r2, #1
+  45 0016 0092     		str	r2, [sp]
+  46 0018 009A     		ldr	r2, [sp]
+  47              	.LBE2:
+  48              	.LBB3:
+ 195:Src/main.c    ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  49              		.loc 1 195 0
+  50 001a 0191     		str	r1, [sp, #4]
+  51 001c 1A6B     		ldr	r2, [r3, #48]
+  52 001e 42F00202 		orr	r2, r2, #2
+  53 0022 1A63     		str	r2, [r3, #48]
+  54 0024 1B6B     		ldr	r3, [r3, #48]
+  55 0026 03F00203 		and	r3, r3, #2
+  56 002a 0193     		str	r3, [sp, #4]
+  57 002c 019B     		ldr	r3, [sp, #4]
+  58              	.LBE3:
+ 196:Src/main.c    **** 
+ 197:Src/main.c    **** }
+  59              		.loc 1 197 0
+  60 002e 02B0     		add	sp, sp, #8
+  61              	.LCFI1:
+  62              		.cfi_def_cfa_offset 0
+  63              		@ sp needed
+  64 0030 7047     		bx	lr
+  65              	.L4:
+  66 0032 00BF     		.align	2
+  67              	.L3:
+  68 0034 00380240 		.word	1073887232
+  69              		.cfi_endproc
+  70              	.LFE130:
+  72              		.section	.text._Error_Handler,"ax",%progbits
+  73              		.align	1
+  74              		.global	_Error_Handler
+  75              		.syntax unified
+  76              		.thumb
+  77              		.thumb_func
+  78              		.fpu fpv4-sp-d16
+  80              	_Error_Handler:
+  81              	.LFB132:
+ 198:Src/main.c    **** 
+ 199:Src/main.c    **** 
+ 200:Src/main.c    **** /* USER CODE BEGIN PFP */
+ 201:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+ 202:Src/main.c    **** 
+ 203:Src/main.c    **** /* USER CODE END PFP */
+ 204:Src/main.c    **** 
+ 205:Src/main.c    **** /* USER CODE BEGIN 0 */
+ 206:Src/main.c    **** 
+ 207:Src/main.c    **** /* USER CODE END 0 */
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 6
+
+
+ 208:Src/main.c    **** 
+ 209:Src/main.c    **** /**
+ 210:Src/main.c    ****   * @brief  The application entry point.
+ 211:Src/main.c    ****   *
+ 212:Src/main.c    ****   * @retval None
+ 213:Src/main.c    ****   */
+ 214:Src/main.c    **** int main(void)
+ 215:Src/main.c    **** {
+ 216:Src/main.c    ****   /* USER CODE BEGIN 1 */
+ 217:Src/main.c    **** 
+ 218:Src/main.c    ****   /* USER CODE END 1 */
+ 219:Src/main.c    **** 
+ 220:Src/main.c    ****   /* MCU Configuration----------------------------------------------------------*/
+ 221:Src/main.c    **** 
+ 222:Src/main.c    ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+ 223:Src/main.c    ****   HAL_Init();
+ 224:Src/main.c    **** 
+ 225:Src/main.c    ****   /* USER CODE BEGIN Init */
+ 226:Src/main.c    **** 
+ 227:Src/main.c    ****   /* USER CODE END Init */
+ 228:Src/main.c    **** 
+ 229:Src/main.c    ****   /* Configure the system clock */
+ 230:Src/main.c    ****   SystemClock_Config();
+ 231:Src/main.c    **** 
+ 232:Src/main.c    ****   /* USER CODE BEGIN SysInit */
+ 233:Src/main.c    **** 
+ 234:Src/main.c    ****   /* USER CODE END SysInit */
+ 235:Src/main.c    **** 
+ 236:Src/main.c    ****   /* Initialize all configured peripherals */
+ 237:Src/main.c    ****   MX_GPIO_Init();
+ 238:Src/main.c    ****   MX_ADC1_Init();
+ 239:Src/main.c    ****   MX_I2C1_Init();
+ 240:Src/main.c    ****   MX_USART1_UART_Init();
+ 241:Src/main.c    ****   uint8_t buffer[12] = "Board init!\r\n";
+ 242:Src/main.c    **** 
+ 243:Src/main.c    ****   /* USER CODE BEGIN 2 */
+ 244:Src/main.c    **** 
+ 245:Src/main.c    ****   /* USER CODE END 2 */
+ 246:Src/main.c    **** 
+ 247:Src/main.c    ****   /* Infinite loop */
+ 248:Src/main.c    ****   /* USER CODE BEGIN WHILE */
+ 249:Src/main.c    **** 
+ 250:Src/main.c    ****  // s_UARTHandle = *new_uart;
+ 251:Src/main.c    ****   HAL_UART_Transmit(&huart1, buffer, sizeof(buffer), HAL_MAX_DELAY);
+ 252:Src/main.c    **** 
+ 253:Src/main.c    ****   while (1)
+ 254:Src/main.c    ****   {
+ 255:Src/main.c    **** 
+ 256:Src/main.c    ****   /* USER CODE END WHILE */
+ 257:Src/main.c    **** 
+ 258:Src/main.c    **** 
+ 259:Src/main.c    ****   //printf("Board init!");
+ 260:Src/main.c    ****   /* USER CODE BEGIN 3 */
+ 261:Src/main.c    **** 
+ 262:Src/main.c    ****   }
+ 263:Src/main.c    ****   /* USER CODE END 3 */
+ 264:Src/main.c    **** 
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 7
+
+
+ 265:Src/main.c    **** }
+ 266:Src/main.c    **** 
+ 267:Src/main.c    **** /**
+ 268:Src/main.c    ****   * @brief System Clock Configuration
+ 269:Src/main.c    ****   * @retval None
+ 270:Src/main.c    ****   */
+ 271:Src/main.c    **** 
+ 272:Src/main.c    **** /* USER CODE BEGIN 4 */
+ 273:Src/main.c    **** 
+ 274:Src/main.c    **** /* USER CODE END 4 */
+ 275:Src/main.c    **** 
+ 276:Src/main.c    **** /**
+ 277:Src/main.c    ****   * @brief  This function is executed in case of error occurrence.
+ 278:Src/main.c    ****   * @param  file: The file name as string.
+ 279:Src/main.c    ****   * @param  line: The line in file as a number.
+ 280:Src/main.c    ****   * @retval None
+ 281:Src/main.c    ****   */
+ 282:Src/main.c    **** void _Error_Handler(char *file, int line)
+ 283:Src/main.c    **** {
+  82              		.loc 1 283 0
+  83              		.cfi_startproc
+  84              		@ Volatile: function does not return.
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87              		@ link register save eliminated.
+  88              	.LVL0:
+  89              	.L6:
+  90 0000 FEE7     		b	.L6
+  91              		.cfi_endproc
+  92              	.LFE132:
+  94              		.section	.text.SystemClock_Config,"ax",%progbits
+  95              		.align	1
+  96              		.global	SystemClock_Config
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.fpu fpv4-sp-d16
+ 102              	SystemClock_Config:
+ 103              	.LFB126:
+  62:Src/main.c    **** 
+ 104              		.loc 1 62 0
+ 105              		.cfi_startproc
+ 106              		@ args = 0, pretend = 0, frame = 80
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+  62:Src/main.c    **** 
+ 108              		.loc 1 62 0
+ 109 0000 00B5     		push	{lr}
+ 110              	.LCFI2:
+ 111              		.cfi_def_cfa_offset 4
+ 112              		.cfi_offset 14, -4
+ 113 0002 95B0     		sub	sp, sp, #84
+ 114              	.LCFI3:
+ 115              		.cfi_def_cfa_offset 88
+ 116              	.LBB4:
+  69:Src/main.c    **** 
+ 117              		.loc 1 69 0
+ 118 0004 0022     		movs	r2, #0
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 8
+
+
+ 119 0006 0192     		str	r2, [sp, #4]
+ 120 0008 244B     		ldr	r3, .L13
+ 121 000a 196C     		ldr	r1, [r3, #64]
+ 122 000c 41F08051 		orr	r1, r1, #268435456
+ 123 0010 1964     		str	r1, [r3, #64]
+ 124 0012 1B6C     		ldr	r3, [r3, #64]
+ 125 0014 03F08053 		and	r3, r3, #268435456
+ 126 0018 0193     		str	r3, [sp, #4]
+ 127 001a 019B     		ldr	r3, [sp, #4]
+ 128              	.LBE4:
+ 129              	.LBB5:
+  71:Src/main.c    **** 
+ 130              		.loc 1 71 0
+ 131 001c 0292     		str	r2, [sp, #8]
+ 132 001e 2049     		ldr	r1, .L13+4
+ 133 0020 0B68     		ldr	r3, [r1]
+ 134 0022 23F44043 		bic	r3, r3, #49152
+ 135 0026 43F40043 		orr	r3, r3, #32768
+ 136 002a 0B60     		str	r3, [r1]
+ 137 002c 0B68     		ldr	r3, [r1]
+ 138 002e 03F44043 		and	r3, r3, #49152
+ 139 0032 0293     		str	r3, [sp, #8]
+ 140 0034 029B     		ldr	r3, [sp, #8]
+ 141              	.LBE5:
+  75:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 142              		.loc 1 75 0
+ 143 0036 0223     		movs	r3, #2
+ 144 0038 0893     		str	r3, [sp, #32]
+  76:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+ 145              		.loc 1 76 0
+ 146 003a 0123     		movs	r3, #1
+ 147 003c 0B93     		str	r3, [sp, #44]
+  77:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+ 148              		.loc 1 77 0
+ 149 003e 1023     		movs	r3, #16
+ 150 0040 0C93     		str	r3, [sp, #48]
+  78:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 151              		.loc 1 78 0
+ 152 0042 0E92     		str	r2, [sp, #56]
+  79:Src/main.c    ****   {
+ 153              		.loc 1 79 0
+ 154 0044 08A8     		add	r0, sp, #32
+ 155 0046 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 156              	.LVL1:
+ 157 004a F0B9     		cbnz	r0, .L11
+  86:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 158              		.loc 1 86 0
+ 159 004c 0F23     		movs	r3, #15
+ 160 004e 0393     		str	r3, [sp, #12]
+  88:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 161              		.loc 1 88 0
+ 162 0050 0021     		movs	r1, #0
+ 163 0052 0491     		str	r1, [sp, #16]
+  89:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 164              		.loc 1 89 0
+ 165 0054 0591     		str	r1, [sp, #20]
+  90:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 9
+
+
+ 166              		.loc 1 90 0
+ 167 0056 0691     		str	r1, [sp, #24]
+  91:Src/main.c    **** 
+ 168              		.loc 1 91 0
+ 169 0058 0791     		str	r1, [sp, #28]
+  93:Src/main.c    ****   {
+ 170              		.loc 1 93 0
+ 171 005a 03A8     		add	r0, sp, #12
+ 172 005c FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 173              	.LVL2:
+ 174 0060 B8B9     		cbnz	r0, .L12
+ 100:Src/main.c    **** 
+ 175              		.loc 1 100 0
+ 176 0062 FFF7FEFF 		bl	HAL_RCC_GetHCLKFreq
+ 177              	.LVL3:
+ 178 0066 0F4B     		ldr	r3, .L13+8
+ 179 0068 A3FB0030 		umull	r3, r0, r3, r0
+ 180 006c 8009     		lsrs	r0, r0, #6
+ 181 006e FFF7FEFF 		bl	HAL_SYSTICK_Config
+ 182              	.LVL4:
+ 104:Src/main.c    **** 
+ 183              		.loc 1 104 0
+ 184 0072 0420     		movs	r0, #4
+ 185 0074 FFF7FEFF 		bl	HAL_SYSTICK_CLKSourceConfig
+ 186              	.LVL5:
+ 107:Src/main.c    **** }
+ 187              		.loc 1 107 0
+ 188 0078 0022     		movs	r2, #0
+ 189 007a 1146     		mov	r1, r2
+ 190 007c 4FF0FF30 		mov	r0, #-1
+ 191 0080 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 192              	.LVL6:
+ 108:Src/main.c    **** 
+ 193              		.loc 1 108 0
+ 194 0084 15B0     		add	sp, sp, #84
+ 195              	.LCFI4:
+ 196              		.cfi_remember_state
+ 197              		.cfi_def_cfa_offset 4
+ 198              		@ sp needed
+ 199 0086 5DF804FB 		ldr	pc, [sp], #4
+ 200              	.L11:
+ 201              	.LCFI5:
+ 202              		.cfi_restore_state
+  81:Src/main.c    ****   }
+ 203              		.loc 1 81 0
+ 204 008a 5121     		movs	r1, #81
+ 205 008c 0648     		ldr	r0, .L13+12
+ 206 008e FFF7FEFF 		bl	_Error_Handler
+ 207              	.LVL7:
+ 208              	.L12:
+  95:Src/main.c    ****   }
+ 209              		.loc 1 95 0
+ 210 0092 5F21     		movs	r1, #95
+ 211 0094 0448     		ldr	r0, .L13+12
+ 212 0096 FFF7FEFF 		bl	_Error_Handler
+ 213              	.LVL8:
+ 214              	.L14:
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 10
+
+
+ 215 009a 00BF     		.align	2
+ 216              	.L13:
+ 217 009c 00380240 		.word	1073887232
+ 218 00a0 00700040 		.word	1073770496
+ 219 00a4 D34D6210 		.word	274877907
+ 220 00a8 00000000 		.word	.LC0
+ 221              		.cfi_endproc
+ 222              	.LFE126:
+ 224              		.section	.text.MX_ADC1_Init,"ax",%progbits
+ 225              		.align	1
+ 226              		.syntax unified
+ 227              		.thumb
+ 228              		.thumb_func
+ 229              		.fpu fpv4-sp-d16
+ 231              	MX_ADC1_Init:
+ 232              	.LFB127:
+ 112:Src/main.c    **** 
+ 233              		.loc 1 112 0
+ 234              		.cfi_startproc
+ 235              		@ args = 0, pretend = 0, frame = 16
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237 0000 00B5     		push	{lr}
+ 238              	.LCFI6:
+ 239              		.cfi_def_cfa_offset 4
+ 240              		.cfi_offset 14, -4
+ 241 0002 85B0     		sub	sp, sp, #20
+ 242              	.LCFI7:
+ 243              		.cfi_def_cfa_offset 24
+ 118:Src/main.c    ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
+ 244              		.loc 1 118 0
+ 245 0004 1448     		ldr	r0, .L21
+ 246 0006 154B     		ldr	r3, .L21+4
+ 247 0008 0360     		str	r3, [r0]
+ 119:Src/main.c    ****   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+ 248              		.loc 1 119 0
+ 249 000a 0023     		movs	r3, #0
+ 250 000c 4360     		str	r3, [r0, #4]
+ 120:Src/main.c    ****   hadc1.Init.ScanConvMode = DISABLE;
+ 251              		.loc 1 120 0
+ 252 000e 8360     		str	r3, [r0, #8]
+ 121:Src/main.c    ****   hadc1.Init.ContinuousConvMode = DISABLE;
+ 253              		.loc 1 121 0
+ 254 0010 0361     		str	r3, [r0, #16]
+ 122:Src/main.c    ****   hadc1.Init.DiscontinuousConvMode = DISABLE;
+ 255              		.loc 1 122 0
+ 256 0012 8361     		str	r3, [r0, #24]
+ 123:Src/main.c    ****   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+ 257              		.loc 1 123 0
+ 258 0014 0362     		str	r3, [r0, #32]
+ 124:Src/main.c    ****   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+ 259              		.loc 1 124 0
+ 260 0016 C362     		str	r3, [r0, #44]
+ 125:Src/main.c    ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+ 261              		.loc 1 125 0
+ 262 0018 114A     		ldr	r2, .L21+8
+ 263 001a 8262     		str	r2, [r0, #40]
+ 126:Src/main.c    ****   hadc1.Init.NbrOfConversion = 1;
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 11
+
+
+ 264              		.loc 1 126 0
+ 265 001c C360     		str	r3, [r0, #12]
+ 127:Src/main.c    ****   hadc1.Init.DMAContinuousRequests = DISABLE;
+ 266              		.loc 1 127 0
+ 267 001e 0122     		movs	r2, #1
+ 268 0020 C261     		str	r2, [r0, #28]
+ 128:Src/main.c    ****   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+ 269              		.loc 1 128 0
+ 270 0022 0363     		str	r3, [r0, #48]
+ 129:Src/main.c    ****   if (HAL_ADC_Init(&hadc1) != HAL_OK)
+ 271              		.loc 1 129 0
+ 272 0024 4261     		str	r2, [r0, #20]
+ 130:Src/main.c    ****   {
+ 273              		.loc 1 130 0
+ 274 0026 FFF7FEFF 		bl	HAL_ADC_Init
+ 275              	.LVL9:
+ 276 002a 60B9     		cbnz	r0, .L19
+ 137:Src/main.c    ****   sConfig.Rank = 1;
+ 277              		.loc 1 137 0
+ 278 002c 0023     		movs	r3, #0
+ 279 002e 0093     		str	r3, [sp]
+ 138:Src/main.c    ****   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+ 280              		.loc 1 138 0
+ 281 0030 0122     		movs	r2, #1
+ 282 0032 0192     		str	r2, [sp, #4]
+ 139:Src/main.c    ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 283              		.loc 1 139 0
+ 284 0034 0293     		str	r3, [sp, #8]
+ 140:Src/main.c    ****   {
+ 285              		.loc 1 140 0
+ 286 0036 6946     		mov	r1, sp
+ 287 0038 0748     		ldr	r0, .L21
+ 288 003a FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 289              	.LVL10:
+ 290 003e 30B9     		cbnz	r0, .L20
+ 145:Src/main.c    **** 
+ 291              		.loc 1 145 0
+ 292 0040 05B0     		add	sp, sp, #20
+ 293              	.LCFI8:
+ 294              		.cfi_remember_state
+ 295              		.cfi_def_cfa_offset 4
+ 296              		@ sp needed
+ 297 0042 5DF804FB 		ldr	pc, [sp], #4
+ 298              	.L19:
+ 299              	.LCFI9:
+ 300              		.cfi_restore_state
+ 132:Src/main.c    ****   }
+ 301              		.loc 1 132 0
+ 302 0046 8421     		movs	r1, #132
+ 303 0048 0648     		ldr	r0, .L21+12
+ 304 004a FFF7FEFF 		bl	_Error_Handler
+ 305              	.LVL11:
+ 306              	.L20:
+ 142:Src/main.c    ****   }
+ 307              		.loc 1 142 0
+ 308 004e 8E21     		movs	r1, #142
+ 309 0050 0448     		ldr	r0, .L21+12
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 12
+
+
+ 310 0052 FFF7FEFF 		bl	_Error_Handler
+ 311              	.LVL12:
+ 312              	.L22:
+ 313 0056 00BF     		.align	2
+ 314              	.L21:
+ 315 0058 00000000 		.word	hadc1
+ 316 005c 00200140 		.word	1073815552
+ 317 0060 0100000F 		.word	251658241
+ 318 0064 00000000 		.word	.LC0
+ 319              		.cfi_endproc
+ 320              	.LFE127:
+ 322              		.section	.text.MX_I2C1_Init,"ax",%progbits
+ 323              		.align	1
+ 324              		.syntax unified
+ 325              		.thumb
+ 326              		.thumb_func
+ 327              		.fpu fpv4-sp-d16
+ 329              	MX_I2C1_Init:
+ 330              	.LFB128:
+ 149:Src/main.c    **** 
+ 331              		.loc 1 149 0
+ 332              		.cfi_startproc
+ 333              		@ args = 0, pretend = 0, frame = 0
+ 334              		@ frame_needed = 0, uses_anonymous_args = 0
+ 335 0000 08B5     		push	{r3, lr}
+ 336              	.LCFI10:
+ 337              		.cfi_def_cfa_offset 8
+ 338              		.cfi_offset 3, -8
+ 339              		.cfi_offset 14, -4
+ 151:Src/main.c    ****   hi2c1.Init.ClockSpeed = 100000;
+ 340              		.loc 1 151 0
+ 341 0002 0B48     		ldr	r0, .L27
+ 342 0004 0B4B     		ldr	r3, .L27+4
+ 343 0006 0360     		str	r3, [r0]
+ 152:Src/main.c    ****   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+ 344              		.loc 1 152 0
+ 345 0008 0B4B     		ldr	r3, .L27+8
+ 346 000a 4360     		str	r3, [r0, #4]
+ 153:Src/main.c    ****   hi2c1.Init.OwnAddress1 = 0;
+ 347              		.loc 1 153 0
+ 348 000c 0023     		movs	r3, #0
+ 349 000e 8360     		str	r3, [r0, #8]
+ 154:Src/main.c    ****   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 350              		.loc 1 154 0
+ 351 0010 C360     		str	r3, [r0, #12]
+ 155:Src/main.c    ****   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 352              		.loc 1 155 0
+ 353 0012 4FF48042 		mov	r2, #16384
+ 354 0016 0261     		str	r2, [r0, #16]
+ 156:Src/main.c    ****   hi2c1.Init.OwnAddress2 = 0;
+ 355              		.loc 1 156 0
+ 356 0018 4361     		str	r3, [r0, #20]
+ 157:Src/main.c    ****   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 357              		.loc 1 157 0
+ 358 001a 8361     		str	r3, [r0, #24]
+ 158:Src/main.c    ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 359              		.loc 1 158 0
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 13
+
+
+ 360 001c C361     		str	r3, [r0, #28]
+ 159:Src/main.c    ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+ 361              		.loc 1 159 0
+ 362 001e 0362     		str	r3, [r0, #32]
+ 160:Src/main.c    ****   {
+ 363              		.loc 1 160 0
+ 364 0020 FFF7FEFF 		bl	HAL_I2C_Init
+ 365              	.LVL13:
+ 366 0024 00B9     		cbnz	r0, .L26
+ 165:Src/main.c    **** 
+ 367              		.loc 1 165 0
+ 368 0026 08BD     		pop	{r3, pc}
+ 369              	.L26:
+ 162:Src/main.c    ****   }
+ 370              		.loc 1 162 0
+ 371 0028 A221     		movs	r1, #162
+ 372 002a 0448     		ldr	r0, .L27+12
+ 373 002c FFF7FEFF 		bl	_Error_Handler
+ 374              	.LVL14:
+ 375              	.L28:
+ 376              		.align	2
+ 377              	.L27:
+ 378 0030 00000000 		.word	hi2c1
+ 379 0034 00540040 		.word	1073763328
+ 380 0038 A0860100 		.word	100000
+ 381 003c 00000000 		.word	.LC0
+ 382              		.cfi_endproc
+ 383              	.LFE128:
+ 385              		.section	.text.MX_USART1_UART_Init,"ax",%progbits
+ 386              		.align	1
+ 387              		.syntax unified
+ 388              		.thumb
+ 389              		.thumb_func
+ 390              		.fpu fpv4-sp-d16
+ 392              	MX_USART1_UART_Init:
+ 393              	.LFB129:
+ 169:Src/main.c    **** 
+ 394              		.loc 1 169 0
+ 395              		.cfi_startproc
+ 396              		@ args = 0, pretend = 0, frame = 0
+ 397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 398 0000 08B5     		push	{r3, lr}
+ 399              	.LCFI11:
+ 400              		.cfi_def_cfa_offset 8
+ 401              		.cfi_offset 3, -8
+ 402              		.cfi_offset 14, -4
+ 171:Src/main.c    ****   huart1.Init.BaudRate = 9600;
+ 403              		.loc 1 171 0
+ 404 0002 0B48     		ldr	r0, .L33
+ 405 0004 0B4B     		ldr	r3, .L33+4
+ 406 0006 0360     		str	r3, [r0]
+ 172:Src/main.c    ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
+ 407              		.loc 1 172 0
+ 408 0008 4FF41653 		mov	r3, #9600
+ 409 000c 4360     		str	r3, [r0, #4]
+ 173:Src/main.c    ****   huart1.Init.StopBits = UART_STOPBITS_1;
+ 410              		.loc 1 173 0
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 14
+
+
+ 411 000e 0023     		movs	r3, #0
+ 412 0010 8360     		str	r3, [r0, #8]
+ 174:Src/main.c    ****   huart1.Init.Parity = UART_PARITY_NONE;
+ 413              		.loc 1 174 0
+ 414 0012 C360     		str	r3, [r0, #12]
+ 175:Src/main.c    ****   huart1.Init.Mode = UART_MODE_TX_RX;
+ 415              		.loc 1 175 0
+ 416 0014 0361     		str	r3, [r0, #16]
+ 176:Src/main.c    ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 417              		.loc 1 176 0
+ 418 0016 0C22     		movs	r2, #12
+ 419 0018 4261     		str	r2, [r0, #20]
+ 177:Src/main.c    ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+ 420              		.loc 1 177 0
+ 421 001a 8361     		str	r3, [r0, #24]
+ 178:Src/main.c    ****   if (HAL_UART_Init(&huart1) != HAL_OK)
+ 422              		.loc 1 178 0
+ 423 001c C361     		str	r3, [r0, #28]
+ 179:Src/main.c    ****   {
+ 424              		.loc 1 179 0
+ 425 001e FFF7FEFF 		bl	HAL_UART_Init
+ 426              	.LVL15:
+ 427 0022 00B9     		cbnz	r0, .L32
+ 184:Src/main.c    **** 
+ 428              		.loc 1 184 0
+ 429 0024 08BD     		pop	{r3, pc}
+ 430              	.L32:
+ 181:Src/main.c    ****   }
+ 431              		.loc 1 181 0
+ 432 0026 B521     		movs	r1, #181
+ 433 0028 0348     		ldr	r0, .L33+8
+ 434 002a FFF7FEFF 		bl	_Error_Handler
+ 435              	.LVL16:
+ 436              	.L34:
+ 437 002e 00BF     		.align	2
+ 438              	.L33:
+ 439 0030 00000000 		.word	huart1
+ 440 0034 00100140 		.word	1073811456
+ 441 0038 00000000 		.word	.LC0
+ 442              		.cfi_endproc
+ 443              	.LFE129:
+ 445              		.section	.text.main,"ax",%progbits
+ 446              		.align	1
+ 447              		.global	main
+ 448              		.syntax unified
+ 449              		.thumb
+ 450              		.thumb_func
+ 451              		.fpu fpv4-sp-d16
+ 453              	main:
+ 454              	.LFB131:
+ 215:Src/main.c    ****   /* USER CODE BEGIN 1 */
+ 455              		.loc 1 215 0
+ 456              		.cfi_startproc
+ 457              		@ Volatile: function does not return.
+ 458              		@ args = 0, pretend = 0, frame = 16
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460 0000 00B5     		push	{lr}
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 15
+
+
+ 461              	.LCFI12:
+ 462              		.cfi_def_cfa_offset 4
+ 463              		.cfi_offset 14, -4
+ 464 0002 85B0     		sub	sp, sp, #20
+ 465              	.LCFI13:
+ 466              		.cfi_def_cfa_offset 24
+ 223:Src/main.c    **** 
+ 467              		.loc 1 223 0
+ 468 0004 FFF7FEFF 		bl	HAL_Init
+ 469              	.LVL17:
+ 230:Src/main.c    **** 
+ 470              		.loc 1 230 0
+ 471 0008 FFF7FEFF 		bl	SystemClock_Config
+ 472              	.LVL18:
+ 237:Src/main.c    ****   MX_ADC1_Init();
+ 473              		.loc 1 237 0
+ 474 000c FFF7FEFF 		bl	MX_GPIO_Init
+ 475              	.LVL19:
+ 238:Src/main.c    ****   MX_I2C1_Init();
+ 476              		.loc 1 238 0
+ 477 0010 FFF7FEFF 		bl	MX_ADC1_Init
+ 478              	.LVL20:
+ 239:Src/main.c    ****   MX_USART1_UART_Init();
+ 479              		.loc 1 239 0
+ 480 0014 FFF7FEFF 		bl	MX_I2C1_Init
+ 481              	.LVL21:
+ 240:Src/main.c    ****   uint8_t buffer[12] = "Board init!\r\n";
+ 482              		.loc 1 240 0
+ 483 0018 FFF7FEFF 		bl	MX_USART1_UART_Init
+ 484              	.LVL22:
+ 241:Src/main.c    **** 
+ 485              		.loc 1 241 0
+ 486 001c 064B     		ldr	r3, .L38
+ 487 001e 01AC     		add	r4, sp, #4
+ 488 0020 93E80700 		ldm	r3, {r0, r1, r2}
+ 489 0024 84E80700 		stm	r4, {r0, r1, r2}
+ 251:Src/main.c    **** 
+ 490              		.loc 1 251 0
+ 491 0028 4FF0FF33 		mov	r3, #-1
+ 492 002c 0C22     		movs	r2, #12
+ 493 002e 2146     		mov	r1, r4
+ 494 0030 0248     		ldr	r0, .L38+4
+ 495 0032 FFF7FEFF 		bl	HAL_UART_Transmit
+ 496              	.LVL23:
+ 497              	.L36:
+ 498 0036 FEE7     		b	.L36
+ 499              	.L39:
+ 500              		.align	2
+ 501              	.L38:
+ 502 0038 00000000 		.word	.LANCHOR0
+ 503 003c 00000000 		.word	huart1
+ 504              		.cfi_endproc
+ 505              	.LFE131:
+ 507              		.comm	huart1,64,4
+ 508              		.comm	hi2c1,84,4
+ 509              		.comm	hadc1,72,4
+ 510              		.section	.rodata
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 16
+
+
+ 511              		.align	2
+ 512              		.set	.LANCHOR0,. + 0
+ 513              	.LC1:
+ 514 0000 426F6172 		.ascii	"Board init!\015\012\000"
+ 514      6420696E 
+ 514      6974210D 
+ 514      0A00
+ 515              		.section	.rodata.SystemClock_Config.str1.4,"aMS",%progbits,1
+ 516              		.align	2
+ 517              	.LC0:
+ 518 0000 5372632F 		.ascii	"Src/main.c\000"
+ 518      6D61696E 
+ 518      2E6300
+ 519              		.text
+ 520              	.Letext0:
+ 521              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 522              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 523              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 524              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 525              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 526              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 527              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 528              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 529              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
+ 530              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 531              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 532              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 533              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 534              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 535              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 536              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 537              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 538              		.file 19 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 539              		.file 20 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:18     .text.MX_GPIO_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:68     .text.MX_GPIO_Init:00000034 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:73     .text._Error_Handler:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:80     .text._Error_Handler:00000000 _Error_Handler
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:95     .text.SystemClock_Config:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:102    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:217    .text.SystemClock_Config:0000009c $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:225    .text.MX_ADC1_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:231    .text.MX_ADC1_Init:00000000 MX_ADC1_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:315    .text.MX_ADC1_Init:00000058 $d
+                            *COM*:00000048 hadc1
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:323    .text.MX_I2C1_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:329    .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:378    .text.MX_I2C1_Init:00000030 $d
+                            *COM*:00000054 hi2c1
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:386    .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:392    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:439    .text.MX_USART1_UART_Init:00000030 $d
+                            *COM*:00000040 huart1
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:446    .text.main:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:453    .text.main:00000000 main
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:502    .text.main:00000038 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:511    .rodata:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccY9PWL2.s:516    .rodata.SystemClock_Config.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_RCC_GetHCLKFreq
+HAL_SYSTICK_Config
+HAL_SYSTICK_CLKSourceConfig
+HAL_NVIC_SetPriority
+HAL_ADC_Init
+HAL_ADC_ConfigChannel
+HAL_I2C_Init
+HAL_UART_Init
+HAL_Init
+HAL_UART_Transmit
