@@ -34,6 +34,7 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
+#include "main.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -44,7 +45,6 @@
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
-
 /**
 * @brief This function handles Non maskable interrupt.
 */
@@ -178,6 +178,7 @@ void SysTick_Handler(void)
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
+  TimingDelay_Decrement();
   HAL_SYSTICK_IRQHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
 

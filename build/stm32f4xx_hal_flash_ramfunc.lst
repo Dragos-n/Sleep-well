@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccsAFn6q.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cclakm8x.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -17,19 +17,22 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccsAFn6q.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              	.Letext0:
-  18              		.file 1 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
-  19              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
-  20              		.file 3 "Drivers/CMSIS/Include/core_cm4.h"
-  21              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
-  22              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
-  23              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
-  24              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
-  25              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccsAFn6q.s 			page 2
+  17              		.comm	TimingDelay,4,4
+  18              	.Letext0:
+  19              		.file 1 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+  20              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+  21              		.file 3 "Inc/main.h"
+  22              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+  23              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+  24              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+  25              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+  26              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
+  27              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cclakm8x.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_flash_ramfunc.c
+                            *COM*:00000004 TimingDelay
 
 NO UNDEFINED SYMBOLS
