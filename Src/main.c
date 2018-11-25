@@ -8,13 +8,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32f4xx_hal.h"
-#include "stdint.h"
-#include "init.h"
-
 
 /* Private variables ---------------------------------------------------------*/
-extern huart1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -23,69 +18,87 @@ extern huart1;
 
 /* Private function prototypes -----------------------------------------------*/
 
+#include "main.h"
+#include "stdint.h"
+#include "init.h"
+
+volatile u8 counter= 1U;
+volatile u16 a = 0U;
+
 void Delay(u32 nTime)
 {
     TimingDelay = nTime;
-    while(TimingDelay != 0)
-    	{
-    	u8 i = 0;
-    	debug_check();
-    	}
+    while(TimingDelay != 0);
 }
 
 void TimingDelay_Decrement(void)
 {
     if (TimingDelay != 0)
     {
-        TimingDelay--;
+        --TimingDelay;
     }
 }
 
 
-u8 hex2str(u8 *in ,u8 len, char *out)
+void debug_check(u16 printed_var)
 {
-	u8 temp[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-	u8 t,i,j = 0;
+	//u8 debug_msg[20] = "Working!\r\n";
 
-	for(i=0;i<len;i++)
-	{
-		t = (in[i] & 0xF0) >> 4;
-		out[j++] = temp[t];
-		t = (in[i] & 0x0F) >> 0;
-		out[j++] = temp[t];
-	}
-	return j;
+	u8 debug_msg[20] = "";
+	u8 uart_new_line[2] = "\r\n";
+	sprintf(debug_msg, "%d", printed_var);
+	HAL_UART_Transmit(&huart1,debug_msg, 6U, HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart1,uart_new_line, 2U, HAL_MAX_DELAY);
+
+	sprintf(debug_msg, "%d", counter);
+	HAL_UART_Transmit(&huart1,debug_msg, 6U, HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart1,uart_new_line, 2U, HAL_MAX_DELAY);
+	++counter;
+
+	LED_ON
+	Delay(DELAY_TEST);
+	LED_OFF
+	Delay(DELAY_TEST);
 }
 
-void debug_check(void)
-{
-    u8 debug_msg[10] = "Working!\r\n";
-    HAL_UART_Transmit(&huart1, debug_msg, sizeof(debug_msg), HAL_MAX_DELAY);
-}
+
 
 int main(void)
 {
-  HAL_Init();
-  SystemClock_Config();
-  MX_GPIO_Init();
-  MX_ADC1_Init();
-  MX_I2C1_Init();
-  MX_USART1_UART_Init();
+	HAL_Init();
+	SystemClock_Config();
 
-  char buffer[12] = "Board init!\r\n";
+#if (STD_ON == GPIO_ON)
+	MX_GPIO_Init();
+#endif
 
-  HAL_UART_Transmit(&huart1, buffer, sizeof(buffer), HAL_MAX_DELAY);
-  Delay(100);
+#if (STD_ON == ADC_1)
+	MX_ADC1_Init();
+#endif
+
+#if (STD_ON == I2C_1)
+	MX_I2C1_Init();
+#endif
+
+#if (STD_ON == UART_1)
+	MX_USART1_UART_Init();
+	Board_init();
+#endif
 
 
+HAL_ADC_Start(&hadc1);
 
-  while (1)
-  {
-	  debug_check();
-   //debug_msg = hex2str(TimingDelay,sizeof(TimingDelay),buf_out);
-   //HAL_UART_Transmit(&huart1, debug_msg, sizeof(debug_msg), HAL_MAX_DELAY);
-   //HAL_UART_Transmit(&huart1, "\r\n",2, HAL_MAX_DELAY);
-  }
+
+	while (1)
+	{
+		//if (HAL_ADC_PollForConversion(&hadc1, 1000000) == HAL_OK)
+
+	a = HAL_ADC_GetValue(&hadc1);
+
+#if (STD_ON == DEBUG_MODE)
+	debug_check(a);
+#endif
+	}
 
 }
 
@@ -100,19 +113,3 @@ void _Error_Handler(char *file, int line)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
-/**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
-void assert_failed(uint8_t* file, uint32_t line)
-{ 
-  /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
-}
-#endif /* USE_FULL_ASSERT */

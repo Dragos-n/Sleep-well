@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****       (+) 8 cache lines of 128 bits on D-Code
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****       
   32:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****       
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 2
 
 
   33:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****                      ##### How to use this driver #####
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   89:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   *
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 3
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 3
 
 
   90:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   ******************************************************************************
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** /** @defgroup FLASH_Exported_Functions FLASH Exported Functions
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   * @{
  146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   */
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 4
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 4
 
 
  147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     }
  202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     else
  203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     {
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 5
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 5
 
 
  204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****       /*Program double word (64-bit) at a specified address.*/
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   }
  259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   else if(TypeProgram == FLASH_TYPEPROGRAM_WORD)
  260:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   {
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 6
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 6
 
 
  261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     /*Program word (32-bit) at a specified address.*/
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   }
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   
  317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   /* Check FLASH End of Operation flag  */
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 7
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 7
 
 
  318:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   if(__HAL_FLASH_GET_FLAG(FLASH_FLAG_EOP) != RESET)
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     }
  373:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   }
  374:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 8
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 8
 
 
  375:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   if(pFlash.ProcedureOnGoing == FLASH_PROC_NONE)
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  429:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** 
  430:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** /** @defgroup FLASH_Exported_Functions_Group2 Peripheral Control functions 
  431:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****  *  @brief   management functions 
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 9
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 9
 
 
  432:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****  *
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** {
  487:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   if((FLASH->OPTCR & FLASH_OPTCR_OPTLOCK) != RESET)
  488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   {
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 10
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 10
 
 
  489:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     /* Authorizes the Option Byte register programming */
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** 
  544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** /**
  545:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   * @brief  Get the specific FLASH error flag.
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 11
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 11
 
 
  546:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   * @retval FLASH_ErrorCode: The returned value can be a combination of:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  600:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****                            FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR | FLASH_FLAG_RDERR)) != RESET)
  601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** #else
  602:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   if(__HAL_FLASH_GET_FLAG((FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | \
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 12
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 12
 
 
  603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****                            FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR)) != RESET)
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
   47 0014 0C69     		ldr	r4, [r1, #16]
   48 0016 44F00104 		orr	r4, r4, #1
   49 001a 0C61     		str	r4, [r1, #16]
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 13
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 13
 
 
  637:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   /* If the previous operation is completed, proceed to program the new data */
  662:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   CLEAR_BIT(FLASH->CR, FLASH_CR_PSIZE);
   82              		.loc 1 662 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 14
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 14
 
 
   83 0000 074B     		ldr	r3, .L6
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  119              		@ link register save eliminated.
  120              	.LVL2:
  683:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   /* Check the parameters */
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 15
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 15
 
 
  684:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   assert_param(IS_FLASH_ADDRESS(Address));
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  707:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** {
  154              		.loc 1 707 0
  155              		.cfi_startproc
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 16
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 16
 
 
  156              		@ args = 0, pretend = 0, frame = 0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  195              		@ frame_needed = 0, uses_anonymous_args = 0
  196              		@ link register save eliminated.
  725:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   if(__HAL_FLASH_GET_FLAG(FLASH_FLAG_WRPERR) != RESET)
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 17
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 17
 
 
  197              		.loc 1 725 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  233 003e 194A     		ldr	r2, .L21+4
  234 0040 D369     		ldr	r3, [r2, #28]
  235 0042 43F00403 		orr	r3, r3, #4
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 18
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 18
 
 
  236 0046 D361     		str	r3, [r2, #28]
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  271              	.L19:
  763:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   }
  764:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** #endif /* FLASH_SR_RDERR */  
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 19
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 19
 
 
  765:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   if(__HAL_FLASH_GET_FLAG(FLASH_FLAG_OPERR) != RESET)
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  319              	.LVL5:
  235:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c **** 
  320              		.loc 1 235 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 20
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 20
 
 
  321 0002 174D     		ldr	r5, .L33
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  364              	.LVL10:
  365              	.L30:
  252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****   }
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 21
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 21
 
 
  366              		.loc 1 252 0
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  415              		.loc 1 401 0
  416              		.cfi_startproc
  417              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 22
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 22
 
 
  418              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  471 000a 13D0     		beq	.L38
  290:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     {
  472              		.loc 1 290 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 23
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 23
 
 
  473 000c 384B     		ldr	r3, .L53+4
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  518 004e 284B     		ldr	r3, .L53+4
  519 0050 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  520 0052 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 24
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 24
 
 
  521 0054 022B     		cmp	r3, #2
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  565 0092 4FF0FF32 		mov	r2, #-1
  566 0096 DA60     		str	r2, [r3, #12]
  567 0098 C4E7     		b	.L40
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 25
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 25
 
 
  568              	.LVL28:
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  612 00ce 1A70     		strb	r2, [r3]
  348:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****                 
  613              		.loc 1 348 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 26
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 26
 
 
  614 00d0 FFF7FEFF 		bl	FLASH_FlushCaches
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  664              	.L59:
  456:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     WRITE_REG(FLASH->KEYR, FLASH_KEY2);
  665              		.loc 1 456 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 27
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 27
 
 
  666 000c 064B     		ldr	r3, .L60
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  714 000a 0020     		movs	r0, #0
  715 000c 7047     		bx	lr
  716              	.L64:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 28
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 28
 
 
  717 000e 00BF     		.align	2
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  767              		.align	1
  768              		.global	HAL_FLASH_OB_Lock
  769              		.syntax unified
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 29
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 29
 
 
  770              		.thumb
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  821              	.LFE136:
  823              		.section	.text.FLASH_WaitForLastOperation,"ax",%progbits
  824              		.align	1
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 30
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 30
 
 
  825              		.global	FLASH_WaitForLastOperation
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  587:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****       }
  873              		.loc 1 587 0 is_stmt 1
  874 002c 0320     		movs	r0, #3
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 31
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 31
 
 
  875 002e 0DE0     		b	.L79
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  922              		.thumb_func
  923              		.fpu fpv4-sp-d16
  925              	HAL_FLASH_Program:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 32
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 32
 
 
  926              	.LFB126:
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  205:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     }
  972              		.loc 1 205 0
  973 002e 3246     		mov	r2, r6
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 33
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 33
 
 
  974 0030 3B46     		mov	r3, r7
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c ****     }
  1022              		.loc 1 200 0
  1023 006a 3146     		mov	r1, r6
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 34
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 34
 
 
  1024 006c 2846     		mov	r0, r5
@@ -2038,90 +2038,87 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 1
  1075              	.L106:
  1076 0018 143C0240 		.word	1073888276
  1077              		.cfi_endproc
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 35
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 35
 
 
  1078              	.LFE135:
  1080              		.comm	pFlash,32,4
- 1081              		.comm	TimingDelay,4,4
- 1082              		.text
- 1083              	.Letext0:
- 1084              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 1085              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 1086              		.file 4 "Inc/main.h"
- 1087              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
- 1088              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 1089              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 1090              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 1091              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 1092              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
- 1093              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 1094              		.file 12 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 1095              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1096              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
- 1097              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 1098              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 36
+ 1081              		.text
+ 1082              	.Letext0:
+ 1083              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 1084              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 1085              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1086              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1087              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 1088              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 1089              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 1090              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
+ 1091              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 1092              		.file 11 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1093              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1094              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+ 1095              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1096              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 36
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_flash.c
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:18     .text.FLASH_Program_DoubleWord:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:24     .text.FLASH_Program_DoubleWord:00000000 FLASH_Program_DoubleWord
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:63     .text.FLASH_Program_DoubleWord:00000028 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:68     .text.FLASH_Program_Word:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:74     .text.FLASH_Program_Word:00000000 FLASH_Program_Word
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:102    .text.FLASH_Program_Word:00000020 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:107    .text.FLASH_Program_HalfWord:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:113    .text.FLASH_Program_HalfWord:00000000 FLASH_Program_HalfWord
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:141    .text.FLASH_Program_HalfWord:00000020 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:146    .text.FLASH_Program_Byte:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:152    .text.FLASH_Program_Byte:00000000 FLASH_Program_Byte
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:179    .text.FLASH_Program_Byte:0000001c $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:184    .text.FLASH_SetErrorCode:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:190    .text.FLASH_SetErrorCode:00000000 FLASH_SetErrorCode
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:292    .text.FLASH_SetErrorCode:000000a0 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:18     .text.FLASH_Program_DoubleWord:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:24     .text.FLASH_Program_DoubleWord:00000000 FLASH_Program_DoubleWord
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:63     .text.FLASH_Program_DoubleWord:00000028 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:68     .text.FLASH_Program_Word:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:74     .text.FLASH_Program_Word:00000000 FLASH_Program_Word
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:102    .text.FLASH_Program_Word:00000020 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:107    .text.FLASH_Program_HalfWord:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:113    .text.FLASH_Program_HalfWord:00000000 FLASH_Program_HalfWord
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:141    .text.FLASH_Program_HalfWord:00000020 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:146    .text.FLASH_Program_Byte:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:152    .text.FLASH_Program_Byte:00000000 FLASH_Program_Byte
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:179    .text.FLASH_Program_Byte:0000001c $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:184    .text.FLASH_SetErrorCode:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:190    .text.FLASH_SetErrorCode:00000000 FLASH_SetErrorCode
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:292    .text.FLASH_SetErrorCode:000000a0 $d
                             *COM*:00000020 pFlash
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:298    .text.HAL_FLASH_Program_IT:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:305    .text.HAL_FLASH_Program_IT:00000000 HAL_FLASH_Program_IT
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:400    .text.HAL_FLASH_Program_IT:00000060 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:406    .text.HAL_FLASH_EndOfOperationCallback:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:413    .text.HAL_FLASH_EndOfOperationCallback:00000000 HAL_FLASH_EndOfOperationCallback
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:427    .text.HAL_FLASH_OperationErrorCallback:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:434    .text.HAL_FLASH_OperationErrorCallback:00000000 HAL_FLASH_OperationErrorCallback
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:448    .text.HAL_FLASH_IRQHandler:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:455    .text.HAL_FLASH_IRQHandler:00000000 HAL_FLASH_IRQHandler
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:635    .text.HAL_FLASH_IRQHandler:000000ec $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:641    .text.HAL_FLASH_Unlock:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:648    .text.HAL_FLASH_Unlock:00000000 HAL_FLASH_Unlock
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:688    .text.HAL_FLASH_Unlock:00000028 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:694    .text.HAL_FLASH_Lock:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:701    .text.HAL_FLASH_Lock:00000000 HAL_FLASH_Lock
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:719    .text.HAL_FLASH_Lock:00000010 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:724    .text.HAL_FLASH_OB_Unlock:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:731    .text.HAL_FLASH_OB_Unlock:00000000 HAL_FLASH_OB_Unlock
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:761    .text.HAL_FLASH_OB_Unlock:00000020 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:767    .text.HAL_FLASH_OB_Lock:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:774    .text.HAL_FLASH_OB_Lock:00000000 HAL_FLASH_OB_Lock
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:792    .text.HAL_FLASH_OB_Lock:00000010 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:797    .text.HAL_FLASH_GetError:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:804    .text.HAL_FLASH_GetError:00000000 HAL_FLASH_GetError
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:819    .text.HAL_FLASH_GetError:00000008 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:824    .text.FLASH_WaitForLastOperation:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:831    .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:912    .text.FLASH_WaitForLastOperation:0000005c $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:918    .text.HAL_FLASH_Program:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:925    .text.HAL_FLASH_Program:00000000 HAL_FLASH_Program
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:1038   .text.HAL_FLASH_Program:00000078 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:1044   .text.HAL_FLASH_OB_Launch:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:1051   .text.HAL_FLASH_OB_Launch:00000000 HAL_FLASH_OB_Launch
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s:1076   .text.HAL_FLASH_OB_Launch:00000018 $d
-                            *COM*:00000004 TimingDelay
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:298    .text.HAL_FLASH_Program_IT:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:305    .text.HAL_FLASH_Program_IT:00000000 HAL_FLASH_Program_IT
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:400    .text.HAL_FLASH_Program_IT:00000060 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:406    .text.HAL_FLASH_EndOfOperationCallback:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:413    .text.HAL_FLASH_EndOfOperationCallback:00000000 HAL_FLASH_EndOfOperationCallback
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:427    .text.HAL_FLASH_OperationErrorCallback:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:434    .text.HAL_FLASH_OperationErrorCallback:00000000 HAL_FLASH_OperationErrorCallback
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:448    .text.HAL_FLASH_IRQHandler:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:455    .text.HAL_FLASH_IRQHandler:00000000 HAL_FLASH_IRQHandler
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:635    .text.HAL_FLASH_IRQHandler:000000ec $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:641    .text.HAL_FLASH_Unlock:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:648    .text.HAL_FLASH_Unlock:00000000 HAL_FLASH_Unlock
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:688    .text.HAL_FLASH_Unlock:00000028 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:694    .text.HAL_FLASH_Lock:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:701    .text.HAL_FLASH_Lock:00000000 HAL_FLASH_Lock
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:719    .text.HAL_FLASH_Lock:00000010 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:724    .text.HAL_FLASH_OB_Unlock:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:731    .text.HAL_FLASH_OB_Unlock:00000000 HAL_FLASH_OB_Unlock
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:761    .text.HAL_FLASH_OB_Unlock:00000020 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:767    .text.HAL_FLASH_OB_Lock:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:774    .text.HAL_FLASH_OB_Lock:00000000 HAL_FLASH_OB_Lock
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:792    .text.HAL_FLASH_OB_Lock:00000010 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:797    .text.HAL_FLASH_GetError:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:804    .text.HAL_FLASH_GetError:00000000 HAL_FLASH_GetError
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:819    .text.HAL_FLASH_GetError:00000008 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:824    .text.FLASH_WaitForLastOperation:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:831    .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:912    .text.FLASH_WaitForLastOperation:0000005c $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:918    .text.HAL_FLASH_Program:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:925    .text.HAL_FLASH_Program:00000000 HAL_FLASH_Program
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:1038   .text.HAL_FLASH_Program:00000078 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:1044   .text.HAL_FLASH_OB_Launch:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:1051   .text.HAL_FLASH_OB_Launch:00000000 HAL_FLASH_OB_Launch
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s:1076   .text.HAL_FLASH_OB_Launch:00000018 $d
 
 UNDEFINED SYMBOLS
 FLASH_Erase_Sector
 FLASH_FlushCaches
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccOBp6K5.s 			page 37
-
-
 HAL_GetTick
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccUK9du5.s 			page 37
+
+

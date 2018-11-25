@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -17,15 +17,15 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.section	.text.TimingDelay_Decrement,"ax",%progbits
+  17              		.section	.text.Delay,"ax",%progbits
   18              		.align	1
-  19              		.global	TimingDelay_Decrement
+  19              		.global	Delay
   20              		.syntax unified
   21              		.thumb
   22              		.thumb_func
   23              		.fpu fpv4-sp-d16
-  25              	TimingDelay_Decrement:
-  26              	.LFB127:
+  25              	Delay:
+  26              	.LFB126:
   27              		.file 1 "Src/main.c"
    1:Src/main.c    **** 
    2:Src/main.c    **** /**
@@ -37,493 +37,455 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 1
    8:Src/main.c    **** 
    9:Src/main.c    **** /* Includes ------------------------------------------------------------------*/
   10:Src/main.c    **** #include "main.h"
-  11:Src/main.c    **** #include "stm32f4xx_hal.h"
-  12:Src/main.c    **** #include "stdint.h"
-  13:Src/main.c    **** #include "init.h"
-  14:Src/main.c    **** 
-  15:Src/main.c    **** 
-  16:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
-  17:Src/main.c    **** extern huart1;
+  11:Src/main.c    **** 
+  12:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  13:Src/main.c    **** 
+  14:Src/main.c    **** /* USER CODE BEGIN PV */
+  15:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  16:Src/main.c    **** 
+  17:Src/main.c    **** /* USER CODE END PV */
   18:Src/main.c    **** 
-  19:Src/main.c    **** /* USER CODE BEGIN PV */
-  20:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
-  21:Src/main.c    **** 
-  22:Src/main.c    **** /* USER CODE END PV */
-  23:Src/main.c    **** 
-  24:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
-  25:Src/main.c    **** 
-  26:Src/main.c    **** void Delay(u32 nTime)
-  27:Src/main.c    **** {
-  28:Src/main.c    ****     TimingDelay = nTime;
-  29:Src/main.c    ****     while(TimingDelay != 0)
-  30:Src/main.c    ****     	{
-  31:Src/main.c    ****     	u8 i = 0;
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 2
-
-
-  32:Src/main.c    ****     	debug_check();
-  33:Src/main.c    ****     	}
-  34:Src/main.c    **** }
-  35:Src/main.c    **** 
-  36:Src/main.c    **** void TimingDelay_Decrement(void)
-  37:Src/main.c    **** {
-  28              		.loc 1 37 0
+  19:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  20:Src/main.c    **** 
+  21:Src/main.c    **** #include "main.h"
+  22:Src/main.c    **** #include "stdint.h"
+  23:Src/main.c    **** #include "init.h"
+  24:Src/main.c    **** 
+  25:Src/main.c    **** volatile u8 counter= 1U;
+  26:Src/main.c    **** volatile u16 a = 0U;
+  27:Src/main.c    **** 
+  28:Src/main.c    **** void Delay(u32 nTime)
+  29:Src/main.c    **** {
+  28              		.loc 1 29 0
   29              		.cfi_startproc
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 2
+
+
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-  38:Src/main.c    ****     if (TimingDelay != 0)
-  33              		.loc 1 38 0
-  34 0000 034B     		ldr	r3, .L3
-  35 0002 1B68     		ldr	r3, [r3]
-  36 0004 13B1     		cbz	r3, .L1
-  39:Src/main.c    ****     {
-  40:Src/main.c    ****         TimingDelay--;
-  37              		.loc 1 40 0
-  38 0006 013B     		subs	r3, r3, #1
-  39 0008 014A     		ldr	r2, .L3
-  40 000a 1360     		str	r3, [r2]
-  41              	.L1:
-  41:Src/main.c    ****     }
-  42:Src/main.c    **** }
-  42              		.loc 1 42 0
-  43 000c 7047     		bx	lr
-  44              	.L4:
-  45 000e 00BF     		.align	2
-  46              	.L3:
-  47 0010 00000000 		.word	TimingDelay
-  48              		.cfi_endproc
-  49              	.LFE127:
-  51              		.section	.text.hex2str,"ax",%progbits
-  52              		.align	1
-  53              		.global	hex2str
-  54              		.syntax unified
-  55              		.thumb
-  56              		.thumb_func
-  57              		.fpu fpv4-sp-d16
-  59              	hex2str:
-  60              	.LFB128:
-  43:Src/main.c    **** 
-  44:Src/main.c    **** 
-  45:Src/main.c    **** u8 hex2str(u8 *in ,u8 len, char *out)
-  46:Src/main.c    **** {
-  61              		.loc 1 46 0
-  62              		.cfi_startproc
-  63              		@ args = 0, pretend = 0, frame = 16
-  64              		@ frame_needed = 0, uses_anonymous_args = 0
-  65              		@ link register save eliminated.
-  66              	.LVL0:
-  67 0000 70B4     		push	{r4, r5, r6}
-  68              	.LCFI0:
-  69              		.cfi_def_cfa_offset 12
-  70              		.cfi_offset 4, -12
-  71              		.cfi_offset 5, -8
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 3
+  33              	.LVL0:
+  30:Src/main.c    ****     TimingDelay = nTime;
+  34              		.loc 1 30 0
+  35 0000 034B     		ldr	r3, .L3
+  36 0002 1860     		str	r0, [r3]
+  37              	.L2:
+  31:Src/main.c    ****     while(TimingDelay != 0);
+  38              		.loc 1 31 0 discriminator 1
+  39 0004 024B     		ldr	r3, .L3
+  40 0006 1B68     		ldr	r3, [r3]
+  41 0008 002B     		cmp	r3, #0
+  42 000a FBD1     		bne	.L2
+  32:Src/main.c    **** }
+  43              		.loc 1 32 0
+  44 000c 7047     		bx	lr
+  45              	.L4:
+  46 000e 00BF     		.align	2
+  47              	.L3:
+  48 0010 00000000 		.word	TimingDelay
+  49              		.cfi_endproc
+  50              	.LFE126:
+  52              		.section	.text.TimingDelay_Decrement,"ax",%progbits
+  53              		.align	1
+  54              		.global	TimingDelay_Decrement
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu fpv4-sp-d16
+  60              	TimingDelay_Decrement:
+  61              	.LFB127:
+  33:Src/main.c    **** 
+  34:Src/main.c    **** void TimingDelay_Decrement(void)
+  35:Src/main.c    **** {
+  62              		.loc 1 35 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  36:Src/main.c    ****     if (TimingDelay != 0)
+  67              		.loc 1 36 0
+  68 0000 034B     		ldr	r3, .L7
+  69 0002 1B68     		ldr	r3, [r3]
+  70 0004 1BB1     		cbz	r3, .L5
+  37:Src/main.c    ****     {
+  38:Src/main.c    ****         --TimingDelay;
+  71              		.loc 1 38 0
+  72 0006 024A     		ldr	r2, .L7
+  73 0008 1368     		ldr	r3, [r2]
+  74 000a 013B     		subs	r3, r3, #1
+  75 000c 1360     		str	r3, [r2]
+  76              	.L5:
+  39:Src/main.c    ****     }
+  40:Src/main.c    **** }
+  77              		.loc 1 40 0
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 3
 
 
-  72              		.cfi_offset 6, -4
-  73 0002 85B0     		sub	sp, sp, #20
-  74              	.LCFI1:
-  75              		.cfi_def_cfa_offset 32
-  76 0004 0546     		mov	r5, r0
-  77 0006 0E46     		mov	r6, r1
-  78 0008 1446     		mov	r4, r2
-  47:Src/main.c    **** 	u8 temp[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-  79              		.loc 1 47 0
-  80 000a 114B     		ldr	r3, .L9
-  81 000c 0FCB     		ldm	r3, {r0, r1, r2, r3}
-  82              	.LVL1:
-  83 000e 0DF1100C 		add	ip, sp, #16
-  84 0012 0CE90F00 		stmdb	ip, {r0, r1, r2, r3}
-  85              	.LVL2:
-  48:Src/main.c    **** 	u8 t,i,j = 0;
-  86              		.loc 1 48 0
-  87 0016 0020     		movs	r0, #0
-  49:Src/main.c    **** 
-  50:Src/main.c    **** 	for(i=0;i<len;i++)
-  88              		.loc 1 50 0
-  89 0018 0346     		mov	r3, r0
-  90 001a 14E0     		b	.L6
-  91              	.LVL3:
-  92              	.L7:
-  51:Src/main.c    **** 	{
-  52:Src/main.c    **** 		t = (in[i] & 0xF0) >> 4;
-  93              		.loc 1 52 0 discriminator 3
-  94 001c EA5C     		ldrb	r2, [r5, r3]	@ zero_extendqisi2
-  95              	.LVL4:
-  53:Src/main.c    **** 		out[j++] = temp[t];
-  96              		.loc 1 53 0 discriminator 3
-  97 001e 411C     		adds	r1, r0, #1
-  98 0020 C9B2     		uxtb	r1, r1
-  99              	.LVL5:
- 100 0022 0DF1100C 		add	ip, sp, #16
- 101 0026 0CEB1212 		add	r2, ip, r2, lsr #4
- 102              	.LVL6:
- 103 002a 12F8102C 		ldrb	r2, [r2, #-16]	@ zero_extendqisi2
- 104 002e 2254     		strb	r2, [r4, r0]
- 105              	.LVL7:
-  54:Src/main.c    **** 		t = (in[i] & 0x0F) >> 0;
- 106              		.loc 1 54 0 discriminator 3
- 107 0030 EA5C     		ldrb	r2, [r5, r3]	@ zero_extendqisi2
- 108 0032 02F00F02 		and	r2, r2, #15
- 109              	.LVL8:
-  55:Src/main.c    **** 		out[j++] = temp[t];
- 110              		.loc 1 55 0 discriminator 3
- 111 0036 0230     		adds	r0, r0, #2
- 112 0038 C0B2     		uxtb	r0, r0
- 113              	.LVL9:
- 114 003a 6244     		add	r2, r2, ip
- 115              	.LVL10:
- 116 003c 12F8102C 		ldrb	r2, [r2, #-16]	@ zero_extendqisi2
- 117 0040 6254     		strb	r2, [r4, r1]
- 118              	.LVL11:
-  50:Src/main.c    **** 	{
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 4
+  78 000e 7047     		bx	lr
+  79              	.L8:
+  80              		.align	2
+  81              	.L7:
+  82 0010 00000000 		.word	TimingDelay
+  83              		.cfi_endproc
+  84              	.LFE127:
+  86              		.section	.text.debug_check,"ax",%progbits
+  87              		.align	1
+  88              		.global	debug_check
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  92              		.fpu fpv4-sp-d16
+  94              	debug_check:
+  95              	.LFB128:
+  41:Src/main.c    **** 
+  42:Src/main.c    **** 
+  43:Src/main.c    **** void debug_check(u16 printed_var)
+  44:Src/main.c    **** {
+  96              		.loc 1 44 0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 24
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              	.LVL1:
+ 101 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 102              	.LCFI0:
+ 103              		.cfi_def_cfa_offset 20
+ 104              		.cfi_offset 4, -20
+ 105              		.cfi_offset 5, -16
+ 106              		.cfi_offset 6, -12
+ 107              		.cfi_offset 7, -8
+ 108              		.cfi_offset 14, -4
+ 109 0002 87B0     		sub	sp, sp, #28
+ 110              	.LCFI1:
+ 111              		.cfi_def_cfa_offset 48
+  45:Src/main.c    **** 	//u8 debug_msg[20] = "Working!\r\n";
+  46:Src/main.c    **** 
+  47:Src/main.c    **** 	u8 debug_msg[20] = "";
+ 112              		.loc 1 47 0
+ 113 0004 0024     		movs	r4, #0
+ 114 0006 0194     		str	r4, [sp, #4]
+ 115 0008 0294     		str	r4, [sp, #8]
+ 116 000a 0394     		str	r4, [sp, #12]
+ 117 000c 0494     		str	r4, [sp, #16]
+ 118 000e 0594     		str	r4, [sp, #20]
+  48:Src/main.c    **** 	u8 uart_new_line[2] = "\r\n";
+ 119              		.loc 1 48 0
+ 120 0010 40F60D23 		movw	r3, #2573
+ 121 0014 ADF80030 		strh	r3, [sp]	@ movhi
+  49:Src/main.c    **** 	sprintf(debug_msg, "%d", printed_var);
+ 122              		.loc 1 49 0
+ 123 0018 204F     		ldr	r7, .L11
+ 124 001a 0246     		mov	r2, r0
+ 125 001c 3946     		mov	r1, r7
+ 126 001e 01A8     		add	r0, sp, #4
+ 127              	.LVL2:
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 4
 
 
- 119              		.loc 1 50 0 discriminator 3
- 120 0042 0133     		adds	r3, r3, #1
- 121              	.LVL12:
- 122 0044 DBB2     		uxtb	r3, r3
- 123              	.LVL13:
- 124              	.L6:
-  50:Src/main.c    **** 	{
- 125              		.loc 1 50 0 is_stmt 0 discriminator 1
- 126 0046 B342     		cmp	r3, r6
- 127 0048 E8D3     		bcc	.L7
-  56:Src/main.c    **** 	}
-  57:Src/main.c    **** 	return j;
-  58:Src/main.c    **** }
- 128              		.loc 1 58 0 is_stmt 1
- 129 004a 05B0     		add	sp, sp, #20
- 130              	.LCFI2:
- 131              		.cfi_def_cfa_offset 12
- 132              		@ sp needed
- 133 004c 70BC     		pop	{r4, r5, r6}
- 134              	.LCFI3:
- 135              		.cfi_restore 6
- 136              		.cfi_restore 5
- 137              		.cfi_restore 4
- 138              		.cfi_def_cfa_offset 0
- 139              	.LVL14:
- 140 004e 7047     		bx	lr
- 141              	.L10:
- 142              		.align	2
- 143              	.L9:
- 144 0050 00000000 		.word	.LANCHOR0
- 145              		.cfi_endproc
- 146              	.LFE128:
- 148              		.section	.text.debug_check,"ax",%progbits
- 149              		.align	1
- 150              		.global	debug_check
- 151              		.syntax unified
- 152              		.thumb
- 153              		.thumb_func
- 154              		.fpu fpv4-sp-d16
- 156              	debug_check:
- 157              	.LFB129:
-  59:Src/main.c    **** 
-  60:Src/main.c    **** void debug_check(void)
-  61:Src/main.c    **** {
- 158              		.loc 1 61 0
- 159              		.cfi_startproc
- 160              		@ args = 0, pretend = 0, frame = 16
- 161              		@ frame_needed = 0, uses_anonymous_args = 0
- 162 0000 00B5     		push	{lr}
- 163              	.LCFI4:
- 164              		.cfi_def_cfa_offset 4
- 165              		.cfi_offset 14, -4
- 166 0002 85B0     		sub	sp, sp, #20
- 167              	.LCFI5:
- 168              		.cfi_def_cfa_offset 24
-  62:Src/main.c    ****     u8 debug_msg[10] = "Working!\r\n";
- 169              		.loc 1 62 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 5
+ 128 0020 FFF7FEFF 		bl	sprintf
+ 129              	.LVL3:
+  50:Src/main.c    **** 	HAL_UART_Transmit(&huart1,debug_msg, 6U, HAL_MAX_DELAY);
+ 130              		.loc 1 50 0
+ 131 0024 1E4D     		ldr	r5, .L11+4
+ 132 0026 4FF0FF33 		mov	r3, #-1
+ 133 002a 0622     		movs	r2, #6
+ 134 002c 01A9     		add	r1, sp, #4
+ 135 002e 2846     		mov	r0, r5
+ 136 0030 FFF7FEFF 		bl	HAL_UART_Transmit
+ 137              	.LVL4:
+  51:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_new_line, 2U, HAL_MAX_DELAY);
+ 138              		.loc 1 51 0
+ 139 0034 4FF0FF33 		mov	r3, #-1
+ 140 0038 0222     		movs	r2, #2
+ 141 003a 6946     		mov	r1, sp
+ 142 003c 2846     		mov	r0, r5
+ 143 003e FFF7FEFF 		bl	HAL_UART_Transmit
+ 144              	.LVL5:
+  52:Src/main.c    **** 
+  53:Src/main.c    **** 	sprintf(debug_msg, "%d", counter);
+ 145              		.loc 1 53 0
+ 146 0042 184E     		ldr	r6, .L11+8
+ 147 0044 3278     		ldrb	r2, [r6]	@ zero_extendqisi2
+ 148 0046 3946     		mov	r1, r7
+ 149 0048 01A8     		add	r0, sp, #4
+ 150 004a FFF7FEFF 		bl	sprintf
+ 151              	.LVL6:
+  54:Src/main.c    **** 	HAL_UART_Transmit(&huart1,debug_msg, 6U, HAL_MAX_DELAY);
+ 152              		.loc 1 54 0
+ 153 004e 4FF0FF33 		mov	r3, #-1
+ 154 0052 0622     		movs	r2, #6
+ 155 0054 01A9     		add	r1, sp, #4
+ 156 0056 2846     		mov	r0, r5
+ 157 0058 FFF7FEFF 		bl	HAL_UART_Transmit
+ 158              	.LVL7:
+  55:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_new_line, 2U, HAL_MAX_DELAY);
+ 159              		.loc 1 55 0
+ 160 005c 4FF0FF33 		mov	r3, #-1
+ 161 0060 0222     		movs	r2, #2
+ 162 0062 6946     		mov	r1, sp
+ 163 0064 2846     		mov	r0, r5
+ 164 0066 FFF7FEFF 		bl	HAL_UART_Transmit
+ 165              	.LVL8:
+  56:Src/main.c    **** 	++counter;
+ 166              		.loc 1 56 0
+ 167 006a 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 168 006c 0133     		adds	r3, r3, #1
+ 169 006e DBB2     		uxtb	r3, r3
+ 170 0070 3370     		strb	r3, [r6]
+  57:Src/main.c    **** 
+  58:Src/main.c    **** 	LED_ON
+ 171              		.loc 1 58 0
+ 172 0072 0D4D     		ldr	r5, .L11+12
+ 173 0074 0122     		movs	r2, #1
+ 174 0076 2021     		movs	r1, #32
+ 175 0078 2846     		mov	r0, r5
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 5
 
 
- 170 0004 01AB     		add	r3, sp, #4
- 171 0006 074A     		ldr	r2, .L13
- 172 0008 07CA     		ldm	r2, {r0, r1, r2}
- 173 000a 03C3     		stmia	r3!, {r0, r1}
- 174 000c 1A80     		strh	r2, [r3]	@ movhi
-  63:Src/main.c    ****     HAL_UART_Transmit(&huart1, debug_msg, sizeof(debug_msg), HAL_MAX_DELAY);
- 175              		.loc 1 63 0
- 176 000e 4FF0FF33 		mov	r3, #-1
- 177 0012 0A22     		movs	r2, #10
- 178 0014 01A9     		add	r1, sp, #4
- 179 0016 0448     		ldr	r0, .L13+4
- 180 0018 FFF7FEFF 		bl	HAL_UART_Transmit
- 181              	.LVL15:
-  64:Src/main.c    **** }
- 182              		.loc 1 64 0
- 183 001c 05B0     		add	sp, sp, #20
- 184              	.LCFI6:
- 185              		.cfi_def_cfa_offset 4
- 186              		@ sp needed
- 187 001e 5DF804FB 		ldr	pc, [sp], #4
- 188              	.L14:
- 189 0022 00BF     		.align	2
- 190              	.L13:
- 191 0024 10000000 		.word	.LANCHOR0+16
- 192 0028 00000000 		.word	huart1
- 193              		.cfi_endproc
- 194              	.LFE129:
- 196              		.section	.text.Delay,"ax",%progbits
- 197              		.align	1
- 198              		.global	Delay
- 199              		.syntax unified
- 200              		.thumb
- 201              		.thumb_func
- 202              		.fpu fpv4-sp-d16
- 204              	Delay:
- 205              	.LFB126:
-  27:Src/main.c    ****     TimingDelay = nTime;
- 206              		.loc 1 27 0
- 207              		.cfi_startproc
- 208              		@ args = 0, pretend = 0, frame = 0
- 209              		@ frame_needed = 0, uses_anonymous_args = 0
- 210              	.LVL16:
- 211 0000 08B5     		push	{r3, lr}
- 212              	.LCFI7:
- 213              		.cfi_def_cfa_offset 8
- 214              		.cfi_offset 3, -8
- 215              		.cfi_offset 14, -4
-  28:Src/main.c    ****     while(TimingDelay != 0)
- 216              		.loc 1 28 0
- 217 0002 054B     		ldr	r3, .L19
- 218 0004 1860     		str	r0, [r3]
-  29:Src/main.c    ****     	{
- 219              		.loc 1 29 0
- 220 0006 01E0     		b	.L16
- 221              	.LVL17:
- 222              	.L17:
- 223              	.LBB2:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 6
-
-
-  32:Src/main.c    ****     	}
- 224              		.loc 1 32 0
- 225 0008 FFF7FEFF 		bl	debug_check
- 226              	.LVL18:
- 227              	.L16:
- 228              	.LBE2:
-  29:Src/main.c    ****     	{
- 229              		.loc 1 29 0
- 230 000c 024B     		ldr	r3, .L19
- 231 000e 1B68     		ldr	r3, [r3]
- 232 0010 002B     		cmp	r3, #0
- 233 0012 F9D1     		bne	.L17
-  34:Src/main.c    **** 
- 234              		.loc 1 34 0
- 235 0014 08BD     		pop	{r3, pc}
- 236              	.L20:
- 237 0016 00BF     		.align	2
- 238              	.L19:
- 239 0018 00000000 		.word	TimingDelay
- 240              		.cfi_endproc
- 241              	.LFE126:
- 243              		.section	.text.main,"ax",%progbits
- 244              		.align	1
- 245              		.global	main
- 246              		.syntax unified
- 247              		.thumb
- 248              		.thumb_func
- 249              		.fpu fpv4-sp-d16
- 251              	main:
- 252              	.LFB130:
+ 176 007a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 177              	.LVL9:
+  59:Src/main.c    **** 	Delay(DELAY_TEST);
+ 178              		.loc 1 59 0
+ 179 007e 4FF47A70 		mov	r0, #1000
+ 180 0082 FFF7FEFF 		bl	Delay
+ 181              	.LVL10:
+  60:Src/main.c    **** 	LED_OFF
+ 182              		.loc 1 60 0
+ 183 0086 2246     		mov	r2, r4
+ 184 0088 2021     		movs	r1, #32
+ 185 008a 2846     		mov	r0, r5
+ 186 008c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 187              	.LVL11:
+  61:Src/main.c    **** 	Delay(DELAY_TEST);
+ 188              		.loc 1 61 0
+ 189 0090 4FF47A70 		mov	r0, #1000
+ 190 0094 FFF7FEFF 		bl	Delay
+ 191              	.LVL12:
+  62:Src/main.c    **** }
+ 192              		.loc 1 62 0
+ 193 0098 07B0     		add	sp, sp, #28
+ 194              	.LCFI2:
+ 195              		.cfi_def_cfa_offset 20
+ 196              		@ sp needed
+ 197 009a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 198              	.L12:
+ 199              		.align	2
+ 200              	.L11:
+ 201 009c 00000000 		.word	.LC0
+ 202 00a0 00000000 		.word	huart1
+ 203 00a4 00000000 		.word	.LANCHOR0
+ 204 00a8 00000240 		.word	1073872896
+ 205              		.cfi_endproc
+ 206              	.LFE128:
+ 208              		.section	.text.main,"ax",%progbits
+ 209              		.align	1
+ 210              		.global	main
+ 211              		.syntax unified
+ 212              		.thumb
+ 213              		.thumb_func
+ 214              		.fpu fpv4-sp-d16
+ 216              	main:
+ 217              	.LFB129:
+  63:Src/main.c    **** 
+  64:Src/main.c    **** 
   65:Src/main.c    **** 
   66:Src/main.c    **** int main(void)
   67:Src/main.c    **** {
- 253              		.loc 1 67 0
- 254              		.cfi_startproc
- 255              		@ Volatile: function does not return.
- 256              		@ args = 0, pretend = 0, frame = 16
- 257              		@ frame_needed = 0, uses_anonymous_args = 0
- 258 0000 00B5     		push	{lr}
- 259              	.LCFI8:
- 260              		.cfi_def_cfa_offset 4
- 261              		.cfi_offset 14, -4
- 262 0002 85B0     		sub	sp, sp, #20
- 263              	.LCFI9:
- 264              		.cfi_def_cfa_offset 24
-  68:Src/main.c    ****   HAL_Init();
- 265              		.loc 1 68 0
- 266 0004 FFF7FEFF 		bl	HAL_Init
- 267              	.LVL19:
-  69:Src/main.c    ****   SystemClock_Config();
- 268              		.loc 1 69 0
- 269 0008 FFF7FEFF 		bl	SystemClock_Config
- 270              	.LVL20:
-  70:Src/main.c    ****   MX_GPIO_Init();
- 271              		.loc 1 70 0
- 272 000c FFF7FEFF 		bl	MX_GPIO_Init
- 273              	.LVL21:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 7
+ 218              		.loc 1 67 0
+ 219              		.cfi_startproc
+ 220              		@ Volatile: function does not return.
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223 0000 08B5     		push	{r3, lr}
+ 224              	.LCFI3:
+ 225              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 6
 
 
-  71:Src/main.c    ****   MX_ADC1_Init();
- 274              		.loc 1 71 0
- 275 0010 FFF7FEFF 		bl	MX_ADC1_Init
- 276              	.LVL22:
-  72:Src/main.c    ****   MX_I2C1_Init();
- 277              		.loc 1 72 0
- 278 0014 FFF7FEFF 		bl	MX_I2C1_Init
- 279              	.LVL23:
-  73:Src/main.c    ****   MX_USART1_UART_Init();
- 280              		.loc 1 73 0
- 281 0018 FFF7FEFF 		bl	MX_USART1_UART_Init
- 282              	.LVL24:
+ 226              		.cfi_offset 3, -8
+ 227              		.cfi_offset 14, -4
+  68:Src/main.c    **** 	HAL_Init();
+ 228              		.loc 1 68 0
+ 229 0002 FFF7FEFF 		bl	HAL_Init
+ 230              	.LVL13:
+  69:Src/main.c    **** 	SystemClock_Config();
+ 231              		.loc 1 69 0
+ 232 0006 FFF7FEFF 		bl	SystemClock_Config
+ 233              	.LVL14:
+  70:Src/main.c    **** 
+  71:Src/main.c    **** #if (STD_ON == GPIO_ON)
+  72:Src/main.c    **** 	MX_GPIO_Init();
+ 234              		.loc 1 72 0
+ 235 000a FFF7FEFF 		bl	MX_GPIO_Init
+ 236              	.LVL15:
+  73:Src/main.c    **** #endif
   74:Src/main.c    **** 
-  75:Src/main.c    ****   char buffer[12] = "Board init!\r\n";
- 283              		.loc 1 75 0
- 284 001c 01AC     		add	r4, sp, #4
- 285 001e 094B     		ldr	r3, .L24
- 286 0020 93E80700 		ldm	r3, {r0, r1, r2}
- 287 0024 84E80700 		stm	r4, {r0, r1, r2}
-  76:Src/main.c    **** 
-  77:Src/main.c    ****   HAL_UART_Transmit(&huart1, buffer, sizeof(buffer), HAL_MAX_DELAY);
- 288              		.loc 1 77 0
- 289 0028 4FF0FF33 		mov	r3, #-1
- 290 002c 0C22     		movs	r2, #12
- 291 002e 2146     		mov	r1, r4
- 292 0030 0548     		ldr	r0, .L24+4
- 293 0032 FFF7FEFF 		bl	HAL_UART_Transmit
- 294              	.LVL25:
-  78:Src/main.c    ****   Delay(100);
- 295              		.loc 1 78 0
- 296 0036 6420     		movs	r0, #100
- 297 0038 FFF7FEFF 		bl	Delay
- 298              	.LVL26:
- 299              	.L22:
-  79:Src/main.c    **** 
-  80:Src/main.c    **** 
-  81:Src/main.c    **** 
-  82:Src/main.c    ****   while (1)
-  83:Src/main.c    ****   {
-  84:Src/main.c    **** 	  debug_check();
- 300              		.loc 1 84 0 discriminator 1
- 301 003c FFF7FEFF 		bl	debug_check
- 302              	.LVL27:
- 303 0040 FCE7     		b	.L22
- 304              	.L25:
- 305 0042 00BF     		.align	2
- 306              	.L24:
- 307 0044 1C000000 		.word	.LANCHOR0+28
- 308 0048 00000000 		.word	huart1
- 309              		.cfi_endproc
- 310              	.LFE130:
- 312              		.section	.text._Error_Handler,"ax",%progbits
- 313              		.align	1
- 314              		.global	_Error_Handler
- 315              		.syntax unified
- 316              		.thumb
- 317              		.thumb_func
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 8
-
-
- 318              		.fpu fpv4-sp-d16
- 320              	_Error_Handler:
- 321              	.LFB131:
-  85:Src/main.c    ****    //debug_msg = hex2str(TimingDelay,sizeof(TimingDelay),buf_out);
-  86:Src/main.c    ****    //HAL_UART_Transmit(&huart1, debug_msg, sizeof(debug_msg), HAL_MAX_DELAY);
-  87:Src/main.c    ****    //HAL_UART_Transmit(&huart1, "\r\n",2, HAL_MAX_DELAY);
-  88:Src/main.c    ****   }
-  89:Src/main.c    **** 
-  90:Src/main.c    **** }
+  75:Src/main.c    **** #if (STD_ON == ADC_1)
+  76:Src/main.c    **** 	MX_ADC1_Init();
+ 237              		.loc 1 76 0
+ 238 000e FFF7FEFF 		bl	MX_ADC1_Init
+ 239              	.LVL16:
+  77:Src/main.c    **** #endif
+  78:Src/main.c    **** 
+  79:Src/main.c    **** #if (STD_ON == I2C_1)
+  80:Src/main.c    **** 	MX_I2C1_Init();
+  81:Src/main.c    **** #endif
+  82:Src/main.c    **** 
+  83:Src/main.c    **** #if (STD_ON == UART_1)
+  84:Src/main.c    **** 	MX_USART1_UART_Init();
+ 240              		.loc 1 84 0
+ 241 0012 FFF7FEFF 		bl	MX_USART1_UART_Init
+ 242              	.LVL17:
+  85:Src/main.c    **** 	Board_init();
+ 243              		.loc 1 85 0
+ 244 0016 FFF7FEFF 		bl	Board_init
+ 245              	.LVL18:
+  86:Src/main.c    **** #endif
+  87:Src/main.c    **** 
+  88:Src/main.c    **** 
+  89:Src/main.c    **** HAL_ADC_Start(&hadc1);
+ 246              		.loc 1 89 0
+ 247 001a 0648     		ldr	r0, .L16
+ 248 001c FFF7FEFF 		bl	HAL_ADC_Start
+ 249              	.LVL19:
+ 250              	.L14:
+  90:Src/main.c    **** 
   91:Src/main.c    **** 
-  92:Src/main.c    **** 
-  93:Src/main.c    **** void _Error_Handler(char *file, int line)
-  94:Src/main.c    **** {
- 322              		.loc 1 94 0
- 323              		.cfi_startproc
- 324              		@ Volatile: function does not return.
- 325              		@ args = 0, pretend = 0, frame = 0
- 326              		@ frame_needed = 0, uses_anonymous_args = 0
- 327              		@ link register save eliminated.
- 328              	.LVL28:
- 329              	.L27:
- 330 0000 FEE7     		b	.L27
- 331              		.cfi_endproc
- 332              	.LFE131:
- 334              		.comm	TimingDelay,4,4
- 335              		.section	.rodata
- 336              		.align	2
- 337              		.set	.LANCHOR0,. + 0
- 338              	.LC0:
- 339 0000 30       		.byte	48
- 340 0001 31       		.byte	49
- 341 0002 32       		.byte	50
- 342 0003 33       		.byte	51
- 343 0004 34       		.byte	52
- 344 0005 35       		.byte	53
- 345 0006 36       		.byte	54
- 346 0007 37       		.byte	55
- 347 0008 38       		.byte	56
- 348 0009 39       		.byte	57
- 349 000a 41       		.byte	65
- 350 000b 42       		.byte	66
- 351 000c 43       		.byte	67
- 352 000d 44       		.byte	68
- 353 000e 45       		.byte	69
- 354 000f 46       		.byte	70
- 355              	.LC1:
- 356 0010 576F726B 		.ascii	"Working!\015\012\000"
- 356      696E6721 
- 356      0D0A00
- 357 001b 00       		.space	1
- 358              	.LC2:
- 359 001c 426F6172 		.ascii	"Board init!\015\012\000"
- 359      6420696E 
- 359      6974210D 
- 359      0A00
- 360              		.text
- 361              	.Letext0:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 9
+  92:Src/main.c    **** 	while (1)
+  93:Src/main.c    **** 	{
+  94:Src/main.c    **** 		//if (HAL_ADC_PollForConversion(&hadc1, 1000000) == HAL_OK)
+  95:Src/main.c    **** 
+  96:Src/main.c    **** 	a = HAL_ADC_GetValue(&hadc1);
+ 251              		.loc 1 96 0 discriminator 1
+ 252 0020 0448     		ldr	r0, .L16
+ 253 0022 FFF7FEFF 		bl	HAL_ADC_GetValue
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 7
 
 
- 362              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 363              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 364              		.file 4 "Inc/main.h"
- 365              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
- 366              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 367              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 368              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 369              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
- 370              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 371              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 372              		.file 12 "Inc/init.h"
- 373              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s 			page 10
+ 254              	.LVL20:
+ 255 0026 80B2     		uxth	r0, r0
+ 256 0028 034B     		ldr	r3, .L16+4
+ 257 002a 1880     		strh	r0, [r3]	@ movhi
+  97:Src/main.c    **** 
+  98:Src/main.c    **** #if (STD_ON == DEBUG_MODE)
+  99:Src/main.c    **** 	debug_check(a);
+ 258              		.loc 1 99 0 discriminator 1
+ 259 002c 1888     		ldrh	r0, [r3]
+ 260 002e FFF7FEFF 		bl	debug_check
+ 261              	.LVL21:
+ 262 0032 F5E7     		b	.L14
+ 263              	.L17:
+ 264              		.align	2
+ 265              	.L16:
+ 266 0034 00000000 		.word	hadc1
+ 267 0038 00000000 		.word	.LANCHOR1
+ 268              		.cfi_endproc
+ 269              	.LFE129:
+ 271              		.section	.text._Error_Handler,"ax",%progbits
+ 272              		.align	1
+ 273              		.global	_Error_Handler
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.fpu fpv4-sp-d16
+ 279              	_Error_Handler:
+ 280              	.LFB130:
+ 100:Src/main.c    **** #endif
+ 101:Src/main.c    **** 	}
+ 102:Src/main.c    **** 
+ 103:Src/main.c    **** }
+ 104:Src/main.c    **** 
+ 105:Src/main.c    **** 
+ 106:Src/main.c    **** void _Error_Handler(char *file, int line)
+ 107:Src/main.c    **** {
+ 281              		.loc 1 107 0
+ 282              		.cfi_startproc
+ 283              		@ Volatile: function does not return.
+ 284              		@ args = 0, pretend = 0, frame = 0
+ 285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 286              		@ link register save eliminated.
+ 287              	.LVL22:
+ 288              	.L19:
+ 289 0000 FEE7     		b	.L19
+ 290              		.cfi_endproc
+ 291              	.LFE130:
+ 293              		.global	a
+ 294              		.global	counter
+ 295              		.comm	TimingDelay,4,4
+ 296              		.comm	huart1,64,4
+ 297              		.comm	hadc1,72,4
+ 298              		.section	.bss.a,"aw",%nobits
+ 299              		.align	1
+ 300              		.set	.LANCHOR1,. + 0
+ 303              	a:
+ 304 0000 0000     		.space	2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 8
+
+
+ 305              		.section	.data.counter,"aw",%progbits
+ 306              		.set	.LANCHOR0,. + 0
+ 309              	counter:
+ 310 0000 01       		.byte	1
+ 311              		.section	.rodata.debug_check.str1.4,"aMS",%progbits,1
+ 312              		.align	2
+ 313              	.LC0:
+ 314 0000 256400   		.ascii	"%d\000"
+ 315              		.text
+ 316              	.Letext0:
+ 317              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 318              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 319              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 320              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 321              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 322              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 323              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 324              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
+ 325              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 326              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 327              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 328              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 329              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 330              		.file 15 "Inc/generic.h"
+ 331              		.file 16 "Inc/init.h"
+ 332              		.file 17 "Inc/main.h"
+ 333              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 334              		.file 19 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 335              		.file 20 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:18     .text.TimingDelay_Decrement:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:25     .text.TimingDelay_Decrement:00000000 TimingDelay_Decrement
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:47     .text.TimingDelay_Decrement:00000010 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:18     .text.Delay:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:25     .text.Delay:00000000 Delay
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:48     .text.Delay:00000010 $d
                             *COM*:00000004 TimingDelay
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:52     .text.hex2str:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:59     .text.hex2str:00000000 hex2str
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:144    .text.hex2str:00000050 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:149    .text.debug_check:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:156    .text.debug_check:00000000 debug_check
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:191    .text.debug_check:00000024 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:197    .text.Delay:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:204    .text.Delay:00000000 Delay
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:239    .text.Delay:00000018 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:244    .text.main:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:251    .text.main:00000000 main
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:307    .text.main:00000044 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:313    .text._Error_Handler:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:320    .text._Error_Handler:00000000 _Error_Handler
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccWtNPiz.s:336    .rodata:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:53     .text.TimingDelay_Decrement:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:60     .text.TimingDelay_Decrement:00000000 TimingDelay_Decrement
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:82     .text.TimingDelay_Decrement:00000010 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:87     .text.debug_check:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:94     .text.debug_check:00000000 debug_check
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:201    .text.debug_check:0000009c $d
+                            *COM*:00000040 huart1
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:209    .text.main:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:216    .text.main:00000000 main
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:266    .text.main:00000034 $d
+                            *COM*:00000048 hadc1
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:272    .text._Error_Handler:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:279    .text._Error_Handler:00000000 _Error_Handler
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:303    .bss.a:00000000 a
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:309    .data.counter:00000000 counter
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:299    .bss.a:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccl7qBXh.s:312    .rodata.debug_check.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
+sprintf
 HAL_UART_Transmit
-huart1
+HAL_GPIO_WritePin
 HAL_Init
 SystemClock_Config
 MX_GPIO_Init
 MX_ADC1_Init
-MX_I2C1_Init
 MX_USART1_UART_Init
+Board_init
+HAL_ADC_Start
+HAL_ADC_GetValue

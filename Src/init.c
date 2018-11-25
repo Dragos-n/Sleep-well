@@ -1,11 +1,5 @@
 #include "init.h"
-#include "stm32f4xx_hal.h"
-#include "stdint.h"
-
-
-ADC_HandleTypeDef hadc1;
-I2C_HandleTypeDef hi2c1;
-UART_HandleTypeDef huart1;
+#include "main.h"
 
 void SystemClock_Config(void)
 {
@@ -56,8 +50,30 @@ void SystemClock_Config(void)
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
+#if (STD_ON == GPIO_ON)
+/** Pinout Configuration
+*/
+void MX_GPIO_Init(void)
+{
+	GPIO_InitTypeDef LED_struct;
 
+	/* GPIO Ports Clock Enable */
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
 
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+
+	LED_struct.Pin = GPIO_PIN_5;
+	LED_struct.Mode = GPIO_MODE_OUTPUT_PP;
+	LED_struct.Speed = GPIO_SPEED_FREQ_LOW;
+	LED_struct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOA, &LED_struct);
+
+}
+
+#endif
+
+#if (STD_ON == ADC_1)
 /* ADC1 init function */
 void MX_ADC1_Init(void)
 {
@@ -78,6 +94,7 @@ void MX_ADC1_Init(void)
   hadc1.Init.NbrOfConversion = 1;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -88,13 +105,18 @@ void MX_ADC1_Init(void)
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = 1;
   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+  sConfig.Offset = 0U;
+
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
-}
 
+}
+#endif
+
+#if (STD_ON == I2C_1)
 /* I2C1 init function */
 void MX_I2C1_Init(void)
 {
@@ -115,6 +137,9 @@ void MX_I2C1_Init(void)
 
 }
 
+#endif
+
+#if (STD_ON == UART_1)
 /* USART1 init function */
 void MX_USART1_UART_Init(void)
 {
@@ -134,16 +159,11 @@ void MX_USART1_UART_Init(void)
 
 }
 
-
-/** Pinout Configuration
-*/
-void MX_GPIO_Init(void)
+void Board_init(void)
 {
-
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-
+  u8 buffer[15] = "Board init!\r\n";
+  HAL_UART_Transmit(&huart1, buffer, 13U, HAL_MAX_DELAY);
 }
 
+#endif
 

@@ -12,17 +12,22 @@
 
 /* Includes ------------------------------------------------------------------*/
 
+#include "extra.h"
+#include "stm32f4xx_hal.h"
+#include "stdint.h"
+#include "init.h"
+#include "stdio.h"
 #include "inttypes.h"
+#include "generic.h"
 
-
-//typedef uint8_t u8;
-
-typedef uint8_t u8;
-typedef uint16_t u16;
-typedef uint32_t u32;
 
 void Delay(u32);
-u32 TimingDelay;
+void TimingDelay_Decrement(void);
+void debug_check(u16 );
+
+volatile u32 TimingDelay;
+
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

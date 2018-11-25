@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
   29:Src/stm32f4xx_hal_msp.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
   30:Src/stm32f4xx_hal_msp.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
   31:Src/stm32f4xx_hal_msp.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 2
 
 
   32:Src/stm32f4xx_hal_msp.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
   58 0024 1A64     		str	r2, [r3, #64]
   59 0026 1B6C     		ldr	r3, [r3, #64]
   60 0028 03F08053 		and	r3, r3, #268435456
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 3
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 3
 
 
   61 002c 0193     		str	r3, [sp, #4]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
   99 0072 2246     		mov	r2, r4
  100 0074 2146     		mov	r1, r4
  101 0076 6FF00100 		mvn	r0, #1
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 4
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 4
 
 
  102 007a FFF7FEFF 		bl	HAL_NVIC_SetPriority
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
   81:Src/stm32f4xx_hal_msp.c **** 
  145              		.loc 1 81 0
  146 000a 00B5     		push	{lr}
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 5
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 5
 
 
  147              	.LCFI3:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  179              		.loc 1 106 0
  180 0038 07B0     		add	sp, sp, #28
  181              	.LCFI5:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 6
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 6
 
 
  182              		.cfi_def_cfa_offset 4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  125:Src/stm32f4xx_hal_msp.c ****   /* USER CODE BEGIN ADC1_MspDeInit 1 */
  126:Src/stm32f4xx_hal_msp.c **** 
  127:Src/stm32f4xx_hal_msp.c ****   /* USER CODE END ADC1_MspDeInit 1 */
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 7
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 7
 
 
  128:Src/stm32f4xx_hal_msp.c ****   }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  265 0006 00D0     		beq	.L26
  266 0008 7047     		bx	lr
  267              	.L26:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 8
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 8
 
 
  133:Src/stm32f4xx_hal_msp.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  303 0034 42F40012 		orr	r2, r2, #2097152
  304 0038 1A64     		str	r2, [r3, #64]
  305 003a 1B6C     		ldr	r3, [r3, #64]
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 9
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 9
 
 
  306 003c 03F40013 		and	r3, r3, #2097152
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  351              	.L29:
  166:Src/stm32f4xx_hal_msp.c ****   {
  167:Src/stm32f4xx_hal_msp.c ****   /* USER CODE BEGIN I2C1_MspDeInit 0 */
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 10
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 10
 
 
  168:Src/stm32f4xx_hal_msp.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  186:Src/stm32f4xx_hal_msp.c **** void HAL_UART_MspInit(UART_HandleTypeDef* huart)
  187:Src/stm32f4xx_hal_msp.c **** {
  388              		.loc 1 187 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 11
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 11
 
 
  389              		.cfi_startproc
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  426 002e 0293     		str	r3, [sp, #8]
  204:Src/stm32f4xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
  427              		.loc 1 204 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 12
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 12
 
 
  428 0030 0123     		movs	r3, #1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  471              	.LVL27:
  472 0000 08B5     		push	{r3, lr}
  473              	.LCFI14:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 13
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 13
 
 
  474              		.cfi_def_cfa_offset 8
@@ -778,57 +778,54 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 1
  505 0028 00380240 		.word	1073887232
  506 002c 00000240 		.word	1073872896
  507              		.cfi_endproc
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 14
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 14
 
 
  508              	.LFE132:
- 510              		.comm	TimingDelay,4,4
- 511              		.text
- 512              	.Letext0:
- 513              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 514              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 515              		.file 4 "Inc/main.h"
- 516              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
- 517              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 518              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 519              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 520              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 521              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
- 522              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 523              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 524              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 525              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 526              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
- 527              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
- 528              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 529              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s 			page 15
+ 510              		.text
+ 511              	.Letext0:
+ 512              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 513              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 514              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 515              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 516              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 517              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 518              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 519              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
+ 520              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 521              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 522              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 523              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 524              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 525              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 526              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 527              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_msp.c
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:18     .text.HAL_MspInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:25     .text.HAL_MspInit:00000000 HAL_MspInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:119    .text.HAL_MspInit:00000090 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:124    .text.HAL_ADC_MspInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:131    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:188    .text.HAL_ADC_MspInit:00000040 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:194    .text.HAL_ADC_MspDeInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:201    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:240    .text.HAL_ADC_MspDeInit:00000020 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:247    .text.HAL_I2C_MspInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:254    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:319    .text.HAL_I2C_MspInit:0000004c $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:326    .text.HAL_I2C_MspDeInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:333    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:372    .text.HAL_I2C_MspDeInit:00000020 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:379    .text.HAL_UART_MspInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:386    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:451    .text.HAL_UART_MspInit:0000004c $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:458    .text.HAL_UART_MspDeInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:465    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc4rwMZ9.s:504    .text.HAL_UART_MspDeInit:00000024 $d
-                            *COM*:00000004 TimingDelay
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:18     .text.HAL_MspInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:25     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:119    .text.HAL_MspInit:00000090 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:124    .text.HAL_ADC_MspInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:131    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:188    .text.HAL_ADC_MspInit:00000040 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:194    .text.HAL_ADC_MspDeInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:201    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:240    .text.HAL_ADC_MspDeInit:00000020 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:247    .text.HAL_I2C_MspInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:254    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:319    .text.HAL_I2C_MspInit:0000004c $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:326    .text.HAL_I2C_MspDeInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:333    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:372    .text.HAL_I2C_MspDeInit:00000020 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:379    .text.HAL_UART_MspInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:386    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:451    .text.HAL_UART_MspInit:0000004c $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:458    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:465    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccSzTjUG.s:504    .text.HAL_UART_MspDeInit:00000024 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriorityGrouping

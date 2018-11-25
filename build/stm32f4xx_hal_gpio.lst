@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   [..]   
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   All GPIO pins have weak internal pull-up and pull-down resistors, which can be 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   activated or not.
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 2
 
 
   32:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****         priority over the GPIO function.
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****     (#) The HSE oscillator pins OSC_IN/OSC_OUT can be used as 
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 3
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 3
 
 
   89:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****         general purpose PH0 and PH1, respectively, when the HSE oscillator is off. 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** #define EXTI_MODE             0x10000000U
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** #define GPIO_MODE_IT          0x00010000U
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** #define GPIO_MODE_EVT         0x00020000U
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 4
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 4
 
 
  146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** #define RISING_EDGE           0x00100000U
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  194:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   /* Check the parameters */
  195:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
  196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Init->Pin));
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 5
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 5
 
 
  197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   assert_param(IS_GPIO_MODE(GPIO_Init->Mode));
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  231:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****          (GPIO_Init->Mode == GPIO_MODE_OUTPUT_OD) || (GPIO_Init->Mode == GPIO_MODE_AF_OD))
  232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****       {
  233:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****         /* Check the Speed parameter */
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 6
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 6
 
 
  234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****         assert_param(IS_GPIO_SPEED(GPIO_Init->Speed));
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
   72              		.loc 1 268 0 discriminator 20
   73 0024 EA43     		mvns	r2, r5
   74 0026 02EA0406 		and	r6, r2, r4
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 7
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 7
 
 
   75              	.LVL6:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  111 0056 4F68     		ldr	r7, [r1, #4]
  112 0058 17F4801F 		tst	r7, #1048576
  113 005c 01D0     		beq	.L11
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 8
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 8
 
 
  287:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****         {
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  153 0088 04EA0205 		and	r5, r4, r2
  154              	.LVL21:
  208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****     {
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 9
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 9
 
 
  155              		.loc 1 208 0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  200 00d0 BC40     		lsls	r4, r4, r7
  201 00d2 44EA0C04 		orr	r4, r4, ip
  202              	.LVL28:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 10
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 10
 
 
  227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  245              	.LVL36:
  246              	.L7:
  249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****       temp &= ~(GPIO_PUPDR_PUPDR0 << (position * 2U));
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 11
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 11
 
 
  247              		.loc 1 249 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  293 0152 134A     		ldr	r2, .L25+12
  294 0154 9042     		cmp	r0, r2
  295 0156 3FF45CAF 		beq	.L14
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 12
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 12
 
 
  263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2U] = temp;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  341 0190 7047     		bx	lr
  342              	.LVL48:
  343              	.L22:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 13
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 13
 
 
  344 0192 7047     		bx	lr
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  378              		.cfi_def_cfa_offset 20
  379              		.cfi_offset 4, -20
  380              		.cfi_offset 5, -16
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 14
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 14
 
 
  381              		.cfi_offset 6, -12
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  326:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****     /* Get the current IO position */
  406              		.loc 1 326 0
  407 001e 0122     		movs	r2, #1
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 15
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 15
 
 
  408 0020 9A40     		lsls	r2, r2, r3
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  453              		.loc 1 350 0
  454 007a 03F00302 		and	r2, r3, #3
  455 007e 9200     		lsls	r2, r2, #2
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 16
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 16
 
 
  456 0080 9740     		lsls	r7, r7, r2
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  503 00cc 0A4C     		ldr	r4, .L44+8
  504 00ce 2568     		ldr	r5, [r4]
  505 00d0 F243     		mvns	r2, r6
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 17
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 17
 
 
  506 00d2 1540     		ands	r5, r5, r2
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  553              	.LFB128:
  368:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** 
  369:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** /**
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 18
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 18
 
 
  370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   * @}
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  568 0008 7047     		bx	lr
  569              	.LVL68:
  570              	.L49:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 19
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 19
 
 
  402:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   }
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  440:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****     GPIOx->BSRR = (uint32_t)GPIO_Pin << 16U;
  596              		.loc 1 440 0
  597 0002 0904     		lsls	r1, r1, #16
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 20
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 20
 
 
  598              	.LVL71:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  637              		.align	1
  638              		.global	HAL_GPIO_LockPin
  639              		.syntax unified
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 21
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 21
 
 
  640              		.thumb
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  668 0014 019B     		ldr	r3, [sp, #4]
  669 0016 C361     		str	r3, [r0, #28]
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   /* Read LCKK bit*/
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 22
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 22
 
 
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   tmp = GPIOx->LCKR;
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  502:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   */
  503:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin)
  504:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c **** {
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 23
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 23
 
 
  505:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c ****   /* EXTI line interrupt detected */
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  742 0004 5B69     		ldr	r3, [r3, #20]
  743 0006 0342     		tst	r3, r0
  744 0008 00D1     		bne	.L64
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 24
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 24
 
 
  745              	.LVL81:
@@ -1405,46 +1405,43 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 1
  762 0018 003C0140 		.word	1073822720
  763              		.cfi_endproc
  764              	.LFE132:
- 766              		.comm	TimingDelay,4,4
- 767              		.text
- 768              	.Letext0:
- 769              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 770              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 771              		.file 4 "Inc/main.h"
- 772              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
- 773              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 774              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 775              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 776              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 777              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
- 778              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 779              		.file 12 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 780              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 781              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s 			page 25
+ 766              		.text
+ 767              	.Letext0:
+ 768              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 769              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 770              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 771              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 772              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 773              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 774              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 775              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
+ 776              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 777              		.file 11 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 778              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 779              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_gpio.c
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:18     .text.HAL_GPIO_Init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:25     .text.HAL_GPIO_Init:00000000 HAL_GPIO_Init
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:348    .text.HAL_GPIO_Init:00000194 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:356    .text.HAL_GPIO_DeInit:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:363    .text.HAL_GPIO_DeInit:00000000 HAL_GPIO_DeInit
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:538    .text.HAL_GPIO_DeInit:000000f0 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:545    .text.HAL_GPIO_ReadPin:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:552    .text.HAL_GPIO_ReadPin:00000000 HAL_GPIO_ReadPin
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:579    .text.HAL_GPIO_WritePin:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:586    .text.HAL_GPIO_WritePin:00000000 HAL_GPIO_WritePin
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:611    .text.HAL_GPIO_TogglePin:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:618    .text.HAL_GPIO_TogglePin:00000000 HAL_GPIO_TogglePin
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:637    .text.HAL_GPIO_LockPin:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:644    .text.HAL_GPIO_LockPin:00000000 HAL_GPIO_LockPin
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:700    .text.HAL_GPIO_EXTI_Callback:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:707    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:721    .text.HAL_GPIO_EXTI_IRQHandler:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:728    .text.HAL_GPIO_EXTI_IRQHandler:00000000 HAL_GPIO_EXTI_IRQHandler
-C:\Users\dragos.nicolae\AppData\Local\Temp\cc173UZH.s:762    .text.HAL_GPIO_EXTI_IRQHandler:00000018 $d
-                            *COM*:00000004 TimingDelay
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:18     .text.HAL_GPIO_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:25     .text.HAL_GPIO_Init:00000000 HAL_GPIO_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:348    .text.HAL_GPIO_Init:00000194 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:356    .text.HAL_GPIO_DeInit:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:363    .text.HAL_GPIO_DeInit:00000000 HAL_GPIO_DeInit
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:538    .text.HAL_GPIO_DeInit:000000f0 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:545    .text.HAL_GPIO_ReadPin:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:552    .text.HAL_GPIO_ReadPin:00000000 HAL_GPIO_ReadPin
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:579    .text.HAL_GPIO_WritePin:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:586    .text.HAL_GPIO_WritePin:00000000 HAL_GPIO_WritePin
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:611    .text.HAL_GPIO_TogglePin:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:618    .text.HAL_GPIO_TogglePin:00000000 HAL_GPIO_TogglePin
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:637    .text.HAL_GPIO_LockPin:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:644    .text.HAL_GPIO_LockPin:00000000 HAL_GPIO_LockPin
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:700    .text.HAL_GPIO_EXTI_Callback:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:707    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:721    .text.HAL_GPIO_EXTI_IRQHandler:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:728    .text.HAL_GPIO_EXTI_IRQHandler:00000000 HAL_GPIO_EXTI_IRQHandler
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccxAXc8N.s:762    .text.HAL_GPIO_EXTI_IRQHandler:00000018 $d
 
 NO UNDEFINED SYMBOLS
