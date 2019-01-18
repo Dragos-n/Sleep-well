@@ -15,13 +15,28 @@
 #define DELAY_10_MS 				(10U)
 #define DELAY_100_MS 				(100U)
 #define DELAY_1_S 					(1000U)
-#define DELAY_TEST 					(1000U)
+#define DELAY_DEBUG 				(5U)
 
 #define DEBUG_MODE					(STD_ON)
 #define GPIO_ON						(STD_ON)
 #define UART_1						(STD_ON)
 #define ADC_1						(STD_ON)
 #define I2C_1						(STD_OFF)
+
+#define NUMBER_OF_MEASUREMENTS      (1000U)
+#define GREEN_AIR_LEVEL_MAX			(400U)
+#define GREEN_AIR_LEVEL_MIN			(370U)
+#define GOOD_AIR_LEVEL_MAX			(369U)
+#define GOOD_AIR_LEVEL_MIN			(340U)
+#define BAD_AIR_LEVEL_MAX			(339U)
+#define BAD_AIR_LEVEL_MIN			(313U)
+#define WORST_AIR_LEVEL_MAX			(312U)
+#define WORST_AIR_LEVEL_MIN			(290U)
+
+
+
+#define SUBSTRACT25PROCENT(number_u16) number_u16 = number_u16 - (25 * number_u16)/100
+
 
 /* sint8 * \brief  Type defining an 8 bit signed integer. The possible values interval is [-128, +127].
    uint8 *  \brief  Type defining an 8 bit unsigned integer. The possible values interval is [0, +255].
@@ -41,5 +56,10 @@ typedef unsigned  char           	(boolean);
 typedef uint8_t 					(u8);
 typedef uint16_t 					(u16);
 typedef uint32_t 					(u32);
+
+typedef struct Masured_value{
+	__IOM u16 measured_value_u16;
+	__IOM u16 measurmenet_counter_u16;
+} Measured_value_tst;
 
 #endif

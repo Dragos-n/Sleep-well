@@ -27,7 +27,7 @@ build/main.o: Src/main.c Inc/main.h Inc/extra.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h Inc/init.h \
- Inc/generic.h Inc/init.h
+ Inc/generic.h Inc/init.h Inc/Generic.h
 
 Inc/main.h:
 
@@ -98,3 +98,5 @@ Inc/init.h:
 Inc/generic.h:
 
 Inc/init.h:
+
+Inc/Generic.h:

@@ -21,12 +21,11 @@
 #include "generic.h"
 
 
-void Delay(u32);
-void TimingDelay_Decrement(void);
-void debug_check(u16 );
 
-volatile u32 TimingDelay;
-
+void debug_check(u32 *var_for_debug_pu32);
+void get_co2_adc(Measured_value_tst *CO2_measurement_st);
+void send_data_uart(Measured_value_tst * Measured_value_pst);
+void air_quality_calc(Measured_value_tst * Measured_value_pst);
 
 /* USER CODE END Private defines */
 
