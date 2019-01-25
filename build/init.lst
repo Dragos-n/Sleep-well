@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
   44 000a 196C     		ldr	r1, [r3, #64]
   45 000c 41F08051 		orr	r1, r1, #268435456
   46 0010 1964     		str	r1, [r3, #64]
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 2
 
 
   47 0012 1B6C     		ldr	r3, [r3, #64]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
   84 004e 0393     		str	r3, [sp, #12]
   30:Src/init.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   31:Src/init.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 3
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 3
 
 
   85              		.loc 1 31 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  119 0084 15B0     		add	sp, sp, #84
  120              	.LCFI2:
  121              		.cfi_remember_state
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 4
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 4
 
 
  122              		.cfi_def_cfa_offset 4
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  170              		.cfi_offset 14, -4
  171 0002 89B0     		sub	sp, sp, #36
  172              	.LCFI5:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 5
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 5
 
 
  173              		.cfi_def_cfa_offset 48
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
   70:Src/init.c    **** 	HAL_GPIO_Init(GPIOA, &LED_struct);
  215              		.loc 1 70 0
  216 0048 03A9     		add	r1, sp, #12
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 6
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 6
 
 
  217 004a 2846     		mov	r0, r5
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  258 0008 0360     		str	r3, [r0]
   86:Src/init.c    ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
  259              		.loc 1 86 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 7
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 7
 
 
  260 000a 0023     		movs	r3, #0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  294 0032 0192     		str	r2, [sp, #4]
  107:Src/init.c    ****   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
  295              		.loc 1 107 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 8
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 8
 
 
  296 0034 0293     		str	r3, [sp, #8]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  340              		.section	.text.MX_USART1_UART_Init,"ax",%progbits
  341              		.align	1
  342              		.global	MX_USART1_UART_Init
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 9
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 9
 
 
  343              		.syntax unified
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  149:Src/init.c    ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
  366              		.loc 1 149 0
  367 000e 0023     		movs	r3, #0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 10
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 10
 
 
  368 0010 8360     		str	r3, [r0, #8]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  410              		.fpu fpv4-sp-d16
  412              	Board_init:
  413              	.LFB130:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 11
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 11
 
 
  162:Src/init.c    **** 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  461      6974210D 
  461      0A00
  462 000e 00       		.space	1
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 12
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 12
 
 
  463              		.section	.rodata.SystemClock_Config.str1.4,"aMS",%progbits,1
@@ -690,30 +690,30 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 1
  487              		.file 20 "Inc/main.h"
  488              		.file 21 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
  489              		.file 22 "Inc/generic.h"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s 			page 13
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 init.c
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:18     .text.SystemClock_Config:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:25     .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:144    .text.SystemClock_Config:000000a0 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:152    .text.MX_GPIO_Init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:159    .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:229    .text.MX_GPIO_Init:00000054 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:235    .text.MX_ADC1_Init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:242    .text.MX_ADC1_Init:00000000 MX_ADC1_Init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:333    .text.MX_ADC1_Init:0000005c $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:18     .text.SystemClock_Config:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:25     .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:144    .text.SystemClock_Config:000000a0 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:152    .text.MX_GPIO_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:159    .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:229    .text.MX_GPIO_Init:00000054 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:235    .text.MX_ADC1_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:242    .text.MX_ADC1_Init:00000000 MX_ADC1_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:333    .text.MX_ADC1_Init:0000005c $d
                             *COM*:00000048 hadc1
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:341    .text.MX_USART1_UART_Init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:348    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:398    .text.MX_USART1_UART_Init:00000030 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:341    .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:348    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:398    .text.MX_USART1_UART_Init:00000030 $d
                             *COM*:00000040 huart1
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:405    .text.Board_init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:412    .text.Board_init:00000000 Board_init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:450    .text.Board_init:00000028 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:458    .rodata:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccqLTyJj.s:464    .rodata.SystemClock_Config.str1.4:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:405    .text.Board_init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:412    .text.Board_init:00000000 Board_init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:450    .text.Board_init:00000028 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:458    .rodata:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:464    .rodata.SystemClock_Config.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_RCC_OscConfig

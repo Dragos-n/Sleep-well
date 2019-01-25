@@ -34,7 +34,7 @@
 #define WORST_AIR_LEVEL_MIN			(290U)
 
 
-
+//#define CLEAR_UART_BUFFER(buffer_u8) memset(buffer_u8, 0, sizeof(buffer_u8))
 #define SUBSTRACT25PROCENT(number_u16) number_u16 = number_u16 - (25 * number_u16)/100
 
 
