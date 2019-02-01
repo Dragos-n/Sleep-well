@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
   44 000a 196C     		ldr	r1, [r3, #64]
   45 000c 41F08051 		orr	r1, r1, #268435456
   46 0010 1964     		str	r1, [r3, #64]
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 2
 
 
   47 0012 1B6C     		ldr	r3, [r3, #64]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
   84 004e 0393     		str	r3, [sp, #12]
   30:Src/init.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   31:Src/init.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 3
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 3
 
 
   85              		.loc 1 31 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  119 0084 15B0     		add	sp, sp, #84
  120              	.LCFI2:
  121              		.cfi_remember_state
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 4
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 4
 
 
  122              		.cfi_def_cfa_offset 4
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  170              		.cfi_offset 14, -4
  171 0002 89B0     		sub	sp, sp, #36
  172              	.LCFI5:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 5
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 5
 
 
  173              		.cfi_def_cfa_offset 48
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
   70:Src/init.c    **** 	HAL_GPIO_Init(GPIOA, &LED_struct);
  215              		.loc 1 70 0
  216 0048 03A9     		add	r1, sp, #12
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 6
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 6
 
 
  217 004a 2846     		mov	r0, r5
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  258 0008 0360     		str	r3, [r0]
   86:Src/init.c    ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
  259              		.loc 1 86 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 7
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 7
 
 
  260 000a 0023     		movs	r3, #0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  294 0032 0192     		str	r2, [sp, #4]
  107:Src/init.c    ****   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
  295              		.loc 1 107 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 8
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 8
 
 
  296 0034 0293     		str	r3, [sp, #8]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  340              		.section	.text.MX_USART1_UART_Init,"ax",%progbits
  341              		.align	1
  342              		.global	MX_USART1_UART_Init
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 9
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 9
 
 
  343              		.syntax unified
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  149:Src/init.c    ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
  366              		.loc 1 149 0
  367 000e 0023     		movs	r3, #0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 10
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 10
 
 
  368 0010 8360     		str	r3, [r0, #8]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  410              		.fpu fpv4-sp-d16
  412              	Board_init:
  413              	.LFB130:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 11
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 11
 
 
  162:Src/init.c    **** 
@@ -647,73 +647,81 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 1
  451 002c 00000000 		.word	huart1
  452              		.cfi_endproc
  453              	.LFE130:
- 455              		.comm	huart1,64,4
- 456              		.comm	hadc1,72,4
- 457              		.section	.rodata
- 458              		.align	2
- 459              		.set	.LANCHOR0,. + 0
- 460              	.LC1:
- 461 0000 426F6172 		.ascii	"Board init!\015\012\000"
- 461      6420696E 
- 461      6974210D 
- 461      0A00
- 462 000e 00       		.space	1
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 12
+ 455              		.comm	TaskParams_u16,204,4
+ 456              		.comm	huart1,64,4
+ 457              		.comm	hadc1,72,4
+ 458              		.section	.rodata
+ 459              		.align	2
+ 460              		.set	.LANCHOR0,. + 0
+ 461              	.LC1:
+ 462 0000 426F6172 		.ascii	"Board init!\015\012\000"
+ 462      6420696E 
+ 462      6974210D 
+ 462      0A00
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 12
 
 
- 463              		.section	.rodata.SystemClock_Config.str1.4,"aMS",%progbits,1
- 464              		.align	2
- 465              	.LC0:
- 466 0000 5372632F 		.ascii	"Src/init.c\000"
- 466      696E6974 
- 466      2E6300
- 467              		.text
- 468              	.Letext0:
- 469              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 470              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 471              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 472              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 473              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 474              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 475              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 476              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 477              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
- 478              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 479              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 480              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
- 481              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
- 482              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 483              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 484              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
- 485              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 486              		.file 19 "Inc/init.h"
- 487              		.file 20 "Inc/main.h"
- 488              		.file 21 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 489              		.file 22 "Inc/generic.h"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s 			page 13
+ 463 000e 00       		.space	1
+ 464              		.section	.data.TimingDelay_u32,"aw",%progbits
+ 465              		.align	2
+ 468              	TimingDelay_u32:
+ 469 0000 01000000 		.word	1
+ 470              		.section	.rodata.SystemClock_Config.str1.4,"aMS",%progbits,1
+ 471              		.align	2
+ 472              	.LC0:
+ 473 0000 5372632F 		.ascii	"Src/init.c\000"
+ 473      696E6974 
+ 473      2E6300
+ 474              		.text
+ 475              	.Letext0:
+ 476              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 477              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 478              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 479              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 480              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 481              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 482              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 483              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 484              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
+ 485              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 486              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 487              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 488              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 489              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 490              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 491              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 492              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 493              		.file 19 "Inc/generic.h"
+ 494              		.file 20 "Inc/init.h"
+ 495              		.file 21 "Inc/main.h"
+ 496              		.file 22 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 init.c
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:18     .text.SystemClock_Config:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:25     .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:144    .text.SystemClock_Config:000000a0 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:152    .text.MX_GPIO_Init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:159    .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:229    .text.MX_GPIO_Init:00000054 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:235    .text.MX_ADC1_Init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:242    .text.MX_ADC1_Init:00000000 MX_ADC1_Init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:333    .text.MX_ADC1_Init:0000005c $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:18     .text.SystemClock_Config:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:25     .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:144    .text.SystemClock_Config:000000a0 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:152    .text.MX_GPIO_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:159    .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:229    .text.MX_GPIO_Init:00000054 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:235    .text.MX_ADC1_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:242    .text.MX_ADC1_Init:00000000 MX_ADC1_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:333    .text.MX_ADC1_Init:0000005c $d
                             *COM*:00000048 hadc1
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:341    .text.MX_USART1_UART_Init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:348    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:398    .text.MX_USART1_UART_Init:00000030 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:341    .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:348    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:398    .text.MX_USART1_UART_Init:00000030 $d
                             *COM*:00000040 huart1
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:405    .text.Board_init:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:412    .text.Board_init:00000000 Board_init
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:450    .text.Board_init:00000028 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:458    .rodata:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccnIvzGw.s:464    .rodata.SystemClock_Config.str1.4:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:405    .text.Board_init:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:412    .text.Board_init:00000000 Board_init
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:450    .text.Board_init:00000028 $d
+                            *COM*:000000cc TaskParams_u16
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:459    .rodata:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:465    .data.TimingDelay_u32:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:468    .data.TimingDelay_u32:00000000 TimingDelay_u32
+C:\Users\dragos.nicolae\AppData\Local\Temp\ccprGhvZ.s:471    .rodata.SystemClock_Config.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_RCC_OscConfig

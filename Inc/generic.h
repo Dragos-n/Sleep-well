@@ -12,8 +12,9 @@
 #define LED_OFF						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, STD_LOW);
 
 #define DELAY_1_MS 					(1U)
+#define DELAY_5_MS 					(5U)
 #define DELAY_10_MS 				(10U)
-#define DELAY_100_MS 				(100U)
+#define DELAY_ADC 				    (880U)
 #define DELAY_1_S 					(1000U)
 #define DELAY_DEBUG 				(5U)
 
@@ -32,10 +33,12 @@
 #define BAD_AIR_LEVEL_MIN			(313U)
 #define WORST_AIR_LEVEL_MAX			(312U)
 #define WORST_AIR_LEVEL_MIN			(290U)
+#define VREFINT_CAL_ADDR 			((u16*)(u32)(0x1FFFF7BA))
+#define ONEMINTASK					(920U)
 
 
 //#define CLEAR_UART_BUFFER(buffer_u8) memset(buffer_u8, 0, sizeof(buffer_u8))
-#define SUBSTRACT25PROCENT(number_u16) number_u16 = number_u16 - (25 * number_u16)/100
+//#define SUBSTRACT25PROCENT(number_u16) number_u16 = number_u16 - (25 * number_u16)/100
 
 
 /* sint8 * \brief  Type defining an 8 bit signed integer. The possible values interval is [-128, +127].

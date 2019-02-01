@@ -54,8 +54,8 @@ typedef enum
 #define TICK	                                                    1
 
 //-------------------Variable definitions------------------------------------------------------------//
-static __IO uint32_t TimingDelay;
-u8 TaskParams_u8[MAX_TASK][MAX_TASK_PARAMS];
+static __IO u32 TimingDelay_u32 = STD_ON;
+u16 TaskParams_u16[MAX_TASK][MAX_TASK_PARAMS];
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

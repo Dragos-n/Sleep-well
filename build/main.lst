@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -17,14 +17,14 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.section	.text.debug_check,"ax",%progbits
+  17              		.section	.text.Task1,"ax",%progbits
   18              		.align	1
-  19              		.global	debug_check
+  19              		.global	Task1
   20              		.syntax unified
   21              		.thumb
   22              		.thumb_func
   23              		.fpu fpv4-sp-d16
-  25              	debug_check:
+  25              	Task1:
   26              	.LFB126:
   27              		.file 1 "Src/main.c"
    1:Src/main.c    **** 
@@ -37,867 +37,1066 @@ ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 1
    8:Src/main.c    **** 
    9:Src/main.c    **** /* Includes ------------------------------------------------------------------*/
   10:Src/main.c    **** #include "main.h"
-  11:Src/main.c    **** 
-  12:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
-  13:Src/main.c    **** 
-  14:Src/main.c    **** /* USER CODE BEGIN PV */
+  11:Src/main.c    **** #include "stdint.h"
+  12:Src/main.c    **** #include "init.h"
+  13:Src/main.c    **** #include "Generic.h"
+  14:Src/main.c    **** 
   15:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
   16:Src/main.c    **** 
-  17:Src/main.c    **** /* USER CODE END PV */
-  18:Src/main.c    **** 
-  19:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
-  20:Src/main.c    **** 
-  21:Src/main.c    **** #include "main.h"
-  22:Src/main.c    **** #include "stdint.h"
-  23:Src/main.c    **** #include "init.h"
-  24:Src/main.c    **** #include "Generic.h"
-  25:Src/main.c    **** 
+  17:Src/main.c    **** /* USER CODE BEGIN PV */
+  18:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  19:Src/main.c    **** 
+  20:Src/main.c    **** /* USER CODE END PV */
+  21:Src/main.c    **** 
+  22:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  23:Src/main.c    **** 
+  24:Src/main.c    **** 
+  25:Src/main.c    **** Measured_value_tst __IO CO2_measurement_st;
   26:Src/main.c    **** 
-  27:Src/main.c    **** Measured_value_tst * CO2_measurement_pst = NULL;
-  28:Src/main.c    **** u32 calc_adc_val_u32 = 0U;
-  29:Src/main.c    **** u16 local_counter_u16 = 0U;
+  27:Src/main.c    **** 
+  28:Src/main.c    **** __IO u32 calc_adc_val_u32 = 0U;
+  29:Src/main.c    **** __IO u16 local_counter_u16 = 0U;
   30:Src/main.c    **** u8 uart_new_line_u8[2] = "\r\n";
   31:Src/main.c    **** 
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 2
 
 
-  32:Src/main.c    **** 
-  33:Src/main.c    **** void debug_check(u32 *var_for_debug_pu32)
-  34:Src/main.c    **** {
-  28              		.loc 1 34 0
+  32:Src/main.c    **** void Task1(void){
+  28              		.loc 1 32 0
   29              		.cfi_startproc
-  30              		@ args = 0, pretend = 0, frame = 16
+  30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32              	.LVL0:
-  33 0000 70B5     		push	{r4, r5, r6, lr}
-  34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 16
-  36              		.cfi_offset 4, -16
-  37              		.cfi_offset 5, -12
-  38              		.cfi_offset 6, -8
-  39              		.cfi_offset 14, -4
-  40 0002 84B0     		sub	sp, sp, #16
-  41              	.LCFI1:
-  42              		.cfi_def_cfa_offset 32
-  43 0004 0646     		mov	r6, r0
-  35:Src/main.c    ****     LED_ON
-  44              		.loc 1 35 0
-  45 0006 164D     		ldr	r5, .L3
-  46 0008 0122     		movs	r2, #1
-  47 000a 2021     		movs	r1, #32
-  48 000c 2846     		mov	r0, r5
-  49              	.LVL1:
-  50 000e FFF7FEFF 		bl	HAL_GPIO_WritePin
-  51              	.LVL2:
-  36:Src/main.c    **** 	HAL_Delay(DELAY_DEBUG);
-  52              		.loc 1 36 0
-  53 0012 0520     		movs	r0, #5
-  54 0014 FFF7FEFF 		bl	HAL_Delay
-  55              	.LVL3:
-  37:Src/main.c    **** #if (STD_ON == UART_1)
-  38:Src/main.c    **** 	u8 debug_msg_u8[10] = "";
-  56              		.loc 1 38 0
-  57 0018 0024     		movs	r4, #0
-  58 001a 0194     		str	r4, [sp, #4]
-  59 001c 0294     		str	r4, [sp, #8]
-  60 001e ADF80C40 		strh	r4, [sp, #12]	@ movhi
-  39:Src/main.c    **** 	sprintf(debug_msg_u8,"%d", var_for_debug_pu32);
-  61              		.loc 1 39 0
-  62 0022 3246     		mov	r2, r6
-  63 0024 0F49     		ldr	r1, .L3+4
-  64 0026 01A8     		add	r0, sp, #4
-  65 0028 FFF7FEFF 		bl	sprintf
-  66              	.LVL4:
-  40:Src/main.c    **** 	HAL_UART_Transmit(&huart1,debug_msg_u8, 6U, HAL_MAX_DELAY);
-  67              		.loc 1 40 0
-  68 002c 0E4E     		ldr	r6, .L3+8
-  69              	.LVL5:
-  70 002e 4FF0FF33 		mov	r3, #-1
-  71 0032 0622     		movs	r2, #6
-  72 0034 01A9     		add	r1, sp, #4
-  73 0036 3046     		mov	r0, r6
-  74 0038 FFF7FEFF 		bl	HAL_UART_Transmit
-  75              	.LVL6:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 3
+  32              		@ link register save eliminated.
+  33:Src/main.c    **** 
+  34:Src/main.c    **** }
+  33              		.loc 1 34 0
+  34 0000 7047     		bx	lr
+  35              		.cfi_endproc
+  36              	.LFE126:
+  38              		.section	.text.Task3,"ax",%progbits
+  39              		.align	1
+  40              		.global	Task3
+  41              		.syntax unified
+  42              		.thumb
+  43              		.thumb_func
+  44              		.fpu fpv4-sp-d16
+  46              	Task3:
+  47              	.LFB128:
+  35:Src/main.c    **** void Task2(void){
+  36:Src/main.c    **** 	LED_ON
+  37:Src/main.c    **** 	HAL_ADC_Start(&hadc1);
+  38:Src/main.c    **** 	HAL_Delay(DELAY_1_MS);
+  39:Src/main.c    **** 	calc_adc_val_u32  += HAL_ADC_GetValue(&hadc1);
+  40:Src/main.c    **** 	++local_counter_u16;
+  41:Src/main.c    **** 	if (local_counter_u16 == NUMBER_OF_MEASUREMENTS)
+  42:Src/main.c    **** 	   {
+  43:Src/main.c    **** 	      local_counter_u16 = 0U;
+  44:Src/main.c    **** 		  SetTaskPending(Task_3);
+  45:Src/main.c    **** 		}
+  46:Src/main.c    ****     LED_OFF
+  47:Src/main.c    **** }
+  48:Src/main.c    **** 
+  49:Src/main.c    **** void Task3(void)
+  50:Src/main.c    **** {
+  48              		.loc 1 50 0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 16
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52 0000 30B5     		push	{r4, r5, lr}
+  53              	.LCFI0:
+  54              		.cfi_def_cfa_offset 12
+  55              		.cfi_offset 4, -12
+  56              		.cfi_offset 5, -8
+  57              		.cfi_offset 14, -4
+  58 0002 85B0     		sub	sp, sp, #20
+  59              	.LCFI1:
+  60              		.cfi_def_cfa_offset 32
+  61              	.LVL0:
+  51:Src/main.c    **** 	u8 uart_buffer_u8[10];
+  52:Src/main.c    **** 	u8 count =0;
+  53:Src/main.c    ****     calc_adc_val_u32 = (calc_adc_val_u32 / NUMBER_OF_MEASUREMENTS);
+  62              		.loc 1 53 0
+  63 0004 5749     		ldr	r1, .L16
+  64 0006 0B68     		ldr	r3, [r1]
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 3
 
 
-  41:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_new_line_u8, 2U, HAL_MAX_DELAY);
-  76              		.loc 1 41 0
-  77 003c 4FF0FF33 		mov	r3, #-1
-  78 0040 0222     		movs	r2, #2
-  79 0042 0A49     		ldr	r1, .L3+12
-  80 0044 3046     		mov	r0, r6
-  81 0046 FFF7FEFF 		bl	HAL_UART_Transmit
-  82              	.LVL7:
-  42:Src/main.c    **** #endif
-  43:Src/main.c    **** 	HAL_Delay(DELAY_DEBUG);
-  83              		.loc 1 43 0
-  84 004a 0520     		movs	r0, #5
-  85 004c FFF7FEFF 		bl	HAL_Delay
-  86              	.LVL8:
-  44:Src/main.c    **** 	LED_OFF
-  87              		.loc 1 44 0
-  88 0050 2246     		mov	r2, r4
-  89 0052 2021     		movs	r1, #32
-  90 0054 2846     		mov	r0, r5
-  91 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  92              	.LVL9:
-  45:Src/main.c    **** }
-  93              		.loc 1 45 0
-  94 005a 04B0     		add	sp, sp, #16
-  95              	.LCFI2:
-  96              		.cfi_def_cfa_offset 16
-  97              		@ sp needed
-  98 005c 70BD     		pop	{r4, r5, r6, pc}
-  99              	.L4:
- 100 005e 00BF     		.align	2
- 101              	.L3:
- 102 0060 00000240 		.word	1073872896
- 103 0064 00000000 		.word	.LC0
- 104 0068 00000000 		.word	huart1
- 105 006c 00000000 		.word	.LANCHOR0
- 106              		.cfi_endproc
- 107              	.LFE126:
- 109              		.section	.text.air_quality_calc,"ax",%progbits
- 110              		.align	1
- 111              		.global	air_quality_calc
- 112              		.syntax unified
- 113              		.thumb
- 114              		.thumb_func
- 115              		.fpu fpv4-sp-d16
- 117              	air_quality_calc:
- 118              	.LFB128:
-  46:Src/main.c    **** 
-  47:Src/main.c    **** 
-  48:Src/main.c    **** void get_co2_adc(Measured_value_tst * Measured_value_pst)
-  49:Src/main.c    **** {
-  50:Src/main.c    **** 	HAL_ADC_Start(&hadc1);
-  51:Src/main.c    **** 	HAL_Delay(DELAY_DEBUG);
-  52:Src/main.c    **** 	calc_adc_val_u32  += HAL_ADC_GetValue(&hadc1);
-  53:Src/main.c    **** 	if (local_counter_u16 == NUMBER_OF_MEASUREMENTS)
-  54:Src/main.c    **** 	   {
-  55:Src/main.c    **** 	      LED_ON
-  56:Src/main.c    **** 	      calc_adc_val_u32 = (calc_adc_val_u32 / NUMBER_OF_MEASUREMENTS);
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 4
+  65 0008 574A     		ldr	r2, .L16+4
+  66 000a A2FB0323 		umull	r2, r3, r2, r3
+  67 000e 9B09     		lsrs	r3, r3, #6
+  68 0010 0B60     		str	r3, [r1]
+  54:Src/main.c    ****     CO2_measurement_st.measured_value_u16  = (66 * calc_adc_val_u32) / 100U;
+  69              		.loc 1 54 0
+  70 0012 0A68     		ldr	r2, [r1]
+  71 0014 02EB4212 		add	r2, r2, r2, lsl #5
+  72 0018 5300     		lsls	r3, r2, #1
+  73 001a 544A     		ldr	r2, .L16+8
+  74 001c A2FB0323 		umull	r2, r3, r2, r3
+  75 0020 C3F34F13 		ubfx	r3, r3, #5, #16
+  76 0024 524A     		ldr	r2, .L16+12
+  77 0026 1380     		strh	r3, [r2]	@ movhi
+  55:Src/main.c    ****     ++CO2_measurement_st.measurmenet_counter_u16;
+  78              		.loc 1 55 0
+  79 0028 5388     		ldrh	r3, [r2, #2]
+  80 002a 0133     		adds	r3, r3, #1
+  81 002c 9BB2     		uxth	r3, r3
+  82 002e 5380     		strh	r3, [r2, #2]	@ movhi
+  56:Src/main.c    ****     calc_adc_val_u32 = 0U;
+  83              		.loc 1 56 0
+  84 0030 0024     		movs	r4, #0
+  85 0032 0C60     		str	r4, [r1]
+  57:Src/main.c    **** 	memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
+  86              		.loc 1 57 0
+  87 0034 0194     		str	r4, [sp, #4]
+  88 0036 0294     		str	r4, [sp, #8]
+  89 0038 ADF80C40 		strh	r4, [sp, #12]	@ movhi
+  58:Src/main.c    **** 	sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measured_value_u16);
+  90              		.loc 1 58 0
+  91 003c 1288     		ldrh	r2, [r2]
+  92 003e 4D49     		ldr	r1, .L16+16
+  93 0040 01A8     		add	r0, sp, #4
+  94 0042 FFF7FEFF 		bl	sprintf
+  95              	.LVL1:
+  59:Src/main.c    **** 	HAL_UART_Transmit(&huart1,"CO2 V value= ", 13U, HAL_MAX_DELAY);
+  96              		.loc 1 59 0
+  97 0046 4FF0FF33 		mov	r3, #-1
+  98 004a 0D22     		movs	r2, #13
+  99 004c 4A49     		ldr	r1, .L16+20
+ 100 004e 4B48     		ldr	r0, .L16+24
+ 101 0050 FFF7FEFF 		bl	HAL_UART_Transmit
+ 102              	.LVL2:
+  52:Src/main.c    ****     calc_adc_val_u32 = (calc_adc_val_u32 / NUMBER_OF_MEASUREMENTS);
+ 103              		.loc 1 52 0
+ 104 0054 2246     		mov	r2, r4
+  60:Src/main.c    **** 	while(uart_buffer_u8[count])
+ 105              		.loc 1 60 0
+ 106 0056 01E0     		b	.L3
+ 107              	.LVL3:
+ 108              	.L4:
+  61:Src/main.c    **** 		count++;
+ 109              		.loc 1 61 0
+ 110 0058 0132     		adds	r2, r2, #1
+ 111              	.LVL4:
+ 112 005a D2B2     		uxtb	r2, r2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 4
 
 
-  57:Src/main.c    **** 	      Measured_value_pst->measured_value_u16 = SUBSTRACT25PROCENT(calc_adc_val_u32);
-  58:Src/main.c    **** 	      ++Measured_value_pst->measurmenet_counter_u16;
-  59:Src/main.c    **** 	      calc_adc_val_u32 = 0U;
-  60:Src/main.c    **** 	      local_counter_u16 = 0U;
-  61:Src/main.c    **** 	      LED_OFF
-  62:Src/main.c    **** #if (STD_ON == UART_1)
-  63:Src/main.c    **** 	      send_data_uart(&CO2_measurement_pst);
-  64:Src/main.c    **** 	      air_quality_calc(&CO2_measurement_pst);
-  65:Src/main.c    **** #endif
-  66:Src/main.c    **** 		}
-  67:Src/main.c    **** 	else
-  68:Src/main.c    **** 	{
-  69:Src/main.c    **** 	      ++local_counter_u16;
-  70:Src/main.c    **** 	      HAL_Delay(DELAY_DEBUG);
-  71:Src/main.c    **** 	}
-  72:Src/main.c    **** 
+ 113              	.LVL5:
+ 114              	.L3:
+  60:Src/main.c    **** 	while(uart_buffer_u8[count])
+ 115              		.loc 1 60 0
+ 116 005c 04AB     		add	r3, sp, #16
+ 117 005e 1344     		add	r3, r3, r2
+ 118 0060 13F80C4C 		ldrb	r4, [r3, #-12]	@ zero_extendqisi2
+ 119 0064 002C     		cmp	r4, #0
+ 120 0066 F7D1     		bne	.L4
+  62:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_buffer_u8,count, HAL_MAX_DELAY);
+ 121              		.loc 1 62 0
+ 122 0068 444D     		ldr	r5, .L16+24
+ 123 006a 4FF0FF33 		mov	r3, #-1
+ 124 006e 01A9     		add	r1, sp, #4
+ 125 0070 2846     		mov	r0, r5
+ 126 0072 FFF7FEFF 		bl	HAL_UART_Transmit
+ 127              	.LVL6:
+  63:Src/main.c    **** 
+  64:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_new_line_u8, 2U, HAL_MAX_DELAY);
+ 128              		.loc 1 64 0
+ 129 0076 4FF0FF33 		mov	r3, #-1
+ 130 007a 0222     		movs	r2, #2
+ 131 007c 4049     		ldr	r1, .L16+28
+ 132 007e 2846     		mov	r0, r5
+ 133 0080 FFF7FEFF 		bl	HAL_UART_Transmit
+ 134              	.LVL7:
+  65:Src/main.c    **** 	memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
+ 135              		.loc 1 65 0
+ 136 0084 0023     		movs	r3, #0
+ 137 0086 0193     		str	r3, [sp, #4]
+ 138 0088 0293     		str	r3, [sp, #8]
+ 139 008a ADF80C30 		strh	r3, [sp, #12]	@ movhi
+  66:Src/main.c    **** 	sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measurmenet_counter_u16);
+ 140              		.loc 1 66 0
+ 141 008e 384B     		ldr	r3, .L16+12
+ 142 0090 5A88     		ldrh	r2, [r3, #2]
+ 143 0092 3849     		ldr	r1, .L16+16
+ 144 0094 01A8     		add	r0, sp, #4
+ 145 0096 FFF7FEFF 		bl	sprintf
+ 146              	.LVL8:
+  67:Src/main.c    **** 	HAL_UART_Transmit(&huart1,"Counter= ", 9U, HAL_MAX_DELAY);
+ 147              		.loc 1 67 0
+ 148 009a 4FF0FF33 		mov	r3, #-1
+ 149 009e 0922     		movs	r2, #9
+ 150 00a0 3849     		ldr	r1, .L16+32
+ 151 00a2 2846     		mov	r0, r5
+ 152 00a4 FFF7FEFF 		bl	HAL_UART_Transmit
+ 153              	.LVL9:
+  68:Src/main.c    **** 	count =0;
+  69:Src/main.c    **** 	while(uart_buffer_u8[count])
+ 154              		.loc 1 69 0
+ 155 00a8 01E0     		b	.L5
+ 156              	.LVL10:
+ 157              	.L6:
+  70:Src/main.c    **** 		count++;
+ 158              		.loc 1 70 0
+ 159 00aa 0134     		adds	r4, r4, #1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 5
+
+
+ 160              	.LVL11:
+ 161 00ac E4B2     		uxtb	r4, r4
+ 162              	.LVL12:
+ 163              	.L5:
+  69:Src/main.c    **** 		count++;
+ 164              		.loc 1 69 0
+ 165 00ae 04AB     		add	r3, sp, #16
+ 166 00b0 2344     		add	r3, r3, r4
+ 167 00b2 13F80C3C 		ldrb	r3, [r3, #-12]	@ zero_extendqisi2
+ 168 00b6 002B     		cmp	r3, #0
+ 169 00b8 F7D1     		bne	.L6
+  71:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_buffer_u8, count, HAL_MAX_DELAY);
+ 170              		.loc 1 71 0
+ 171 00ba 304D     		ldr	r5, .L16+24
+ 172 00bc 4FF0FF33 		mov	r3, #-1
+ 173 00c0 2246     		mov	r2, r4
+ 174 00c2 01A9     		add	r1, sp, #4
+ 175 00c4 2846     		mov	r0, r5
+ 176 00c6 FFF7FEFF 		bl	HAL_UART_Transmit
+ 177              	.LVL13:
+  72:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_new_line_u8, 2U, HAL_MAX_DELAY);
+ 178              		.loc 1 72 0
+ 179 00ca 4FF0FF33 		mov	r3, #-1
+ 180 00ce 0222     		movs	r2, #2
+ 181 00d0 2B49     		ldr	r1, .L16+28
+ 182 00d2 2846     		mov	r0, r5
+ 183 00d4 FFF7FEFF 		bl	HAL_UART_Transmit
+ 184              	.LVL14:
   73:Src/main.c    **** 
-  74:Src/main.c    **** }
-  75:Src/main.c    **** #if (STD_ON == UART_1)
-  76:Src/main.c    **** void air_quality_calc(Measured_value_tst * Measured_value_pst)
-  77:Src/main.c    **** {
- 119              		.loc 1 77 0
- 120              		.cfi_startproc
- 121              		@ args = 0, pretend = 0, frame = 0
- 122              		@ frame_needed = 0, uses_anonymous_args = 0
- 123              	.LVL10:
- 124 0000 08B5     		push	{r3, lr}
- 125              	.LCFI3:
- 126              		.cfi_def_cfa_offset 8
- 127              		.cfi_offset 3, -8
- 128              		.cfi_offset 14, -4
-  78:Src/main.c    **** 
-  79:Src/main.c    **** 
-  80:Src/main.c    **** 	if (Measured_value_pst->measured_value_u16 >= GREEN_AIR_LEVEL_MIN)
- 129              		.loc 1 80 0
- 130 0002 0388     		ldrh	r3, [r0]
- 131 0004 9BB2     		uxth	r3, r3
- 132 0006 B3F5B97F 		cmp	r3, #370
- 133 000a 19D2     		bcs	.L11
-  81:Src/main.c    **** 	{
-  82:Src/main.c    **** 		HAL_UART_Transmit(&huart1, "GREEN AIR\r\n\n", 12U, HAL_MAX_DELAY);
-  83:Src/main.c    **** 	}
-  84:Src/main.c    **** 	else
-  85:Src/main.c    **** 		if ((Measured_value_pst->measured_value_u16 >= GOOD_AIR_LEVEL_MIN) && (Measured_value_pst->measur
- 134              		.loc 1 85 0
- 135 000c 0388     		ldrh	r3, [r0]
- 136 000e 9BB2     		uxth	r3, r3
- 137 0010 B3F5AA7F 		cmp	r3, #340
- 138 0014 04D3     		bcc	.L8
- 139              		.loc 1 85 0 is_stmt 0 discriminator 1
- 140 0016 0388     		ldrh	r3, [r0]
- 141 0018 9BB2     		uxth	r3, r3
- 142 001a B3F5B97F 		cmp	r3, #370
- 143 001e 17D3     		bcc	.L12
- 144              	.L8:
-  86:Src/main.c    **** 		{
-  87:Src/main.c    **** 			HAL_UART_Transmit(&huart1,"GOOD AIR\r\n\n", 11U, HAL_MAX_DELAY);
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 5
+  74:Src/main.c    **** 
+  75:Src/main.c    **** 	if (CO2_measurement_st.measured_value_u16 >= GREEN_AIR_LEVEL_MIN)
+ 185              		.loc 1 75 0
+ 186 00d8 254B     		ldr	r3, .L16+12
+ 187 00da 1B88     		ldrh	r3, [r3]
+ 188 00dc 9BB2     		uxth	r3, r3
+ 189 00de B3F5B97F 		cmp	r3, #370
+ 190 00e2 1FD2     		bcs	.L12
+  76:Src/main.c    **** 		{
+  77:Src/main.c    **** 			HAL_UART_Transmit(&huart1, "GREEN AIR\r\n\n", 12U, HAL_MAX_DELAY);
+  78:Src/main.c    **** 		}
+  79:Src/main.c    **** 		else
+  80:Src/main.c    **** 			if ((CO2_measurement_st.measured_value_u16 >= GOOD_AIR_LEVEL_MIN) && (CO2_measurement_st.measure
+ 191              		.loc 1 80 0
+ 192 00e4 224B     		ldr	r3, .L16+12
+ 193 00e6 1B88     		ldrh	r3, [r3]
+ 194 00e8 9BB2     		uxth	r3, r3
+ 195 00ea B3F5AA7F 		cmp	r3, #340
+ 196 00ee 05D3     		bcc	.L9
+ 197              		.loc 1 80 0 is_stmt 0 discriminator 1
+ 198 00f0 1F4B     		ldr	r3, .L16+12
+ 199 00f2 1B88     		ldrh	r3, [r3]
+ 200 00f4 9BB2     		uxth	r3, r3
+ 201 00f6 B3F5B97F 		cmp	r3, #370
+ 202 00fa 1BD3     		bcc	.L13
+ 203              	.L9:
+  81:Src/main.c    **** 			{
+  82:Src/main.c    **** 				HAL_UART_Transmit(&huart1,"GOOD AIR\r\n\n", 11U, HAL_MAX_DELAY);
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 6
 
 
-  88:Src/main.c    **** 		}
-  89:Src/main.c    **** 		else
-  90:Src/main.c    **** 			if ((Measured_value_pst->measured_value_u16 >= BAD_AIR_LEVEL_MIN) && (Measured_value_pst->measur
- 145              		.loc 1 90 0 is_stmt 1
- 146 0020 0388     		ldrh	r3, [r0]
- 147 0022 9BB2     		uxth	r3, r3
- 148 0024 B3F59C7F 		cmp	r3, #312
- 149 0028 04D9     		bls	.L9
- 150              		.loc 1 90 0 is_stmt 0 discriminator 1
- 151 002a 0388     		ldrh	r3, [r0]
- 152 002c 9BB2     		uxth	r3, r3
- 153 002e B3F5AA7F 		cmp	r3, #340
- 154 0032 15D3     		bcc	.L13
- 155              	.L9:
-  91:Src/main.c    **** 			{
-  92:Src/main.c    **** 				HAL_UART_Transmit(&huart1,"BAD AIR\r\n\n", 10U, HAL_MAX_DELAY);
-  93:Src/main.c    **** 			}
-  94:Src/main.c    **** 			else
-  95:Src/main.c    **** 				if  (Measured_value_pst->measured_value_u16 <= WORST_AIR_LEVEL_MAX)
- 156              		.loc 1 95 0 is_stmt 1
- 157 0034 0388     		ldrh	r3, [r0]
- 158 0036 9BB2     		uxth	r3, r3
- 159 0038 B3F59C7F 		cmp	r3, #312
- 160 003c 18D9     		bls	.L14
- 161              	.LVL11:
- 162              	.L5:
-  96:Src/main.c    **** 				{
-  97:Src/main.c    **** 					HAL_UART_Transmit(&huart1,"VERY BAD AIR! GO OUT!\r\n\n", 24U, HAL_MAX_DELAY);
-  98:Src/main.c    **** 				}
-  99:Src/main.c    **** 
- 100:Src/main.c    **** 
- 101:Src/main.c    **** }
- 163              		.loc 1 101 0
- 164 003e 08BD     		pop	{r3, pc}
- 165              	.LVL12:
- 166              	.L11:
-  82:Src/main.c    **** 	}
- 167              		.loc 1 82 0
- 168 0040 4FF0FF33 		mov	r3, #-1
- 169 0044 0C22     		movs	r2, #12
- 170 0046 0E49     		ldr	r1, .L15
- 171 0048 0E48     		ldr	r0, .L15+4
- 172              	.LVL13:
- 173 004a FFF7FEFF 		bl	HAL_UART_Transmit
- 174              	.LVL14:
- 175 004e F6E7     		b	.L5
- 176              	.LVL15:
- 177              	.L12:
-  87:Src/main.c    **** 		}
- 178              		.loc 1 87 0
- 179 0050 4FF0FF33 		mov	r3, #-1
- 180 0054 0B22     		movs	r2, #11
- 181 0056 0C49     		ldr	r1, .L15+8
- 182 0058 0A48     		ldr	r0, .L15+4
- 183              	.LVL16:
- 184 005a FFF7FEFF 		bl	HAL_UART_Transmit
- 185              	.LVL17:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 6
+  83:Src/main.c    **** 			}
+  84:Src/main.c    **** 			else
+  85:Src/main.c    **** 				if ((CO2_measurement_st.measured_value_u16 >= BAD_AIR_LEVEL_MIN) && (CO2_measurement_st.measure
+ 204              		.loc 1 85 0 is_stmt 1
+ 205 00fc 1C4B     		ldr	r3, .L16+12
+ 206 00fe 1B88     		ldrh	r3, [r3]
+ 207 0100 9BB2     		uxth	r3, r3
+ 208 0102 B3F59C7F 		cmp	r3, #312
+ 209 0106 05D9     		bls	.L10
+ 210              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 211 0108 194B     		ldr	r3, .L16+12
+ 212 010a 1B88     		ldrh	r3, [r3]
+ 213 010c 9BB2     		uxth	r3, r3
+ 214 010e B3F5AA7F 		cmp	r3, #340
+ 215 0112 17D3     		bcc	.L14
+ 216              	.L10:
+  86:Src/main.c    **** 				{
+  87:Src/main.c    **** 					HAL_UART_Transmit(&huart1,"BAD AIR\r\n\n", 10U, HAL_MAX_DELAY);
+  88:Src/main.c    **** 				}
+  89:Src/main.c    **** 				else
+  90:Src/main.c    **** 					if  (CO2_measurement_st.measured_value_u16 <= WORST_AIR_LEVEL_MAX)
+ 217              		.loc 1 90 0 is_stmt 1
+ 218 0114 164B     		ldr	r3, .L16+12
+ 219 0116 1B88     		ldrh	r3, [r3]
+ 220 0118 9BB2     		uxth	r3, r3
+ 221 011a B3F59C7F 		cmp	r3, #312
+ 222 011e 19D9     		bls	.L15
+ 223              	.L2:
+  91:Src/main.c    **** 					{
+  92:Src/main.c    **** 						HAL_UART_Transmit(&huart1,"VERY BAD AIR! GO OUT!\r\n\n", 24U, HAL_MAX_DELAY);
+  93:Src/main.c    **** 					}
+  94:Src/main.c    **** 
+  95:Src/main.c    **** }
+ 224              		.loc 1 95 0
+ 225 0120 05B0     		add	sp, sp, #20
+ 226              	.LCFI2:
+ 227              		.cfi_remember_state
+ 228              		.cfi_def_cfa_offset 12
+ 229              		@ sp needed
+ 230 0122 30BD     		pop	{r4, r5, pc}
+ 231              	.LVL15:
+ 232              	.L12:
+ 233              	.LCFI3:
+ 234              		.cfi_restore_state
+  77:Src/main.c    **** 		}
+ 235              		.loc 1 77 0
+ 236 0124 4FF0FF33 		mov	r3, #-1
+ 237 0128 0C22     		movs	r2, #12
+ 238 012a 1749     		ldr	r1, .L16+36
+ 239 012c 2846     		mov	r0, r5
+ 240 012e FFF7FEFF 		bl	HAL_UART_Transmit
+ 241              	.LVL16:
+ 242 0132 F5E7     		b	.L2
+ 243              	.L13:
+  82:Src/main.c    **** 			}
+ 244              		.loc 1 82 0
+ 245 0134 4FF0FF33 		mov	r3, #-1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 7
 
 
- 186 005e EEE7     		b	.L5
- 187              	.LVL18:
- 188              	.L13:
-  92:Src/main.c    **** 			}
- 189              		.loc 1 92 0
- 190 0060 4FF0FF33 		mov	r3, #-1
- 191 0064 0A22     		movs	r2, #10
- 192 0066 0949     		ldr	r1, .L15+12
- 193 0068 0648     		ldr	r0, .L15+4
- 194              	.LVL19:
- 195 006a FFF7FEFF 		bl	HAL_UART_Transmit
- 196              	.LVL20:
- 197 006e E6E7     		b	.L5
- 198              	.LVL21:
- 199              	.L14:
-  97:Src/main.c    **** 				}
- 200              		.loc 1 97 0
- 201 0070 4FF0FF33 		mov	r3, #-1
- 202 0074 1822     		movs	r2, #24
- 203 0076 0649     		ldr	r1, .L15+16
- 204 0078 0248     		ldr	r0, .L15+4
- 205              	.LVL22:
- 206 007a FFF7FEFF 		bl	HAL_UART_Transmit
- 207              	.LVL23:
- 208              		.loc 1 101 0
- 209 007e DEE7     		b	.L5
- 210              	.L16:
- 211              		.align	2
- 212              	.L15:
- 213 0080 00000000 		.word	.LC1
- 214 0084 00000000 		.word	huart1
- 215 0088 10000000 		.word	.LC2
- 216 008c 1C000000 		.word	.LC3
- 217 0090 28000000 		.word	.LC4
- 218              		.cfi_endproc
- 219              	.LFE128:
- 221              		.section	.text.send_data_uart,"ax",%progbits
- 222              		.align	1
- 223              		.global	send_data_uart
- 224              		.syntax unified
- 225              		.thumb
- 226              		.thumb_func
- 227              		.fpu fpv4-sp-d16
- 229              	send_data_uart:
- 230              	.LFB129:
- 102:Src/main.c    **** void send_data_uart(Measured_value_tst * Measured_value_pst)
- 103:Src/main.c    **** {
- 231              		.loc 1 103 0
- 232              		.cfi_startproc
- 233              		@ args = 0, pretend = 0, frame = 16
- 234              		@ frame_needed = 0, uses_anonymous_args = 0
- 235              	.LVL24:
- 236 0000 70B5     		push	{r4, r5, r6, lr}
- 237              	.LCFI4:
- 238              		.cfi_def_cfa_offset 16
- 239              		.cfi_offset 4, -16
- 240              		.cfi_offset 5, -12
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 7
+ 246 0138 0B22     		movs	r2, #11
+ 247 013a 1449     		ldr	r1, .L16+40
+ 248 013c 0F48     		ldr	r0, .L16+24
+ 249 013e FFF7FEFF 		bl	HAL_UART_Transmit
+ 250              	.LVL17:
+ 251 0142 EDE7     		b	.L2
+ 252              	.L14:
+  87:Src/main.c    **** 				}
+ 253              		.loc 1 87 0
+ 254 0144 4FF0FF33 		mov	r3, #-1
+ 255 0148 0A22     		movs	r2, #10
+ 256 014a 1149     		ldr	r1, .L16+44
+ 257 014c 0B48     		ldr	r0, .L16+24
+ 258 014e FFF7FEFF 		bl	HAL_UART_Transmit
+ 259              	.LVL18:
+ 260 0152 E5E7     		b	.L2
+ 261              	.L15:
+  92:Src/main.c    **** 					}
+ 262              		.loc 1 92 0
+ 263 0154 4FF0FF33 		mov	r3, #-1
+ 264 0158 1822     		movs	r2, #24
+ 265 015a 0E49     		ldr	r1, .L16+48
+ 266 015c 0748     		ldr	r0, .L16+24
+ 267 015e FFF7FEFF 		bl	HAL_UART_Transmit
+ 268              	.LVL19:
+ 269              		.loc 1 95 0
+ 270 0162 DDE7     		b	.L2
+ 271              	.L17:
+ 272              		.align	2
+ 273              	.L16:
+ 274 0164 00000000 		.word	.LANCHOR0
+ 275 0168 D34D6210 		.word	274877907
+ 276 016c 1F85EB51 		.word	1374389535
+ 277 0170 00000000 		.word	CO2_measurement_st
+ 278 0174 00000000 		.word	.LC0
+ 279 0178 04000000 		.word	.LC1
+ 280 017c 00000000 		.word	huart1
+ 281 0180 00000000 		.word	.LANCHOR1
+ 282 0184 14000000 		.word	.LC2
+ 283 0188 20000000 		.word	.LC3
+ 284 018c 30000000 		.word	.LC4
+ 285 0190 3C000000 		.word	.LC5
+ 286 0194 48000000 		.word	.LC6
+ 287              		.cfi_endproc
+ 288              	.LFE128:
+ 290              		.section	.text.SetTaskPending,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	SetTaskPending
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 296              		.fpu fpv4-sp-d16
+ 298              	SetTaskPending:
+ 299              	.LFB129:
+  96:Src/main.c    **** 
+  97:Src/main.c    **** 
+  98:Src/main.c    **** void (*TaskList[MAX_TASK])(void)={
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 8
 
 
- 241              		.cfi_offset 6, -8
- 242              		.cfi_offset 14, -4
- 243 0002 84B0     		sub	sp, sp, #16
- 244              	.LCFI5:
- 245              		.cfi_def_cfa_offset 32
- 246 0004 0646     		mov	r6, r0
- 247              	.LVL25:
- 104:Src/main.c    **** 	u8 uart_buffer_u8[10];
- 105:Src/main.c    **** 	u8 count =0;
- 106:Src/main.c    **** 	memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
- 248              		.loc 1 106 0
- 249 0006 0024     		movs	r4, #0
- 250 0008 0194     		str	r4, [sp, #4]
- 251 000a 0294     		str	r4, [sp, #8]
- 252 000c ADF80C40 		strh	r4, [sp, #12]	@ movhi
- 107:Src/main.c    **** 	sprintf(uart_buffer_u8,"%d", Measured_value_pst->measured_value_u16);
- 253              		.loc 1 107 0
- 254 0010 0288     		ldrh	r2, [r0]
- 255 0012 2749     		ldr	r1, .L23
- 256 0014 01A8     		add	r0, sp, #4
- 257              	.LVL26:
- 258 0016 FFF7FEFF 		bl	sprintf
- 259              	.LVL27:
- 108:Src/main.c    **** 	HAL_UART_Transmit(&huart1,"CO2 V value= ", 13U, HAL_MAX_DELAY);
- 260              		.loc 1 108 0
- 261 001a 4FF0FF33 		mov	r3, #-1
- 262 001e 0D22     		movs	r2, #13
- 263 0020 2449     		ldr	r1, .L23+4
- 264 0022 2548     		ldr	r0, .L23+8
- 265 0024 FFF7FEFF 		bl	HAL_UART_Transmit
- 266              	.LVL28:
- 105:Src/main.c    **** 	memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
- 267              		.loc 1 105 0
- 268 0028 2246     		mov	r2, r4
- 109:Src/main.c    **** 	while(uart_buffer_u8[count])
- 269              		.loc 1 109 0
- 270 002a 01E0     		b	.L18
- 271              	.LVL29:
- 272              	.L19:
- 110:Src/main.c    **** 		count++;
- 273              		.loc 1 110 0
- 274 002c 0132     		adds	r2, r2, #1
- 275              	.LVL30:
- 276 002e D2B2     		uxtb	r2, r2
- 277              	.LVL31:
- 278              	.L18:
- 109:Src/main.c    **** 	while(uart_buffer_u8[count])
- 279              		.loc 1 109 0
- 280 0030 04AB     		add	r3, sp, #16
- 281 0032 1344     		add	r3, r3, r2
- 282 0034 13F80C4C 		ldrb	r4, [r3, #-12]	@ zero_extendqisi2
- 283 0038 002C     		cmp	r4, #0
- 284 003a F7D1     		bne	.L19
- 111:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_buffer_u8,count, HAL_MAX_DELAY);
- 285              		.loc 1 111 0
- 286 003c 1E4D     		ldr	r5, .L23+8
- 287 003e 4FF0FF33 		mov	r3, #-1
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 8
+  99:Src/main.c    **** 		//			Task function	Task id		Task prio
+ 100:Src/main.c    **** 		Task1,
+ 101:Src/main.c    **** 		Task2,
+ 102:Src/main.c    **** 		Task3,
+ 103:Src/main.c    **** 
+ 104:Src/main.c    **** };
+ 105:Src/main.c    **** 
+ 106:Src/main.c    **** void SetTaskPending (_E_Task_Name TaskNr)
+ 107:Src/main.c    **** {
+ 300              		.loc 1 107 0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              		@ link register save eliminated.
+ 305              	.LVL20:
+ 108:Src/main.c    ****     if(TaskNr < MAX_TASK)
+ 306              		.loc 1 108 0
+ 307 0000 1028     		cmp	r0, #16
+ 308 0002 07D8     		bhi	.L18
+ 109:Src/main.c    ****     TaskParams_u16[TaskNr-1][TASK_PENDING]=1;
+ 309              		.loc 1 109 0
+ 310 0004 0138     		subs	r0, r0, #1
+ 311              	.LVL21:
+ 312 0006 00EB4000 		add	r0, r0, r0, lsl #1
+ 313 000a 8200     		lsls	r2, r0, #2
+ 314 000c 024B     		ldr	r3, .L20
+ 315 000e 1344     		add	r3, r3, r2
+ 316 0010 0122     		movs	r2, #1
+ 317 0012 1A81     		strh	r2, [r3, #8]	@ movhi
+ 318              	.L18:
+ 110:Src/main.c    **** }
+ 319              		.loc 1 110 0
+ 320 0014 7047     		bx	lr
+ 321              	.L21:
+ 322 0016 00BF     		.align	2
+ 323              	.L20:
+ 324 0018 00000000 		.word	.LANCHOR2
+ 325              		.cfi_endproc
+ 326              	.LFE129:
+ 328              		.section	.text.Task2,"ax",%progbits
+ 329              		.align	1
+ 330              		.global	Task2
+ 331              		.syntax unified
+ 332              		.thumb
+ 333              		.thumb_func
+ 334              		.fpu fpv4-sp-d16
+ 336              	Task2:
+ 337              	.LFB127:
+  35:Src/main.c    **** 	LED_ON
+ 338              		.loc 1 35 0
+ 339              		.cfi_startproc
+ 340              		@ args = 0, pretend = 0, frame = 0
+ 341              		@ frame_needed = 0, uses_anonymous_args = 0
+ 342 0000 10B5     		push	{r4, lr}
+ 343              	.LCFI4:
+ 344              		.cfi_def_cfa_offset 8
+ 345              		.cfi_offset 4, -8
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 9
 
 
- 288 0042 01A9     		add	r1, sp, #4
- 289 0044 2846     		mov	r0, r5
- 290 0046 FFF7FEFF 		bl	HAL_UART_Transmit
- 291              	.LVL32:
- 112:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_new_line_u8, 2U, HAL_MAX_DELAY);
- 292              		.loc 1 112 0
- 293 004a 4FF0FF33 		mov	r3, #-1
- 294 004e 0222     		movs	r2, #2
- 295 0050 1A49     		ldr	r1, .L23+12
- 296 0052 2846     		mov	r0, r5
- 297 0054 FFF7FEFF 		bl	HAL_UART_Transmit
- 298              	.LVL33:
- 113:Src/main.c    **** 	memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
- 299              		.loc 1 113 0
- 300 0058 0023     		movs	r3, #0
- 301 005a 0193     		str	r3, [sp, #4]
- 302 005c 0293     		str	r3, [sp, #8]
- 303 005e ADF80C30 		strh	r3, [sp, #12]	@ movhi
- 114:Src/main.c    **** 	sprintf(uart_buffer_u8,"%d", Measured_value_pst->measurmenet_counter_u16);
- 304              		.loc 1 114 0
- 305 0062 7288     		ldrh	r2, [r6, #2]
- 306 0064 1249     		ldr	r1, .L23
- 307 0066 01A8     		add	r0, sp, #4
- 308 0068 FFF7FEFF 		bl	sprintf
- 309              	.LVL34:
- 115:Src/main.c    **** 	HAL_UART_Transmit(&huart1,"Counter= ", 9U, HAL_MAX_DELAY);
- 310              		.loc 1 115 0
- 311 006c 4FF0FF33 		mov	r3, #-1
- 312 0070 0922     		movs	r2, #9
- 313 0072 1349     		ldr	r1, .L23+16
- 314 0074 2846     		mov	r0, r5
- 315 0076 FFF7FEFF 		bl	HAL_UART_Transmit
- 316              	.LVL35:
- 116:Src/main.c    **** 	count =0;
- 117:Src/main.c    **** 	while(uart_buffer_u8[count])
- 317              		.loc 1 117 0
- 318 007a 01E0     		b	.L20
- 319              	.LVL36:
- 320              	.L21:
- 118:Src/main.c    **** 		count++;
- 321              		.loc 1 118 0
- 322 007c 0134     		adds	r4, r4, #1
- 323              	.LVL37:
- 324 007e E4B2     		uxtb	r4, r4
- 325              	.LVL38:
- 326              	.L20:
- 117:Src/main.c    **** 		count++;
- 327              		.loc 1 117 0
- 328 0080 04AB     		add	r3, sp, #16
- 329 0082 2344     		add	r3, r3, r4
- 330 0084 13F80C3C 		ldrb	r3, [r3, #-12]	@ zero_extendqisi2
- 331 0088 002B     		cmp	r3, #0
- 332 008a F7D1     		bne	.L21
- 119:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_buffer_u8, count, HAL_MAX_DELAY);
- 333              		.loc 1 119 0
- 334 008c 0A4D     		ldr	r5, .L23+8
- 335 008e 4FF0FF33 		mov	r3, #-1
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 9
+ 346              		.cfi_offset 14, -4
+  36:Src/main.c    **** 	HAL_ADC_Start(&hadc1);
+ 347              		.loc 1 36 0
+ 348 0002 0122     		movs	r2, #1
+ 349 0004 2021     		movs	r1, #32
+ 350 0006 1448     		ldr	r0, .L26
+ 351 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 352              	.LVL22:
+  37:Src/main.c    **** 	HAL_Delay(DELAY_1_MS);
+ 353              		.loc 1 37 0
+ 354 000c 134C     		ldr	r4, .L26+4
+ 355 000e 2046     		mov	r0, r4
+ 356 0010 FFF7FEFF 		bl	HAL_ADC_Start
+ 357              	.LVL23:
+  38:Src/main.c    **** 	calc_adc_val_u32  += HAL_ADC_GetValue(&hadc1);
+ 358              		.loc 1 38 0
+ 359 0014 0120     		movs	r0, #1
+ 360 0016 FFF7FEFF 		bl	HAL_Delay
+ 361              	.LVL24:
+  39:Src/main.c    **** 	++local_counter_u16;
+ 362              		.loc 1 39 0
+ 363 001a 2046     		mov	r0, r4
+ 364 001c FFF7FEFF 		bl	HAL_ADC_GetValue
+ 365              	.LVL25:
+ 366 0020 0F4A     		ldr	r2, .L26+8
+ 367 0022 1368     		ldr	r3, [r2]
+ 368 0024 1844     		add	r0, r0, r3
+ 369 0026 1060     		str	r0, [r2]
+  40:Src/main.c    **** 	if (local_counter_u16 == NUMBER_OF_MEASUREMENTS)
+ 370              		.loc 1 40 0
+ 371 0028 0E4A     		ldr	r2, .L26+12
+ 372 002a 1388     		ldrh	r3, [r2]
+ 373 002c 0133     		adds	r3, r3, #1
+ 374 002e 9BB2     		uxth	r3, r3
+ 375 0030 1380     		strh	r3, [r2]	@ movhi
+  41:Src/main.c    **** 	   {
+ 376              		.loc 1 41 0
+ 377 0032 1388     		ldrh	r3, [r2]
+ 378 0034 9BB2     		uxth	r3, r3
+ 379 0036 B3F57A7F 		cmp	r3, #1000
+ 380 003a 05D0     		beq	.L25
+ 381              	.L23:
+  46:Src/main.c    **** }
+ 382              		.loc 1 46 0
+ 383 003c 0022     		movs	r2, #0
+ 384 003e 2021     		movs	r1, #32
+ 385 0040 0548     		ldr	r0, .L26
+ 386 0042 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 387              	.LVL26:
+  47:Src/main.c    **** 
+ 388              		.loc 1 47 0
+ 389 0046 10BD     		pop	{r4, pc}
+ 390              	.L25:
+ 391              	.LBB2:
+  43:Src/main.c    **** 		  SetTaskPending(Task_3);
+ 392              		.loc 1 43 0
+ 393 0048 1346     		mov	r3, r2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 10
 
 
- 336 0092 2246     		mov	r2, r4
- 337 0094 01A9     		add	r1, sp, #4
- 338 0096 2846     		mov	r0, r5
- 339 0098 FFF7FEFF 		bl	HAL_UART_Transmit
- 340              	.LVL39:
- 120:Src/main.c    **** 	HAL_UART_Transmit(&huart1,uart_new_line_u8, 2U, HAL_MAX_DELAY);
- 341              		.loc 1 120 0
- 342 009c 4FF0FF33 		mov	r3, #-1
- 343 00a0 0222     		movs	r2, #2
- 344 00a2 0649     		ldr	r1, .L23+12
- 345 00a4 2846     		mov	r0, r5
- 346 00a6 FFF7FEFF 		bl	HAL_UART_Transmit
- 347              	.LVL40:
- 121:Src/main.c    **** 
- 122:Src/main.c    **** }
- 348              		.loc 1 122 0
- 349 00aa 04B0     		add	sp, sp, #16
- 350              	.LCFI6:
- 351              		.cfi_def_cfa_offset 16
- 352              		@ sp needed
- 353 00ac 70BD     		pop	{r4, r5, r6, pc}
- 354              	.LVL41:
- 355              	.L24:
- 356 00ae 00BF     		.align	2
- 357              	.L23:
- 358 00b0 00000000 		.word	.LC0
- 359 00b4 00000000 		.word	.LC5
- 360 00b8 00000000 		.word	huart1
- 361 00bc 00000000 		.word	.LANCHOR0
- 362 00c0 10000000 		.word	.LC6
- 363              		.cfi_endproc
- 364              	.LFE129:
- 366              		.section	.text.get_co2_adc,"ax",%progbits
- 367              		.align	1
- 368              		.global	get_co2_adc
- 369              		.syntax unified
- 370              		.thumb
- 371              		.thumb_func
- 372              		.fpu fpv4-sp-d16
- 374              	get_co2_adc:
- 375              	.LFB127:
-  49:Src/main.c    **** 	HAL_ADC_Start(&hadc1);
- 376              		.loc 1 49 0
- 377              		.cfi_startproc
- 378              		@ args = 0, pretend = 0, frame = 0
- 379              		@ frame_needed = 0, uses_anonymous_args = 0
- 380              	.LVL42:
- 381 0000 38B5     		push	{r3, r4, r5, lr}
- 382              	.LCFI7:
- 383              		.cfi_def_cfa_offset 16
- 384              		.cfi_offset 3, -16
- 385              		.cfi_offset 4, -12
- 386              		.cfi_offset 5, -8
- 387              		.cfi_offset 14, -4
- 388 0002 0446     		mov	r4, r0
-  50:Src/main.c    **** 	HAL_Delay(DELAY_DEBUG);
- 389              		.loc 1 50 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 10
+ 394 004a 0022     		movs	r2, #0
+ 395 004c 1A80     		strh	r2, [r3]	@ movhi
+  44:Src/main.c    **** 		}
+ 396              		.loc 1 44 0
+ 397 004e 0320     		movs	r0, #3
+ 398 0050 FFF7FEFF 		bl	SetTaskPending
+ 399              	.LVL27:
+ 400 0054 F2E7     		b	.L23
+ 401              	.L27:
+ 402 0056 00BF     		.align	2
+ 403              	.L26:
+ 404 0058 00000240 		.word	1073872896
+ 405 005c 00000000 		.word	hadc1
+ 406 0060 00000000 		.word	.LANCHOR0
+ 407 0064 00000000 		.word	.LANCHOR3
+ 408              	.LBE2:
+ 409              		.cfi_endproc
+ 410              	.LFE127:
+ 412              		.section	.text.os_start,"ax",%progbits
+ 413              		.align	1
+ 414              		.global	os_start
+ 415              		.syntax unified
+ 416              		.thumb
+ 417              		.thumb_func
+ 418              		.fpu fpv4-sp-d16
+ 420              	os_start:
+ 421              	.LFB130:
+ 111:Src/main.c    **** 
+ 112:Src/main.c    **** 
+ 113:Src/main.c    **** u16 TaskParams_u16[MAX_TASK][MAX_TASK_PARAMS]={
+ 114:Src/main.c    **** 		           //Prio,		Periodic,	Period,		TicksToRun,	Pending, 	Running
+ 115:Src/main.c    **** 		/*1*/  		{0,			0,  		  0,		0,			0,			0}, //
+ 116:Src/main.c    **** 		/*2*/		{0,			1,			  ONEMINTASK,0,			0,			0}, //ADC read
+ 117:Src/main.c    **** 		/*3*/		{0,			0,			  0,	   	0,			0,			0}, //Average & send data to uart
+ 118:Src/main.c    **** 
+ 119:Src/main.c    **** };
+ 120:Src/main.c    **** 
+ 121:Src/main.c    **** //=================================The schedular for the 17 task's==========================//
+ 122:Src/main.c    **** void os_start( void )
+ 123:Src/main.c    **** {
+ 422              		.loc 1 123 0
+ 423              		.cfi_startproc
+ 424              		@ args = 0, pretend = 0, frame = 0
+ 425              		@ frame_needed = 0, uses_anonymous_args = 0
+ 426 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 427              	.LCFI5:
+ 428              		.cfi_def_cfa_offset 32
+ 429              		.cfi_offset 3, -32
+ 430              		.cfi_offset 4, -28
+ 431              		.cfi_offset 5, -24
+ 432              		.cfi_offset 6, -20
+ 433              		.cfi_offset 7, -16
+ 434              		.cfi_offset 8, -12
+ 435              		.cfi_offset 9, -8
+ 436              		.cfi_offset 14, -4
+ 437              	.L37:
+ 438              	.LVL28:
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 11
 
 
- 390 0004 224D     		ldr	r5, .L30
- 391 0006 2846     		mov	r0, r5
- 392              	.LVL43:
- 393 0008 FFF7FEFF 		bl	HAL_ADC_Start
- 394              	.LVL44:
-  51:Src/main.c    **** 	calc_adc_val_u32  += HAL_ADC_GetValue(&hadc1);
- 395              		.loc 1 51 0
- 396 000c 0520     		movs	r0, #5
- 397 000e FFF7FEFF 		bl	HAL_Delay
- 398              	.LVL45:
-  52:Src/main.c    **** 	if (local_counter_u16 == NUMBER_OF_MEASUREMENTS)
- 399              		.loc 1 52 0
- 400 0012 2846     		mov	r0, r5
- 401 0014 FFF7FEFF 		bl	HAL_ADC_GetValue
- 402              	.LVL46:
- 403 0018 1E4A     		ldr	r2, .L30+4
- 404 001a 1368     		ldr	r3, [r2]
- 405 001c 1844     		add	r0, r0, r3
- 406 001e 1060     		str	r0, [r2]
-  53:Src/main.c    **** 	   {
- 407              		.loc 1 53 0
- 408 0020 1D4B     		ldr	r3, .L30+8
- 409 0022 1B88     		ldrh	r3, [r3]
- 410 0024 B3F57A7F 		cmp	r3, #1000
- 411 0028 06D0     		beq	.L29
-  69:Src/main.c    **** 	      HAL_Delay(DELAY_DEBUG);
- 412              		.loc 1 69 0
- 413 002a 0133     		adds	r3, r3, #1
- 414 002c 1A4A     		ldr	r2, .L30+8
- 415 002e 1380     		strh	r3, [r2]	@ movhi
-  70:Src/main.c    **** 	}
- 416              		.loc 1 70 0
- 417 0030 0520     		movs	r0, #5
- 418 0032 FFF7FEFF 		bl	HAL_Delay
- 419              	.LVL47:
- 420              	.L25:
-  74:Src/main.c    **** #if (STD_ON == UART_1)
- 421              		.loc 1 74 0
- 422 0036 38BD     		pop	{r3, r4, r5, pc}
- 423              	.LVL48:
- 424              	.L29:
-  55:Src/main.c    **** 	      calc_adc_val_u32 = (calc_adc_val_u32 / NUMBER_OF_MEASUREMENTS);
- 425              		.loc 1 55 0
- 426 0038 184D     		ldr	r5, .L30+12
- 427 003a 0122     		movs	r2, #1
- 428 003c 2021     		movs	r1, #32
- 429 003e 2846     		mov	r0, r5
- 430 0040 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 431              	.LVL49:
-  56:Src/main.c    **** 	      Measured_value_pst->measured_value_u16 = SUBSTRACT25PROCENT(calc_adc_val_u32);
- 432              		.loc 1 56 0
- 433 0044 1349     		ldr	r1, .L30+4
- 434 0046 0B68     		ldr	r3, [r1]
- 435 0048 154A     		ldr	r2, .L30+16
- 436 004a A2FB0323 		umull	r2, r3, r2, r3
- 437 004e 9B09     		lsrs	r3, r3, #6
-  57:Src/main.c    **** 	      ++Measured_value_pst->measurmenet_counter_u16;
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 11
+ 124:Src/main.c    **** 	uint8_t     TaskCounter, PrioCounter;
+ 125:Src/main.c    **** 	while (1)
+ 126:Src/main.c    ****   {
+ 127:Src/main.c    **** 		//==================================Update Task list==============================//
+ 128:Src/main.c    **** 		for(TaskCounter=0; TaskCounter<MAX_TASK; TaskCounter++)
+ 439              		.loc 1 128 0
+ 440 0004 0023     		movs	r3, #0
+ 441 0006 09E0     		b	.L29
+ 442              	.LVL29:
+ 443              	.L31:
+ 129:Src/main.c    **** 		{
+ 130:Src/main.c    **** 			if(TaskParams_u16[TaskCounter][TASK_PERIODIC])
+ 131:Src/main.c    **** 			{
+ 132:Src/main.c    **** 				if(TaskParams_u16[TaskCounter][TASK_PERIOD] && TaskParams_u16[TaskCounter][TASK_TTR])
+ 133:Src/main.c    **** 				{
+ 134:Src/main.c    **** 					--TaskParams_u16[TaskCounter][TASK_TTR];
+ 135:Src/main.c    **** 				}
+ 136:Src/main.c    **** 				else
+ 137:Src/main.c    **** 				{
+ 138:Src/main.c    **** 					TaskParams_u16[TaskCounter][TASK_TTR] = TaskParams_u16[TaskCounter][TASK_PERIOD];
+ 444              		.loc 1 138 0
+ 445 0008 2B48     		ldr	r0, .L42
+ 446 000a 4A00     		lsls	r2, r1, #1
+ 447 000c 5618     		adds	r6, r2, r1
+ 448 000e B400     		lsls	r4, r6, #2
+ 449 0010 0444     		add	r4, r4, r0
+ 450 0012 E580     		strh	r5, [r4, #6]	@ movhi
+ 139:Src/main.c    **** 					TaskParams_u16[TaskCounter][TASK_PENDING] = 1;
+ 451              		.loc 1 139 0
+ 452 0014 0122     		movs	r2, #1
+ 453 0016 2281     		strh	r2, [r4, #8]	@ movhi
+ 454              	.L30:
+ 128:Src/main.c    **** 		{
+ 455              		.loc 1 128 0 discriminator 2
+ 456 0018 0133     		adds	r3, r3, #1
+ 457              	.LVL30:
+ 458 001a DBB2     		uxtb	r3, r3
+ 459              	.LVL31:
+ 460              	.L29:
+ 128:Src/main.c    **** 		{
+ 461              		.loc 1 128 0 is_stmt 0 discriminator 1
+ 462 001c 102B     		cmp	r3, #16
+ 463 001e 17D8     		bhi	.L40
+ 130:Src/main.c    **** 			{
+ 464              		.loc 1 130 0 is_stmt 1
+ 465 0020 1946     		mov	r1, r3
+ 466 0022 03EB4302 		add	r2, r3, r3, lsl #1
+ 467 0026 9000     		lsls	r0, r2, #2
+ 468 0028 234A     		ldr	r2, .L42
+ 469 002a 0244     		add	r2, r2, r0
+ 470 002c 5288     		ldrh	r2, [r2, #2]
+ 471 002e 002A     		cmp	r2, #0
+ 472 0030 F2D0     		beq	.L30
+ 132:Src/main.c    **** 				{
+ 473              		.loc 1 132 0
+ 474 0032 214A     		ldr	r2, .L42
+ 475 0034 0244     		add	r2, r2, r0
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 12
 
 
- 438              		.loc 1 57 0
- 439 0050 03EB8302 		add	r2, r3, r3, lsl #2
- 440 0054 02EB8202 		add	r2, r2, r2, lsl #2
- 441 0058 1248     		ldr	r0, .L30+20
- 442 005a A0FB0202 		umull	r0, r2, r0, r2
- 443 005e A3EB5213 		sub	r3, r3, r2, lsr #5
- 444 0062 0B60     		str	r3, [r1]
- 445 0064 9BB2     		uxth	r3, r3
- 446 0066 2380     		strh	r3, [r4]	@ movhi
-  58:Src/main.c    **** 	      calc_adc_val_u32 = 0U;
- 447              		.loc 1 58 0
- 448 0068 6388     		ldrh	r3, [r4, #2]
- 449 006a 0133     		adds	r3, r3, #1
- 450 006c 9BB2     		uxth	r3, r3
- 451 006e 6380     		strh	r3, [r4, #2]	@ movhi
-  59:Src/main.c    **** 	      local_counter_u16 = 0U;
- 452              		.loc 1 59 0
- 453 0070 0022     		movs	r2, #0
- 454 0072 0A60     		str	r2, [r1]
-  60:Src/main.c    **** 	      LED_OFF
- 455              		.loc 1 60 0
- 456 0074 084B     		ldr	r3, .L30+8
- 457 0076 1A80     		strh	r2, [r3]	@ movhi
-  61:Src/main.c    **** #if (STD_ON == UART_1)
- 458              		.loc 1 61 0
- 459 0078 2021     		movs	r1, #32
- 460 007a 2846     		mov	r0, r5
- 461 007c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 462              	.LVL50:
-  63:Src/main.c    **** 	      air_quality_calc(&CO2_measurement_pst);
- 463              		.loc 1 63 0
- 464 0080 094C     		ldr	r4, .L30+24
- 465              	.LVL51:
- 466 0082 2046     		mov	r0, r4
- 467 0084 FFF7FEFF 		bl	send_data_uart
- 468              	.LVL52:
-  64:Src/main.c    **** #endif
- 469              		.loc 1 64 0
- 470 0088 2046     		mov	r0, r4
- 471 008a FFF7FEFF 		bl	air_quality_calc
- 472              	.LVL53:
- 473 008e D2E7     		b	.L25
- 474              	.L31:
- 475              		.align	2
- 476              	.L30:
- 477 0090 00000000 		.word	hadc1
- 478 0094 00000000 		.word	.LANCHOR1
- 479 0098 00000000 		.word	.LANCHOR2
- 480 009c 00000240 		.word	1073872896
- 481 00a0 D34D6210 		.word	274877907
- 482 00a4 1F85EB51 		.word	1374389535
- 483 00a8 00000000 		.word	.LANCHOR3
- 484              		.cfi_endproc
- 485              	.LFE127:
- 487              		.section	.text.main,"ax",%progbits
- 488              		.align	1
- 489              		.global	main
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 12
+ 476 0036 9588     		ldrh	r5, [r2, #4]
+ 477 0038 002D     		cmp	r5, #0
+ 478 003a E5D0     		beq	.L31
+ 132:Src/main.c    **** 				{
+ 479              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 480 003c 1E4A     		ldr	r2, .L42
+ 481 003e 0244     		add	r2, r2, r0
+ 482 0040 D288     		ldrh	r2, [r2, #6]
+ 483 0042 002A     		cmp	r2, #0
+ 484 0044 E0D0     		beq	.L31
+ 134:Src/main.c    **** 				}
+ 485              		.loc 1 134 0 is_stmt 1
+ 486 0046 1C49     		ldr	r1, .L42
+ 487 0048 0144     		add	r1, r1, r0
+ 488 004a 013A     		subs	r2, r2, #1
+ 489 004c CA80     		strh	r2, [r1, #6]	@ movhi
+ 490 004e E3E7     		b	.L30
+ 491              	.L40:
+ 140:Src/main.c    **** 				}
+ 141:Src/main.c    **** 			}
+ 142:Src/main.c    **** 		}
+ 143:Src/main.c    **** 		//=========================================================================//
+ 144:Src/main.c    **** 
+ 145:Src/main.c    **** 		//====================================Tasker=================================//
+ 146:Src/main.c    **** 		PrioCounter = 0;
+ 147:Src/main.c    **** 		TaskCounter = 0;
+ 148:Src/main.c    **** 		for(PrioCounter=0; PrioCounter<MAX_TASK_PRIO; PrioCounter++)
+ 492              		.loc 1 148 0
+ 493 0050 0026     		movs	r6, #0
+ 494 0052 2CE0     		b	.L33
+ 495              	.LVL32:
+ 496              	.L34:
+ 149:Src/main.c    **** 		{
+ 150:Src/main.c    **** 			for(TaskCounter=0; TaskCounter<MAX_TASK; TaskCounter++)
+ 497              		.loc 1 150 0 discriminator 2
+ 498 0054 0134     		adds	r4, r4, #1
+ 499              	.LVL33:
+ 500 0056 E4B2     		uxtb	r4, r4
+ 501              	.LVL34:
+ 502              	.L36:
+ 503              		.loc 1 150 0 is_stmt 0 discriminator 1
+ 504 0058 102C     		cmp	r4, #16
+ 505 005a 26D8     		bhi	.L41
+ 151:Src/main.c    **** 			{
+ 152:Src/main.c    **** 				if(TaskParams_u16[TaskCounter][TASK_PRIO]==PrioCounter && TaskParams_u16[TaskCounter][TASK_PEND
+ 506              		.loc 1 152 0 is_stmt 1
+ 507 005c 2546     		mov	r5, r4
+ 508 005e 04EB4402 		add	r2, r4, r4, lsl #1
+ 509 0062 9300     		lsls	r3, r2, #2
+ 510 0064 144A     		ldr	r2, .L42
+ 511 0066 D25A     		ldrh	r2, [r2, r3]
+ 512 0068 B3B2     		uxth	r3, r6
+ 513 006a 9A42     		cmp	r2, r3
+ 514 006c F2D1     		bne	.L34
+ 515              		.loc 1 152 0 is_stmt 0 discriminator 1
+ 516 006e 04EB4403 		add	r3, r4, r4, lsl #1
+ 517 0072 9A00     		lsls	r2, r3, #2
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 13
 
 
- 490              		.syntax unified
- 491              		.thumb
- 492              		.thumb_func
- 493              		.fpu fpv4-sp-d16
- 495              	main:
- 496              	.LFB130:
- 123:Src/main.c    **** #endif
- 124:Src/main.c    **** 
- 125:Src/main.c    **** 
- 126:Src/main.c    **** int main(void)
- 127:Src/main.c    **** {
- 497              		.loc 1 127 0
- 498              		.cfi_startproc
- 499              		@ Volatile: function does not return.
- 500              		@ args = 0, pretend = 0, frame = 0
- 501              		@ frame_needed = 0, uses_anonymous_args = 0
- 502 0000 08B5     		push	{r3, lr}
- 503              	.LCFI8:
- 504              		.cfi_def_cfa_offset 8
- 505              		.cfi_offset 3, -8
- 506              		.cfi_offset 14, -4
- 128:Src/main.c    **** 	HAL_Init();
- 507              		.loc 1 128 0
- 508 0002 FFF7FEFF 		bl	HAL_Init
- 509              	.LVL54:
- 129:Src/main.c    **** 	SystemClock_Config();
- 510              		.loc 1 129 0
- 511 0006 FFF7FEFF 		bl	SystemClock_Config
- 512              	.LVL55:
- 130:Src/main.c    **** 
- 131:Src/main.c    **** #if (STD_ON == GPIO_ON)
- 132:Src/main.c    **** 	MX_GPIO_Init();
- 513              		.loc 1 132 0
- 514 000a FFF7FEFF 		bl	MX_GPIO_Init
- 515              	.LVL56:
- 133:Src/main.c    **** #endif
- 134:Src/main.c    **** 
- 135:Src/main.c    **** #if (STD_ON == ADC_1)
- 136:Src/main.c    **** 	MX_ADC1_Init();
- 516              		.loc 1 136 0
- 517 000e FFF7FEFF 		bl	MX_ADC1_Init
- 518              	.LVL57:
- 137:Src/main.c    **** #endif
- 138:Src/main.c    **** 
- 139:Src/main.c    **** #if (STD_ON == I2C_1)
- 140:Src/main.c    **** 	MX_I2C1_Init();
- 141:Src/main.c    **** #endif
- 142:Src/main.c    **** 
- 143:Src/main.c    **** #if (STD_ON == UART_1)
- 144:Src/main.c    **** 	MX_USART1_UART_Init();
- 519              		.loc 1 144 0
- 520 0012 FFF7FEFF 		bl	MX_USART1_UART_Init
- 521              	.LVL58:
- 145:Src/main.c    **** 	Board_init();
- 522              		.loc 1 145 0
- 523 0016 FFF7FEFF 		bl	Board_init
- 524              	.LVL59:
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 13
+ 518 0074 104B     		ldr	r3, .L42
+ 519 0076 1344     		add	r3, r3, r2
+ 520 0078 1B89     		ldrh	r3, [r3, #8]
+ 521 007a 002B     		cmp	r3, #0
+ 522 007c EAD0     		beq	.L34
+ 153:Src/main.c    **** 				{
+ 154:Src/main.c    **** 					TaskParams_u16[TaskCounter][TASK_PENDING]=0;
+ 523              		.loc 1 154 0 is_stmt 1
+ 524 007e DFF83880 		ldr	r8, .L42
+ 525 0082 6700     		lsls	r7, r4, #1
+ 526 0084 3A19     		adds	r2, r7, r4
+ 527 0086 9300     		lsls	r3, r2, #2
+ 528 0088 4344     		add	r3, r3, r8
+ 529 008a 4FF00009 		mov	r9, #0
+ 530 008e A3F80890 		strh	r9, [r3, #8]	@ movhi
+ 155:Src/main.c    **** 					TaskParams_u16[TaskCounter][TASK_RUNNING]=1;
+ 531              		.loc 1 155 0
+ 532 0092 0122     		movs	r2, #1
+ 533 0094 5A81     		strh	r2, [r3, #10]	@ movhi
+ 156:Src/main.c    **** 					(*TaskList[TaskCounter])();
+ 534              		.loc 1 156 0
+ 535 0096 094B     		ldr	r3, .L42+4
+ 536 0098 53F82430 		ldr	r3, [r3, r4, lsl #2]
+ 537 009c 9847     		blx	r3
+ 538              	.LVL35:
+ 157:Src/main.c    **** 					TaskParams_u16[TaskCounter][TASK_RUNNING]=0;
+ 539              		.loc 1 157 0
+ 540 009e 3D44     		add	r5, r5, r7
+ 541 00a0 AB00     		lsls	r3, r5, #2
+ 542 00a2 9844     		add	r8, r8, r3
+ 543 00a4 A8F80A90 		strh	r9, [r8, #10]	@ movhi
+ 544 00a8 D4E7     		b	.L34
+ 545              	.L41:
+ 148:Src/main.c    **** 		{
+ 546              		.loc 1 148 0 discriminator 2
+ 547 00aa 0136     		adds	r6, r6, #1
+ 548              	.LVL36:
+ 549 00ac F6B2     		uxtb	r6, r6
+ 550              	.LVL37:
+ 551              	.L33:
+ 148:Src/main.c    **** 		{
+ 552              		.loc 1 148 0 is_stmt 0 discriminator 1
+ 553 00ae 012E     		cmp	r6, #1
+ 554 00b0 A8D8     		bhi	.L37
+ 150:Src/main.c    **** 			{
+ 555              		.loc 1 150 0 is_stmt 1
+ 556 00b2 0024     		movs	r4, #0
+ 557 00b4 D0E7     		b	.L36
+ 558              	.L43:
+ 559 00b6 00BF     		.align	2
+ 560              	.L42:
+ 561 00b8 00000000 		.word	.LANCHOR2
+ 562 00bc 00000000 		.word	.LANCHOR4
+ 563              		.cfi_endproc
+ 564              	.LFE130:
+ 566              		.section	.text.HAL_ADC_ConvCpltCallback,"ax",%progbits
+ 567              		.align	1
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 14
 
 
- 525              	.L33:
- 146:Src/main.c    **** #endif
- 147:Src/main.c    **** 
- 148:Src/main.c    **** 	while(1)
- 149:Src/main.c    **** 	   {
- 150:Src/main.c    **** 	      get_co2_adc(&CO2_measurement_pst);
- 526              		.loc 1 150 0 discriminator 1
- 527 001a 0248     		ldr	r0, .L35
- 528 001c FFF7FEFF 		bl	get_co2_adc
- 529              	.LVL60:
- 530 0020 FBE7     		b	.L33
- 531              	.L36:
- 532 0022 00BF     		.align	2
- 533              	.L35:
- 534 0024 00000000 		.word	.LANCHOR3
- 535              		.cfi_endproc
- 536              	.LFE130:
- 538              		.section	.text._Error_Handler,"ax",%progbits
- 539              		.align	1
- 540              		.global	_Error_Handler
- 541              		.syntax unified
- 542              		.thumb
- 543              		.thumb_func
- 544              		.fpu fpv4-sp-d16
- 546              	_Error_Handler:
- 547              	.LFB131:
- 151:Src/main.c    **** 	   }
- 152:Src/main.c    **** 
- 153:Src/main.c    **** }
- 154:Src/main.c    **** 
- 155:Src/main.c    **** void _Error_Handler(char *file, int line)
- 156:Src/main.c    **** {
- 548              		.loc 1 156 0
- 549              		.cfi_startproc
- 550              		@ Volatile: function does not return.
- 551              		@ args = 0, pretend = 0, frame = 0
- 552              		@ frame_needed = 0, uses_anonymous_args = 0
- 553              		@ link register save eliminated.
- 554              	.LVL61:
- 555              	.L38:
- 556 0000 FEE7     		b	.L38
- 557              		.cfi_endproc
- 558              	.LFE131:
- 560              		.global	uart_new_line_u8
- 561              		.global	local_counter_u16
- 562              		.global	calc_adc_val_u32
- 563              		.global	CO2_measurement_pst
- 564              		.comm	huart1,64,4
- 565              		.comm	hadc1,72,4
- 566              		.section	.bss.CO2_measurement_pst,"aw",%nobits
- 567              		.align	2
- 568              		.set	.LANCHOR3,. + 0
- 571              	CO2_measurement_pst:
- 572 0000 00000000 		.space	4
- 573              		.section	.bss.calc_adc_val_u32,"aw",%nobits
- 574              		.align	2
- 575              		.set	.LANCHOR1,. + 0
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 14
+ 568              		.global	HAL_ADC_ConvCpltCallback
+ 569              		.syntax unified
+ 570              		.thumb
+ 571              		.thumb_func
+ 572              		.fpu fpv4-sp-d16
+ 574              	HAL_ADC_ConvCpltCallback:
+ 575              	.LFB131:
+ 158:Src/main.c    **** 				}
+ 159:Src/main.c    **** 			}
+ 160:Src/main.c    **** 		}
+ 161:Src/main.c    **** 	}
+ 162:Src/main.c    **** }
+ 163:Src/main.c    **** 
+ 164:Src/main.c    **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+ 165:Src/main.c    **** {
+ 576              		.loc 1 165 0
+ 577              		.cfi_startproc
+ 578              		@ args = 0, pretend = 0, frame = 0
+ 579              		@ frame_needed = 0, uses_anonymous_args = 0
+ 580              		@ link register save eliminated.
+ 581              	.LVL38:
+ 166:Src/main.c    **** 
+ 167:Src/main.c    **** }
+ 582              		.loc 1 167 0
+ 583 0000 7047     		bx	lr
+ 584              		.cfi_endproc
+ 585              	.LFE131:
+ 587              		.section	.text.main,"ax",%progbits
+ 588              		.align	1
+ 589              		.global	main
+ 590              		.syntax unified
+ 591              		.thumb
+ 592              		.thumb_func
+ 593              		.fpu fpv4-sp-d16
+ 595              	main:
+ 596              	.LFB132:
+ 168:Src/main.c    **** 
+ 169:Src/main.c    **** 
+ 170:Src/main.c    **** int main(void)
+ 171:Src/main.c    **** {
+ 597              		.loc 1 171 0
+ 598              		.cfi_startproc
+ 599              		@ Volatile: function does not return.
+ 600              		@ args = 0, pretend = 0, frame = 0
+ 601              		@ frame_needed = 0, uses_anonymous_args = 0
+ 602 0000 08B5     		push	{r3, lr}
+ 603              	.LCFI6:
+ 604              		.cfi_def_cfa_offset 8
+ 605              		.cfi_offset 3, -8
+ 606              		.cfi_offset 14, -4
+ 172:Src/main.c    **** 	HAL_Init();
+ 607              		.loc 1 172 0
+ 608 0002 FFF7FEFF 		bl	HAL_Init
+ 609              	.LVL39:
+ 173:Src/main.c    **** 	SystemClock_Config();
+ 610              		.loc 1 173 0
+ 611 0006 FFF7FEFF 		bl	SystemClock_Config
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 15
 
 
- 578              	calc_adc_val_u32:
- 579 0000 00000000 		.space	4
- 580              		.section	.bss.local_counter_u16,"aw",%nobits
- 581              		.align	1
- 582              		.set	.LANCHOR2,. + 0
- 585              	local_counter_u16:
- 586 0000 0000     		.space	2
- 587              		.section	.data.uart_new_line_u8,"aw",%progbits
- 588              		.align	2
- 589              		.set	.LANCHOR0,. + 0
- 592              	uart_new_line_u8:
- 593 0000 0D0A     		.ascii	"\015\012"
- 594              		.section	.rodata.air_quality_calc.str1.4,"aMS",%progbits,1
- 595              		.align	2
- 596              	.LC1:
- 597 0000 47524545 		.ascii	"GREEN AIR\015\012\012\000"
- 597      4E204149 
- 597      520D0A0A 
- 597      00
- 598 000d 000000   		.space	3
- 599              	.LC2:
- 600 0010 474F4F44 		.ascii	"GOOD AIR\015\012\012\000"
- 600      20414952 
- 600      0D0A0A00 
- 601              	.LC3:
- 602 001c 42414420 		.ascii	"BAD AIR\015\012\012\000"
- 602      4149520D 
- 602      0A0A00
- 603 0027 00       		.space	1
- 604              	.LC4:
- 605 0028 56455259 		.ascii	"VERY BAD AIR! GO OUT!\015\012\012\000"
- 605      20424144 
- 605      20414952 
- 605      2120474F 
- 605      204F5554 
- 606              		.section	.rodata.debug_check.str1.4,"aMS",%progbits,1
- 607              		.align	2
- 608              	.LC0:
- 609 0000 256400   		.ascii	"%d\000"
- 610              		.section	.rodata.send_data_uart.str1.4,"aMS",%progbits,1
- 611              		.align	2
- 612              	.LC5:
- 613 0000 434F3220 		.ascii	"CO2 V value= \000"
- 613      56207661 
- 613      6C75653D 
- 613      2000
- 614 000e 0000     		.space	2
- 615              	.LC6:
- 616 0010 436F756E 		.ascii	"Counter= \000"
- 616      7465723D 
- 616      2000
- 617              		.text
- 618              	.Letext0:
- 619              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 620              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 621              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 622              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 15
+ 612              	.LVL40:
+ 174:Src/main.c    **** 	CO2_measurement_st.measured_value_u16 = 0U;
+ 613              		.loc 1 174 0
+ 614 000a 074B     		ldr	r3, .L47
+ 615 000c 0022     		movs	r2, #0
+ 616 000e 1A80     		strh	r2, [r3]	@ movhi
+ 175:Src/main.c    **** 	CO2_measurement_st.measurmenet_counter_u16 = 0U;
+ 617              		.loc 1 175 0
+ 618 0010 5A80     		strh	r2, [r3, #2]	@ movhi
+ 176:Src/main.c    **** #if (STD_ON == GPIO_ON)
+ 177:Src/main.c    **** 	MX_GPIO_Init();
+ 619              		.loc 1 177 0
+ 620 0012 FFF7FEFF 		bl	MX_GPIO_Init
+ 621              	.LVL41:
+ 178:Src/main.c    **** #endif
+ 179:Src/main.c    **** 
+ 180:Src/main.c    **** #if (STD_ON == ADC_1)
+ 181:Src/main.c    **** 	MX_ADC1_Init();
+ 622              		.loc 1 181 0
+ 623 0016 FFF7FEFF 		bl	MX_ADC1_Init
+ 624              	.LVL42:
+ 182:Src/main.c    **** #endif
+ 183:Src/main.c    **** 
+ 184:Src/main.c    **** #if (STD_ON == I2C_1)
+ 185:Src/main.c    **** 	MX_I2C1_Init();
+ 186:Src/main.c    **** #endif
+ 187:Src/main.c    **** 
+ 188:Src/main.c    **** #if (STD_ON == UART_1)
+ 189:Src/main.c    **** 	MX_USART1_UART_Init();
+ 625              		.loc 1 189 0
+ 626 001a FFF7FEFF 		bl	MX_USART1_UART_Init
+ 627              	.LVL43:
+ 190:Src/main.c    **** 	Board_init();
+ 628              		.loc 1 190 0
+ 629 001e FFF7FEFF 		bl	Board_init
+ 630              	.LVL44:
+ 191:Src/main.c    **** #endif
+ 192:Src/main.c    **** 
+ 193:Src/main.c    **** 	os_start();
+ 631              		.loc 1 193 0
+ 632 0022 FFF7FEFF 		bl	os_start
+ 633              	.LVL45:
+ 634              	.L48:
+ 635 0026 00BF     		.align	2
+ 636              	.L47:
+ 637 0028 00000000 		.word	CO2_measurement_st
+ 638              		.cfi_endproc
+ 639              	.LFE132:
+ 641              		.section	.text._Error_Handler,"ax",%progbits
+ 642              		.align	1
+ 643              		.global	_Error_Handler
+ 644              		.syntax unified
+ 645              		.thumb
+ 646              		.thumb_func
+ 647              		.fpu fpv4-sp-d16
+ 649              	_Error_Handler:
+ 650              	.LFB133:
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 16
 
 
- 623              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 624              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 625              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 626              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
- 627              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 628              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 629              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 630              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
- 631              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 632              		.file 15 "Inc/generic.h"
- 633              		.file 16 "Inc/init.h"
- 634              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 635              		.file 18 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 636              		.file 19 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 637              		.file 20 "<built-in>"
-ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s 			page 16
+ 194:Src/main.c    **** 
+ 195:Src/main.c    **** }
+ 196:Src/main.c    **** 
+ 197:Src/main.c    **** void _Error_Handler(char *file, int line)
+ 198:Src/main.c    **** {
+ 651              		.loc 1 198 0
+ 652              		.cfi_startproc
+ 653              		@ Volatile: function does not return.
+ 654              		@ args = 0, pretend = 0, frame = 0
+ 655              		@ frame_needed = 0, uses_anonymous_args = 0
+ 656              		@ link register save eliminated.
+ 657              	.LVL46:
+ 658              	.L50:
+ 659 0000 FEE7     		b	.L50
+ 660              		.cfi_endproc
+ 661              	.LFE133:
+ 663              		.global	TaskList
+ 664              		.global	uart_new_line_u8
+ 665              		.global	local_counter_u16
+ 666              		.global	calc_adc_val_u32
+ 667              		.comm	CO2_measurement_st,4,4
+ 668              		.global	TaskParams_u16
+ 669              		.comm	huart1,64,4
+ 670              		.comm	hadc1,72,4
+ 671              		.section	.bss.calc_adc_val_u32,"aw",%nobits
+ 672              		.align	2
+ 673              		.set	.LANCHOR0,. + 0
+ 676              	calc_adc_val_u32:
+ 677 0000 00000000 		.space	4
+ 678              		.section	.bss.local_counter_u16,"aw",%nobits
+ 679              		.align	1
+ 680              		.set	.LANCHOR3,. + 0
+ 683              	local_counter_u16:
+ 684 0000 0000     		.space	2
+ 685              		.section	.data.TaskList,"aw",%progbits
+ 686              		.align	2
+ 687              		.set	.LANCHOR4,. + 0
+ 690              	TaskList:
+ 691 0000 00000000 		.word	Task1
+ 692 0004 00000000 		.word	Task2
+ 693 0008 00000000 		.word	Task3
+ 694 000c 00000000 		.space	56
+ 694      00000000 
+ 694      00000000 
+ 694      00000000 
+ 694      00000000 
+ 695              		.section	.data.TaskParams_u16,"aw",%progbits
+ 696              		.align	2
+ 697              		.set	.LANCHOR2,. + 0
+ 700              	TaskParams_u16:
+ 701 0000 0000     		.short	0
+ 702 0002 0000     		.short	0
+ 703 0004 0000     		.short	0
+ 704 0006 0000     		.short	0
+ 705 0008 0000     		.short	0
+ 706 000a 0000     		.short	0
+ 707 000c 0000     		.short	0
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 17
+
+
+ 708 000e 0100     		.short	1
+ 709 0010 9803     		.short	920
+ 710 0012 0000     		.short	0
+ 711 0014 0000     		.short	0
+ 712 0016 0000     		.short	0
+ 713 0018 0000     		.short	0
+ 714 001a 0000     		.short	0
+ 715 001c 0000     		.short	0
+ 716 001e 0000     		.short	0
+ 717 0020 0000     		.short	0
+ 718 0022 0000     		.short	0
+ 719 0024 00000000 		.space	168
+ 719      00000000 
+ 719      00000000 
+ 719      00000000 
+ 719      00000000 
+ 720              		.section	.data.TimingDelay_u32,"aw",%progbits
+ 721              		.align	2
+ 724              	TimingDelay_u32:
+ 725 0000 01000000 		.word	1
+ 726              		.section	.data.uart_new_line_u8,"aw",%progbits
+ 727              		.align	2
+ 728              		.set	.LANCHOR1,. + 0
+ 731              	uart_new_line_u8:
+ 732 0000 0D0A     		.ascii	"\015\012"
+ 733              		.section	.rodata.Task3.str1.4,"aMS",%progbits,1
+ 734              		.align	2
+ 735              	.LC0:
+ 736 0000 256400   		.ascii	"%d\000"
+ 737 0003 00       		.space	1
+ 738              	.LC1:
+ 739 0004 434F3220 		.ascii	"CO2 V value= \000"
+ 739      56207661 
+ 739      6C75653D 
+ 739      2000
+ 740 0012 0000     		.space	2
+ 741              	.LC2:
+ 742 0014 436F756E 		.ascii	"Counter= \000"
+ 742      7465723D 
+ 742      2000
+ 743 001e 0000     		.space	2
+ 744              	.LC3:
+ 745 0020 47524545 		.ascii	"GREEN AIR\015\012\012\000"
+ 745      4E204149 
+ 745      520D0A0A 
+ 745      00
+ 746 002d 000000   		.space	3
+ 747              	.LC4:
+ 748 0030 474F4F44 		.ascii	"GOOD AIR\015\012\012\000"
+ 748      20414952 
+ 748      0D0A0A00 
+ 749              	.LC5:
+ 750 003c 42414420 		.ascii	"BAD AIR\015\012\012\000"
+ 750      4149520D 
+ 750      0A0A00
+ 751 0047 00       		.space	1
+ 752              	.LC6:
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 18
+
+
+ 753 0048 56455259 		.ascii	"VERY BAD AIR! GO OUT!\015\012\012\000"
+ 753      20424144 
+ 753      20414952 
+ 753      2120474F 
+ 753      204F5554 
+ 754              		.text
+ 755              	.Letext0:
+ 756              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 757              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 758              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 759              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 760              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 761              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 762              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 763              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
+ 764              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 765              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 766              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 767              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 768              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 769              		.file 15 "Inc/generic.h"
+ 770              		.file 16 "Inc/init.h"
+ 771              		.file 17 "Inc/main.h"
+ 772              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 773              		.file 19 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 774              		.file 20 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 775              		.file 21 "<built-in>"
+ARM GAS  C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:18     .text.debug_check:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:25     .text.debug_check:00000000 debug_check
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:102    .text.debug_check:00000060 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:18     .text.Task1:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:25     .text.Task1:00000000 Task1
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:39     .text.Task3:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:46     .text.Task3:00000000 Task3
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:274    .text.Task3:00000164 $d
+                            *COM*:00000004 CO2_measurement_st
                             *COM*:00000040 huart1
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:110    .text.air_quality_calc:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:117    .text.air_quality_calc:00000000 air_quality_calc
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:213    .text.air_quality_calc:00000080 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:222    .text.send_data_uart:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:229    .text.send_data_uart:00000000 send_data_uart
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:358    .text.send_data_uart:000000b0 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:367    .text.get_co2_adc:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:374    .text.get_co2_adc:00000000 get_co2_adc
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:477    .text.get_co2_adc:00000090 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:291    .text.SetTaskPending:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:298    .text.SetTaskPending:00000000 SetTaskPending
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:324    .text.SetTaskPending:00000018 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:329    .text.Task2:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:336    .text.Task2:00000000 Task2
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:404    .text.Task2:00000058 $d
                             *COM*:00000048 hadc1
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:488    .text.main:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:495    .text.main:00000000 main
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:534    .text.main:00000024 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:539    .text._Error_Handler:00000000 $t
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:546    .text._Error_Handler:00000000 _Error_Handler
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:592    .data.uart_new_line_u8:00000000 uart_new_line_u8
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:585    .bss.local_counter_u16:00000000 local_counter_u16
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:578    .bss.calc_adc_val_u32:00000000 calc_adc_val_u32
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:571    .bss.CO2_measurement_pst:00000000 CO2_measurement_pst
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:567    .bss.CO2_measurement_pst:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:574    .bss.calc_adc_val_u32:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:581    .bss.local_counter_u16:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:588    .data.uart_new_line_u8:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:595    .rodata.air_quality_calc.str1.4:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:607    .rodata.debug_check.str1.4:00000000 $d
-C:\Users\dragos.nicolae\AppData\Local\Temp\ccA84dNS.s:611    .rodata.send_data_uart.str1.4:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:413    .text.os_start:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:420    .text.os_start:00000000 os_start
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:561    .text.os_start:000000b8 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:567    .text.HAL_ADC_ConvCpltCallback:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:574    .text.HAL_ADC_ConvCpltCallback:00000000 HAL_ADC_ConvCpltCallback
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:588    .text.main:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:595    .text.main:00000000 main
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:637    .text.main:00000028 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:642    .text._Error_Handler:00000000 $t
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:649    .text._Error_Handler:00000000 _Error_Handler
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:690    .data.TaskList:00000000 TaskList
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:731    .data.uart_new_line_u8:00000000 uart_new_line_u8
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:683    .bss.local_counter_u16:00000000 local_counter_u16
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:676    .bss.calc_adc_val_u32:00000000 calc_adc_val_u32
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:700    .data.TaskParams_u16:00000000 TaskParams_u16
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:672    .bss.calc_adc_val_u32:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:679    .bss.local_counter_u16:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:686    .data.TaskList:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:696    .data.TaskParams_u16:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:721    .data.TimingDelay_u32:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:724    .data.TimingDelay_u32:00000000 TimingDelay_u32
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:727    .data.uart_new_line_u8:00000000 $d
+C:\Users\dragos.nicolae\AppData\Local\Temp\cc1AjdqD.s:734    .rodata.Task3.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
-HAL_GPIO_WritePin
-HAL_Delay
 sprintf
 HAL_UART_Transmit
+HAL_GPIO_WritePin
 HAL_ADC_Start
+HAL_Delay
 HAL_ADC_GetValue
 HAL_Init
 SystemClock_Config
