@@ -27,4 +27,9 @@ void MX_USART1_UART_Init(void);
 void Board_init(void);
 #endif
 
+#if (STD_ON == UART_2)
+UART_HandleTypeDef huart2;
+void MX_USART2_UART_Init(void);
+#endif
+
 #endif /* __INIT_H__ */

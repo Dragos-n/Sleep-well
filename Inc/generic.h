@@ -21,6 +21,7 @@
 #define DEBUG_MODE					(STD_ON)
 #define GPIO_ON						(STD_ON)
 #define UART_1						(STD_ON)
+#define UART_2						(STD_ON)
 #define ADC_1						(STD_ON)
 #define I2C_1						(STD_OFF)
 
