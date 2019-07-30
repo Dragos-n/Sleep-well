@@ -23,9 +23,9 @@
 #define UART_1						(STD_ON)
 #define UART_2						(STD_ON)
 #define ADC_1						(STD_ON)
-#define I2C_1						(STD_OFF)
+#define I2C_1						(STD_ON)
 
-#define NUMBER_OF_MEASUREMENTS      (1000U)
+#define NUMBER_OF_MEASUREMENTS      (30U)
 #define GREEN_AIR_LEVEL_MAX			(400U)
 #define GREEN_AIR_LEVEL_MIN			(370U)
 #define GOOD_AIR_LEVEL_MAX			(369U)
@@ -34,14 +34,22 @@
 #define BAD_AIR_LEVEL_MIN			(313U)
 #define WORST_AIR_LEVEL_MAX			(312U)
 #define WORST_AIR_LEVEL_MIN			(290U)
-#define VREFINT_CAL_ADDR 			((u16*)(u32)(0x1FFFF7BA))
-#define ONEMINTASK					(920U)
 
+#define TASK_TIME(a)				(a*16U)
+#define MAX_TASK		            (17U)
+#define MAX_TASK_PARAMS	            (6U)
+#define MAX_TASK_PRIO	            (2U)		//0 is highest
+#define TASK_PRIO		            (0U)
+#define TASK_PERIODIC	            (1U)
+#define TASK_PERIOD		            (2U)
+#define TASK_TTR		            (3U)		//TicksToRun
+#define TASK_PENDING	            (4U)
+#define TASK_RUNNING	            (5U)
+#define TICK	                    (1U)
 
-//#define CLEAR_UART_BUFFER(buffer_u8) memset(buffer_u8, 0, sizeof(buffer_u8))
-//#define SUBSTRACT25PROCENT(number_u16) number_u16 = number_u16 - (25 * number_u16)/100
+//-------------------Variable definitions------------------------------------------------------------//
 
-
+/* USER CODE END Private defines */
 /* sint8 * \brief  Type defining an 8 bit signed integer. The possible values interval is [-128, +127].
    uint8 *  \brief  Type defining an 8 bit unsigned integer. The possible values interval is [0, +255].
    sint16 * \brief  Type defining a 16 bit signed integer. The possible values interval is [-32,768, +32,767].
@@ -65,5 +73,24 @@ typedef struct Masured_value{
 	__IOM u16 measured_value_u16;
 	__IOM u16 measurmenet_counter_u16;
 } Measured_value_tst;
+
+__IO u8 rx_buffer_u8[16];
+__IO u8 tx_buffer_u8[8];
+__IO u32 calc_adc_val_u32;
+__IO u16 co2_measurement_counter_u16;
+
+u8 data_request_u8;
+
+typedef enum
+{
+    Task_0 = 0,
+    Task_1,
+    Task_2,
+    Task_3,
+    Task_4,
+
+}_E_Task_Name;
+static __IO u32 TimingDelay_u32 = STD_ON;
+u16 TaskParams_u16[MAX_TASK][MAX_TASK_PARAMS];
 
 #endif

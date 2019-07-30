@@ -191,6 +191,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "generic.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
@@ -1206,7 +1207,11 @@ uint32_t HAL_ADC_GetValue(ADC_HandleTypeDef* hadc)
 __weak void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
   /* Prevent unused argument(s) compilation warning */
-  UNUSED(hadc);
+  calc_adc_val_u32  += hadc->Instance->DR;
+  ++co2_measurement_counter_u16;
+		  //HAL_ADC_GetValue(&hadc);
+ // UNUSED(hadc);
+
   /* NOTE : This function Should not be modified, when the callback is needed,
             the HAL_ADC_ConvCpltCallback could be implemented in the user file
    */

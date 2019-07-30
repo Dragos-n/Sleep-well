@@ -2,7 +2,6 @@
 #define __INIT_H__
 
 #include "stm32f4xx_hal.h"
-#include "stdint.h"
 #include "generic.h"
 
 
@@ -31,5 +30,7 @@ void Board_init(void);
 UART_HandleTypeDef huart2;
 void MX_USART2_UART_Init(void);
 #endif
+
+void MX_NVIC_Init(void);
 
 #endif /* __INIT_H__ */

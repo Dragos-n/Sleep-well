@@ -1,6 +1,7 @@
 #include "init.h"
 #include "main.h"
 
+
 void SystemClock_Config(void)
 {
 
@@ -50,7 +51,7 @@ void SystemClock_Config(void)
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
-static void MX_NVIC_Init(void)
+void MX_NVIC_Init(void)
 {
   /* USART2_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
@@ -134,7 +135,6 @@ void MX_ADC1_Init(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-
 }
 #endif
 
@@ -179,13 +179,12 @@ void MX_USART1_UART_Init(void)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
-
 }
 
 #if (STD_ON == UART_2)
 
 /* USART2 init function */
-static void MX_USART2_UART_Init(void)
+void MX_USART2_UART_Init(void)
 {
 
   huart2.Instance = USART2;
@@ -207,6 +206,7 @@ static void MX_USART2_UART_Init(void)
 void Board_init(void)
 {
   u8 buffer[15] = "Board init!\r\n";
+  HAL_Delay(DELAY_5_MS);
   HAL_UART_Transmit(&huart1, buffer, 13U, HAL_MAX_DELAY);
 }
 
