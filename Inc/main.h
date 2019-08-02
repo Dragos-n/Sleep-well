@@ -17,11 +17,14 @@
 #include "stdint.h"
 #include "init.h"
 #include "generic.h"
+#include "string.h"
+#include "stdio.h"
 
 void debug_check(u32 *var_for_debug_pu32);
 void get_co2_adc(Measured_value_tst *CO2_measurement_st);
 void send_data_uart(Measured_value_tst * Measured_value_pst);
 void air_quality_calc(Measured_value_tst * Measured_value_pst);
+void SetTaskPending (_E_Task_Name TaskNr);
 
 #ifdef __cplusplus
  extern "C" {

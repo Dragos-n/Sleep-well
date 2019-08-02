@@ -10,6 +10,14 @@
 
 #define LED_ON 						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, STD_HIGH);
 #define LED_OFF						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, STD_LOW);
+#define PIN_A_6_ON                  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, STD_HIGH);
+#define PIN_A_6_OFF                 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, STD_LOW);
+#define PIN_A_7_ON                  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, STD_HIGH);
+#define PIN_A_7_OFF                 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, STD_LOW);
+#define PIN_A_11_ON                 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, STD_HIGH);
+#define PIN_A_11_OFF                HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, STD_LOW);
+#define PIN_A_12_ON                 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, STD_HIGH);
+#define PIN_A_12_OFF                HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, STD_LOW);
 
 #define DELAY_1_MS 					(1U)
 #define DELAY_5_MS 					(5U)
@@ -35,7 +43,7 @@
 #define WORST_AIR_LEVEL_MAX			(312U)
 #define WORST_AIR_LEVEL_MIN			(290U)
 
-#define TASK_TIME(a)				(a*16U)
+#define TASK_TIME(a)				(a*160U)
 #define MAX_TASK		            (17U)
 #define MAX_TASK_PARAMS	            (6U)
 #define MAX_TASK_PRIO	            (2U)		//0 is highest
@@ -58,7 +66,7 @@
    uint32 * \brief  Type defining a 32 bit unsigned integer. The possible values interval is [0, +4,294,967,295].
    boolean * \brief  Type defining the boolean logic. The possible values are {FALSE, TRUE}. */
 typedef signed    char           	(sint8);
-typedef unsigned  char          	(uint8);
+typedef unsigned  char          	   (uint8);
 typedef signed    short          	(sint16);
 typedef unsigned  short          	(uint16);
 typedef signed    long           	(sint32);
@@ -66,15 +74,19 @@ typedef unsigned  long           	(uint32);
 typedef unsigned  char           	(boolean);
 
 typedef uint8_t 					(u8);
-typedef uint16_t 					(u16);
-typedef uint32_t 					(u32);
+typedef uint16_t 				(u16);
+typedef uint32_t				(u32);
+
+typedef sint8              (s8);
+typedef sint16             (s16);
+typedef sint32             (s32);
 
 typedef struct Masured_value{
 	__IOM u16 measured_value_u16;
 	__IOM u16 measurmenet_counter_u16;
 } Measured_value_tst;
 
-__IO u8 rx_buffer_u8[16];
+   u8 rx_buffer_u8[16];
 __IO u8 tx_buffer_u8[8];
 __IO u32 calc_adc_val_u32;
 __IO u16 co2_measurement_counter_u16;

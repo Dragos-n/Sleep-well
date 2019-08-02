@@ -77,12 +77,20 @@ void MX_NVIC_Init(void)
 void MX_GPIO_Init(void)
 {
 	GPIO_InitTypeDef LED_struct;
+	GPIO_InitTypeDef PIN_6_struct;
+	GPIO_InitTypeDef PIN_7_struct;
+	GPIO_InitTypeDef PIN_11_struct;
+	GPIO_InitTypeDef PIN_12_struct;
 
 	/* GPIO Ports Clock Enable */
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 	__HAL_RCC_GPIOB_CLK_ENABLE();
 
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_RESET);
 
 	LED_struct.Pin = GPIO_PIN_5;
 	LED_struct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -90,6 +98,29 @@ void MX_GPIO_Init(void)
 	LED_struct.Pull = GPIO_NOPULL;
 	HAL_GPIO_Init(GPIOA, &LED_struct);
 
+   PIN_6_struct.Pin = GPIO_PIN_6;
+   PIN_6_struct.Mode = GPIO_MODE_OUTPUT_PP;
+   PIN_6_struct.Speed = GPIO_SPEED_FREQ_LOW;
+   PIN_6_struct.Pull = GPIO_NOPULL;
+   HAL_GPIO_Init(GPIOA, &PIN_6_struct);
+
+   PIN_7_struct.Pin = GPIO_PIN_7;
+   PIN_7_struct.Mode = GPIO_MODE_OUTPUT_PP;
+   PIN_7_struct.Speed = GPIO_SPEED_FREQ_LOW;
+   PIN_7_struct.Pull = GPIO_NOPULL;
+   HAL_GPIO_Init(GPIOA, &PIN_7_struct);
+
+   PIN_11_struct.Pin = GPIO_PIN_11;
+   PIN_11_struct.Mode = GPIO_MODE_OUTPUT_PP;
+   PIN_11_struct.Speed = GPIO_SPEED_FREQ_LOW;
+   PIN_11_struct.Pull = GPIO_NOPULL;
+   HAL_GPIO_Init(GPIOA, &PIN_11_struct);
+
+   PIN_12_struct.Pin = GPIO_PIN_12;
+   PIN_12_struct.Mode = GPIO_MODE_OUTPUT_PP;
+   PIN_12_struct.Speed = GPIO_SPEED_FREQ_LOW;
+   PIN_12_struct.Pull = GPIO_NOPULL;
+   HAL_GPIO_Init(GPIOA, &PIN_12_struct);
 }
 
 #endif
@@ -113,7 +144,7 @@ void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 5;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
 

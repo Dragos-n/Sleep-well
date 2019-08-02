@@ -29,109 +29,100 @@ u8 uart_new_line_u8[2] = "\r\n";
 
 void Task1(void)
 {
-	u8 lenght_1_u8, lenght_2_u8;
-    HAL_Delay(5U);
-	HAL_UART_Receive_IT(&huart1, rx_buffer_u8, 16U);
-
-	if((rx_buffer_u8[0] == 0x47) && (rx_buffer_u8[1] == 0x54))
-		{
-		 lenght_1_u8 = rx_buffer_u8[2] - '0';
-		 lenght_2_u8 = rx_buffer_u8[3] - '0';
-		 	 if (0U != lenght_1_u8)
-			 {
-				if((rx_buffer_u8[lenght_1_u8] == 0x41) && (rx_buffer_u8[lenght_2_u8] == 0x4B))
-				{
-					data_request_u8 = STD_ON;
-					memset(rx_buffer_u8, 0, 8U);
-					SetTaskPending(Task_2);
-				}
-			 }
-			else
-			{
-				if((rx_buffer_u8[lenght_2_u8 - 2] == 0x41) && (rx_buffer_u8[lenght_2_u8 - 1] == 0x4B))
-				{
-					data_request_u8 = STD_ON;
-					memset(rx_buffer_u8, 0, 8U);
-					SetTaskPending(Task_2);
-				}
-			}
-		}
+   PIN_A_6_ON
+   HAL_Delay(DELAY_5_MS);
+   HAL_UART_Receive_IT(&huart1, rx_buffer_u8, 10U);
+   PIN_A_6_OFF
 }
-void Task2(void){
-	HAL_ADC_Start_IT(&hadc1);
-	HAL_Delay(DELAY_1_MS);
-	if ((co2_measurement_counter_u16 == NUMBER_OF_MEASUREMENTS) || (STD_ON == data_request_u8))
-	   {
-		  count_of_complete_measurements_u16 = co2_measurement_counter_u16;
-	      co2_measurement_counter_u16 = 0U;
-		  SetTaskPending(Task_3);
-		}
+
+void Task2(void)
+{
+   PIN_A_7_ON
+   u8 lenght_1_u8, lenght_2_u8;
+   if((rx_buffer_u8[0] == 0x47) && (rx_buffer_u8[1] == 0x54))
+   {
+      lenght_1_u8 = rx_buffer_u8[2] - '0';
+      lenght_2_u8 = rx_buffer_u8[3] - '0';
+      if (0U != lenght_1_u8)
+      {
+        if((rx_buffer_u8[lenght_1_u8] == 0x41) && (rx_buffer_u8[lenght_2_u8] == 0x4B))
+        {
+           data_request_u8 = STD_ON;
+           memset(rx_buffer_u8, 0, 8U);
+           SetTaskPending(Task_3);
+        }
+      }
+      else
+      {
+         if((rx_buffer_u8[lenght_2_u8 - 2] == 0x41) && (rx_buffer_u8[lenght_2_u8 - 1] == 0x4B))
+         {
+           data_request_u8 = STD_ON;
+           memset(rx_buffer_u8, 0, 8U);
+           SetTaskPending(Task_3);
+         }
+      }
+   }
+   PIN_A_7_OFF
 }
 
 void Task3(void)
 {
-	u8 uart_buffer_u8[10];
-	u8 count =0;
-	if (STD_OFF == data_request_u8)
-	{
-		calc_adc_val_u32 = (calc_adc_val_u32/NUMBER_OF_MEASUREMENTS);
-	}
-		else
-		{
-		calc_adc_val_u32 = (calc_adc_val_u32 / count_of_complete_measurements_u16);
-		data_request_u8 = STD_OFF;
-		}
-    CO2_measurement_st.measured_value_u16  = (81 * calc_adc_val_u32) / 100U;
-    ++CO2_measurement_st.measurmenet_counter_u16;
-    calc_adc_val_u32 = 0U;
+   PIN_A_11_ON
+   HAL_Delay(DELAY_5_MS);
+   HAL_ADC_Start_IT(&hadc1);
+   HAL_Delay(DELAY_5_MS);
 
-	memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
-	sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measured_value_u16);
-	HAL_UART_Transmit_IT(&huart1,"CO2 V value= ", 13U);
-	while(uart_buffer_u8[count])
-		count++;
-	HAL_Delay(DELAY_5_MS);
-	HAL_UART_Transmit_IT(&huart1,uart_buffer_u8,count);
-	HAL_Delay(DELAY_1_MS);
-	HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
-
-	memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
-	sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measurmenet_counter_u16);
-	HAL_Delay(DELAY_1_MS);
-	HAL_UART_Transmit_IT(&huart1,"Counter= ", 9U);
-	count =0;
-	while(uart_buffer_u8[count])
-		count++;
-	HAL_Delay(DELAY_5_MS);
-	HAL_UART_Transmit_IT(&huart1,uart_buffer_u8, count);
-	HAL_Delay(DELAY_1_MS);
-	HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
-
-/*
-	if (CO2_measurement_st.measured_value_u16 >= GREEN_AIR_LEVEL_MIN)
-		{
-			HAL_UART_Transmit(&huart1, "GREEN AIR\r\n\n", 12U, HAL_MAX_DELAY);
-		}
-		else
-			if ((CO2_measurement_st.measured_value_u16 >= GOOD_AIR_LEVEL_MIN) && (CO2_measurement_st.measured_value_u16 <= GOOD_AIR_LEVEL_MAX))
-			{
-				HAL_UART_Transmit(&huart1,"GOOD AIR\r\n\n", 11U, HAL_MAX_DELAY);
-			}
-			else
-				if ((CO2_measurement_st.measured_value_u16 >= BAD_AIR_LEVEL_MIN) && (CO2_measurement_st.measured_value_u16 <= BAD_AIR_LEVEL_MAX))
-				{
-					HAL_UART_Transmit(&huart1,"BAD AIR\r\n\n", 10U, HAL_MAX_DELAY);
-				}
-				else
-					if  (CO2_measurement_st.measured_value_u16 <= WORST_AIR_LEVEL_MAX)
-					{
-						HAL_UART_Transmit(&huart1,"VERY BAD AIR! GO OUT!\r\n\n", 24U, HAL_MAX_DELAY);
-					}*/
-
+      if ((co2_measurement_counter_u16 == NUMBER_OF_MEASUREMENTS) || (STD_ON == data_request_u8))
+         {
+           count_of_complete_measurements_u16 = co2_measurement_counter_u16;
+           co2_measurement_counter_u16 = 0U;
+           SetTaskPending(Task_4);
+         }
+  PIN_A_11_OFF
 }
 
 void Task4(void)
 {
+      LED_ON
+      u8 uart_buffer_u8[10];
+      u8 count =0;
+
+      if (STD_OFF == data_request_u8)
+      {
+         calc_adc_val_u32 = (calc_adc_val_u32/NUMBER_OF_MEASUREMENTS);
+      }
+         else
+         {
+            calc_adc_val_u32 = (calc_adc_val_u32 / count_of_complete_measurements_u16);
+            data_request_u8 = STD_OFF;
+         }
+       CO2_measurement_st.measured_value_u16  = (81 * calc_adc_val_u32) / 100U;
+       ++CO2_measurement_st.measurmenet_counter_u16;
+       calc_adc_val_u32 = 0U;
+
+      memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
+      sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measured_value_u16);
+      HAL_UART_Transmit_IT(&huart1,(u8*)"CO2 V value= ", 13U);
+      while(uart_buffer_u8[count])
+         count++;
+      HAL_Delay(DELAY_5_MS);
+      HAL_UART_Transmit_IT(&huart1,uart_buffer_u8,count);
+      HAL_Delay(DELAY_1_MS);
+      HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
+
+      memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
+      sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measurmenet_counter_u16);
+      HAL_Delay(DELAY_1_MS);
+      HAL_UART_Transmit_IT(&huart1,(u8*)"Counter= ", 9U);
+      count =0;
+      while(uart_buffer_u8[count])
+         count++;
+      HAL_Delay(DELAY_5_MS);
+      HAL_UART_Transmit_IT(&huart1,uart_buffer_u8, count);
+      HAL_Delay(DELAY_1_MS);
+      HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
+      HAL_Delay(1U);
+      LED_OFF
 }
 
 void (*TaskList[MAX_TASK])(void)={
@@ -151,11 +142,11 @@ void SetTaskPending (_E_Task_Name TaskNr)
 
 
 u16 TaskParams_u16[MAX_TASK][MAX_TASK_PARAMS]={
-		           //Prio,		Periodic,	Period,		TicksToRun,	Pending, 	Running
-		/*1*/  		{0,			1,  		  10,	            0,			0,			0}, //UART data process by interrupt
-		/*2*/		{0,			1,			  TASK_TIME(10),	0,			0,			0}, //ADC read
-		/*3*/		{0,			0,			  0,	   			0,			0,			0}, //Average & send data to UART
-		/*4*/		{0,			0,			  0,	   	  		0,			0,			0}, //
+		         //Prio,     Periodic,	    Period,		        TicksToRun,	Pending, 	Running
+		/*1*/  	    {0,			1,  	     TASK_TIME(10),        0,			0,			0}, //UART data process by interrupt
+		/*2*/		{0,			0,			  0,           	       0,			0,			0}, //RX buffer process
+		/*3*/		{0,			1,			 TASK_TIME(300),	       0,			0,			0}, //ADC read
+		/*4*/		{0,			0,			  0,         	       0,			0,			0}, //Average & send data to UART
 };
 
 //=================================The schedular for the 17 task's==========================//
@@ -164,7 +155,6 @@ void os_start( void )
 	uint8_t     TaskCounter, PrioCounter;
 	while (1)
   {
-		//HAL_UART_Receive_IT(&huart1, rx_buffer_u8, 16U);
 		//==================================Update Task list==============================//
 		for(TaskCounter=0; TaskCounter<MAX_TASK; TaskCounter++)
 		{
@@ -203,42 +193,46 @@ void os_start( void )
 }
 
 
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+   SetTaskPending(Task_2);
+}
+
 int main(void)
 {
-	HAL_Init();
-	SystemClock_Config();
+   SystemClock_Config();
+   HAL_Init();
 
-	CO2_measurement_st.measured_value_u16 = 0U;
-	CO2_measurement_st.measurmenet_counter_u16 = 0U;
-	data_request_u8 = STD_OFF;
-	calc_adc_val_u32 = 0U;
-	co2_measurement_counter_u16 = 0U;
+   CO2_measurement_st.measured_value_u16 = 0U;
+   CO2_measurement_st.measurmenet_counter_u16 = 0U;
+   data_request_u8 = STD_OFF;
+   calc_adc_val_u32 = 0U;
+   co2_measurement_counter_u16 = 0U;
 
-	MX_NVIC_Init();
+   MX_NVIC_Init();
 
 #if (STD_ON == GPIO_ON)
-	MX_GPIO_Init();
+   MX_GPIO_Init();
 #endif
 
 #if (STD_ON == ADC_1)
-	MX_ADC1_Init();
+   MX_ADC1_Init();
 #endif
 
 #if (STD_ON == I2C_1)
-	MX_I2C1_Init();
+   MX_I2C1_Init();
 #endif
 
 #if (STD_ON == UART_2)
-	MX_USART2_UART_Init();
+   MX_USART2_UART_Init();
 #endif
 
 #if (STD_ON == UART_1)
-	MX_USART1_UART_Init();
-	Board_init();
+   MX_USART1_UART_Init();
+   Board_init();
 #endif
 
 	os_start();
-
 }
 
 void _Error_Handler(char *file, int line)

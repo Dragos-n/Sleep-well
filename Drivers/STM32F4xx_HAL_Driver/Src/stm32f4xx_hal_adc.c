@@ -741,7 +741,7 @@ HAL_StatusTypeDef HAL_ADC_Start_IT(ADC_HandleTypeDef* hadc)
   
   /* Process locked */
   __HAL_LOCK(hadc);
-  
+
   /* Enable the ADC peripheral */
   /* Check if ADC peripheral is disabled in order to enable it and wait during 
   Tstab time the ADC's stabilization */
@@ -1209,7 +1209,6 @@ __weak void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
   /* Prevent unused argument(s) compilation warning */
   calc_adc_val_u32  += hadc->Instance->DR;
   ++co2_measurement_counter_u16;
-		  //HAL_ADC_GetValue(&hadc);
  // UNUSED(hadc);
 
   /* NOTE : This function Should not be modified, when the callback is needed,

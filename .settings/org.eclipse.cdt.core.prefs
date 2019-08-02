@@ -4,3 +4,8 @@ environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.285969606/CYGWIN_
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.285969606/CYGWIN_HOME/value=C\:\\cygwin64
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.285969606/append=true
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.285969606/appendContributed=true
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.1099833745/GYGWIN_HOME/delimiter=;
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.1099833745/GYGWIN_HOME/operation=append
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.1099833745/GYGWIN_HOME/value=C\:\\cygwin64
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.1099833745/append=true
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.1099833745/appendContributed=true
