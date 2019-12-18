@@ -26,6 +26,7 @@ Measured_value_tst __IO CO2_measurement_st;
 
 u16 count_of_complete_measurements_u16 = 0;
 u8 uart_new_line_u8[2] = "\r\n";
+extern ppm_array[];
 
 void Task1(void)
 {
@@ -101,7 +102,7 @@ void Task4(void)
        calc_adc_val_u32 = 0U;
 
       memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
-      sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measured_value_u16);
+      sprintf(uart_buffer_u8,"%d", ppm_array[CO2_measurement_st.measured_value_u16]);
       HAL_UART_Transmit_IT(&huart1,(u8*)"CO2 V value= ", 13U);
       while(uart_buffer_u8[count])
          count++;
@@ -109,7 +110,7 @@ void Task4(void)
       HAL_UART_Transmit_IT(&huart1,uart_buffer_u8,count);
       HAL_Delay(DELAY_1_MS);
       HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
-
+/*
       memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
       sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measurmenet_counter_u16);
       HAL_Delay(DELAY_1_MS);
@@ -122,6 +123,17 @@ void Task4(void)
       HAL_Delay(DELAY_1_MS);
       HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
       HAL_Delay(1U);
+
+      memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
+      sprintf(uart_buffer_u8,"%d", ppm_vlue_u8);
+      HAL_UART_Transmit_IT(&huart1,(u8*)"CO2 PPM value= ", 15U);
+      while(uart_buffer_u8[count])
+         count++;
+      HAL_Delay(DELAY_5_MS);
+      HAL_UART_Transmit_IT(&huart1,uart_buffer_u8,count);
+      HAL_Delay(DELAY_1_MS);
+      HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
+*/
       LED_OFF
 }
 
@@ -145,7 +157,7 @@ u16 TaskParams_u16[MAX_TASK][MAX_TASK_PARAMS]={
 		         //Prio,     Periodic,	    Period,		        TicksToRun,	Pending, 	Running
 		/*1*/  	    {0,			1,  	     TASK_TIME(10),        0,			0,			0}, //UART data process by interrupt
 		/*2*/		{0,			0,			  0,           	       0,			0,			0}, //RX buffer process
-		/*3*/		{0,			1,			 TASK_TIME(300),	       0,			0,			0}, //ADC read
+		/*3*/		{0,			1,			 TASK_TIME(300),	   0,			0,			0}, //ADC read
 		/*4*/		{0,			0,			  0,         	       0,			0,			0}, //Average & send data to UART
 };
 
@@ -198,17 +210,21 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
    SetTaskPending(Task_2);
 }
 
+void Var_Init(void)
+{
+CO2_measurement_st.measured_value_u16 = 0U;
+CO2_measurement_st.measurmenet_counter_u16 = 0U;
+data_request_u8 = STD_OFF;
+calc_adc_val_u32 = 0U;
+co2_measurement_counter_u16 = 0U;
+}
+
 int main(void)
 {
    SystemClock_Config();
    HAL_Init();
-
-   CO2_measurement_st.measured_value_u16 = 0U;
-   CO2_measurement_st.measurmenet_counter_u16 = 0U;
-   data_request_u8 = STD_OFF;
-   calc_adc_val_u32 = 0U;
-   co2_measurement_counter_u16 = 0U;
-
+   Var_Init();
+   ppm_init_u16_init();
    MX_NVIC_Init();
 
 #if (STD_ON == GPIO_ON)
@@ -229,7 +245,7 @@ int main(void)
 
 #if (STD_ON == UART_1)
    MX_USART1_UART_Init();
-   Board_init();
+   //Board_init();
 #endif
 
 	os_start();

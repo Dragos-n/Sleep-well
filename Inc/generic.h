@@ -66,16 +66,16 @@
    uint32 * \brief  Type defining a 32 bit unsigned integer. The possible values interval is [0, +4,294,967,295].
    boolean * \brief  Type defining the boolean logic. The possible values are {FALSE, TRUE}. */
 typedef signed    char           	(sint8);
-typedef unsigned  char          	   (uint8);
+typedef unsigned  char          	(uint8);
 typedef signed    short          	(sint16);
 typedef unsigned  short          	(uint16);
 typedef signed    long           	(sint32);
 typedef unsigned  long           	(uint32);
 typedef unsigned  char           	(boolean);
 
-typedef uint8_t 					(u8);
-typedef uint16_t 				(u16);
-typedef uint32_t				(u32);
+typedef uint8 				(u8);
+typedef uint16 				(u16);
+typedef uint32				(u32);
 
 typedef sint8              (s8);
 typedef sint16             (s16);
