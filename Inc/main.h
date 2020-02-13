@@ -27,7 +27,6 @@ void send_data_uart(Measured_value_tst * Measured_value_pst);
 void air_quality_calc(Measured_value_tst * Measured_value_pst);
 void SetTaskPending (_E_Task_Name TaskNr);
 
-extern ppm_init_u16();
 #ifdef __cplusplus
  extern "C" {
 #endif

@@ -211,7 +211,7 @@ void MX_USART1_UART_Init(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 }
-
+#endif
 #if (STD_ON == UART_2)
 
 /* USART2 init function */
@@ -234,12 +234,13 @@ void MX_USART2_UART_Init(void)
 }
 #endif
 
+#if (STD_ON == UART_1)
 void Board_init(void)
 {
   u8 buffer[15] = "Board init!\r\n";
   HAL_Delay(DELAY_5_MS);
   HAL_UART_Transmit(&huart1, buffer, 13U, HAL_MAX_DELAY);
 }
-
 #endif
+
 

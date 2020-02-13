@@ -26,7 +26,7 @@
 #define DELAY_1_S 					(1000U)
 #define DELAY_DEBUG 				(5U)
 
-#define DEBUG_MODE					(STD_ON)
+#define DEBUG_MODE					(STD_OFF)
 #define GPIO_ON						(STD_ON)
 #define UART_1						(STD_ON)
 #define UART_2						(STD_ON)
