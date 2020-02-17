@@ -108,12 +108,15 @@ void Task4(void)
       memset(uart_buffer_u8, 0, sizeof(uart_buffer_u8));
       sprintf(uart_buffer_u8,"%d", CO2_measurement_st.measured_value_u16);
       HAL_UART_Transmit_IT(&huart1,(u8*)"CO2 V value= ", 13U);
+      HAL_UART_Transmit_IT(&huart2,(u8*)"CO2 V value= ", 13U);
       while(uart_buffer_u8[count])
          count++;
       HAL_Delay(DELAY_5_MS);
       HAL_UART_Transmit_IT(&huart1,uart_buffer_u8,count);
+      HAL_UART_Transmit_IT(&huart2,uart_buffer_u8,count);
       HAL_Delay(DELAY_1_MS);
       HAL_UART_Transmit_IT(&huart1,uart_new_line_u8, 2U);
+      HAL_UART_Transmit_IT(&huart2,uart_new_line_u8, 2U);
 #endif
       LED_OFF
 }
@@ -136,9 +139,9 @@ void SetTaskPending (_E_Task_Name TaskNr)
 
 u16 TaskParams_u16[MAX_TASK][MAX_TASK_PARAMS]={
 		         //Prio,     Periodic,	    Period,		        TicksToRun,	Pending, 	Running
-		/*1*/  	    {0,			1,  	     TASK_TIME(10),        0,			0,			0}, //UART data process by interrupt
+		/*1*/  	    {0,			1,  	     TASK_TIME(1),        0,			0,			0}, //UART data process by interrupt
 		/*2*/		{0,			0,			  0,           	       0,			0,			0}, //RX buffer process
-		/*3*/		{0,			1,			 TASK_TIME(30),	   0,			0,			0}, //ADC read
+		/*3*/		{0,			1,			 TASK_TIME(3),	   0,			0,			0}, //ADC read
 		/*4*/		{0,			0,			  0,         	       0,			0,			0}, //Average & send data to UART
 };
 
@@ -225,7 +228,7 @@ int main(void)
 
 #if (STD_ON == UART_1)
    MX_USART1_UART_Init();
-   //Board_init();
+   Board_init();
 #endif
 
 	os_start();
