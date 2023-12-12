@@ -15,6 +15,8 @@
 ######################################
 TARGET = Sleep_well
 
+# Path to stlink folder for uploading code to board
+STLINK=~/Embedded/stlink-1.7.0
 
 ######################################
 # building variables
@@ -186,7 +188,11 @@ $(BUILD_DIR):
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
-  
+
+# Flash the STM32F4
+burn: proj
+	$(STLINK)/st-flash write $(PROJ_NAME).bin 0x8000000
+
 #######################################
 # dependencies
 #######################################
