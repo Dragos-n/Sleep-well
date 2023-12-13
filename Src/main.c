@@ -10,7 +10,7 @@
 #include "main.h"
 #include "stdint.h"
 #include "init.h"
-#include "Generic.h"
+#include "generic.h"
 
 /* Private variables ---------------------------------------------------------*/
 
